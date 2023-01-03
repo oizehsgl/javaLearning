@@ -29,4 +29,24 @@ public class TypeTest {
         long endMem = runtime.totalMemory() - runtime.freeMemory();
         System.out.printf("类型%-4s\t总数%d\t总占用%s\t平均占用%s\n", type.getName(),length,endMem-startMem,(endMem-startMem)/(double)length);
     }
+    byte byteDefault;
+    short shortDefault;
+    int intDefault;
+    long longDefault;
+    boolean booleanDefault;
+    char charDefault;
+    float floatDefault;
+    double doubleDefault;
+
+    @Test
+    public void testDefault() {
+        System.out.println("byteDefault = " + byteDefault);
+        System.out.println("shortDefault = " + shortDefault);
+        System.out.println("intDefault = " + intDefault);
+        System.out.println("longDefault = " + longDefault);
+        System.out.println("booleanDefault = " + booleanDefault);
+        System.out.println("charDefault = " + charDefault);
+        System.out.println("floatDefault = " + floatDefault);
+        System.out.println("doubleDefault = " + doubleDefault);
+    }
 }
