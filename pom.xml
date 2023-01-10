@@ -53,5 +53,6 @@
     <module>basic</module>
     <module>grammar</module>
     <module>common</module>
+    <module>framework</module>
   </modules>
 </project>
