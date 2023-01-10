@@ -58,5 +58,6 @@
     <module>pattern</module>
     <module>project</module>
     <module>structure</module>
+    <module>algorithm</module>
   </modules>
 </project>
