@@ -57,5 +57,6 @@
     <module>library</module>
     <module>pattern</module>
     <module>project</module>
+    <module>structure</module>
   </modules>
 </project>
