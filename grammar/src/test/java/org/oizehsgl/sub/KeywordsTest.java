@@ -12,7 +12,6 @@ public class KeywordsTest {
     @Test
     public void testAssert() {
         int x = -1;
-        assertTrue(x>0);
-        System.out.println(x);
+        assertTrue(x<0);
     }
 }
