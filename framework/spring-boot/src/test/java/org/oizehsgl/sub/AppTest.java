@@ -3,6 +3,7 @@ package org.oizehsgl.sub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 /**
  * Unit test for simple App.
@@ -15,6 +16,6 @@ public class AppTest {
      */
     @Test
     public void testApp() {
-        System.out.println("aa");
+        Assert.isTrue(true);
     }
 }
