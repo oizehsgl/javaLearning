@@ -5,9 +5,10 @@
     <artifactId>.</artifactId>
     <groupId>org.oizehsgl.sup</groupId>
     <version>1.0-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>grammar</artifactId>
+  <artifactId>common</artifactId>
 
   <dependencies>
     <dependency>

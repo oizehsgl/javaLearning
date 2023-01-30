@@ -5,9 +5,10 @@
     <artifactId>.</artifactId>
     <groupId>org.oizehsgl.sup</groupId>
     <version>1.0-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>structure</artifactId>
+  <artifactId>project</artifactId>
 
   <dependencies>
     <dependency>
