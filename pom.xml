@@ -56,14 +56,14 @@
     </developers>
 
   <modules>
-    <module>basic</module>
-    <module>grammar</module>
-    <module>common</module>
-    <module>project</module>
-    <module>library</module>
-    <module>pattern</module>
-    <module>structure</module>
-    <module>algorithm</module>
-    <module>framework/spring-boot</module>
+      <module>basic/basic</module>
+      <module>grammar/grammar</module>
+      <module>common/common</module>
+      <module>structure/structure</module>
+      <module>algorithm/algorithm</module>
+      <module>pattern/pattern</module>
+      <module>library/library</module>
+      <module>framework/spring-boot</module>
+      <module>project/project</module>
   </modules>
 </project>
