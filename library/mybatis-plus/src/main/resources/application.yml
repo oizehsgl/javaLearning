@@ -14,4 +14,8 @@ spring:
 # Logger Config
 logging:
   level:
-    com.baomidou.mybatisplus.samples.quickstart: debug
+    org.oizehsgl.sub: debug
+##mybatis
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

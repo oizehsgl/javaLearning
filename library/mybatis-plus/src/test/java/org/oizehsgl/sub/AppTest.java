@@ -1,14 +1,17 @@
 package org.oizehsgl.sub;
 
 
-import org.junit.jupiter.api.Assertions;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.entity.SysUser;
-import org.oizehsgl.sub.mapper.SysUserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.oizehsgl.sub.service.ISysUserService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,8 +19,8 @@ import java.util.List;
  */
 @SpringBootTest
 public class AppTest {
-    @Autowired
-    private SysUserMapper userMapper;
+    @Resource
+    private ISysUserService sysUserService;
     /**
      * Rigorous Test :-)
      */
@@ -27,12 +30,46 @@ public class AppTest {
     }
 
     @Test
-    public void testSelect() {
-        System.out.println(("----- selectAll method test ------"));
-        List<SysUser> userList = userMapper.selectList(null);
-        Assertions.assertEquals(5, userList.size());
-        userList.forEach(System.out::println);
+    public void list() {
+        System.out.println("----------------");
+        sysUserService.list(null).forEach(System.out::println);
     }
 
+    /**
+     * FieldStrategy
+     */
+    @Test
+    public void updateBatchById(){
+        List<SysUser> sysUserList = sysUserService.list(null);
+        int i=1;
+        for (SysUser sysUser : sysUserList) {
+           sysUser.setAge(i++);
+           sysUser.setName(null);
+           sysUser.setEmail(null);
+        }
+        sysUserService.updateBatchById(sysUserList);
+        list();
+    }
 
+    /**
+     * UpdateWrapper
+     */
+    @Test
+    public void update(){
+        UpdateWrapper uw = new UpdateWrapper();
+        uw.set("email",null);
+        uw.in("id",new Long[]{-1L,1L,2L});
+        sysUserService.update(uw);
+        list();
+        LambdaUpdateWrapper<SysUser> lambdaUpdateWrapper= Wrappers.<SysUser>lambdaUpdate()
+                .set(SysUser::getEmail,null)
+                .in(SysUser::getId,new Long[]{4L,5L,100L});
+        sysUserService.update(lambdaUpdateWrapper);
+        list();
+        new LambdaUpdateChainWrapper<SysUser>(sysUserService.getBaseMapper())
+                .set(SysUser::getEmail,null)
+                .in(SysUser::getId,new Long[]{7L,8L})
+                .update();
+        list();
+    }
 }
