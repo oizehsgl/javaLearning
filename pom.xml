@@ -63,6 +63,7 @@
       <module>algorithm/algorithm</module>
       <module>pattern/pattern</module>
       <module>library/library</module>
+      <module>library/mybatis-plus</module>
       <module>framework/spring-boot</module>
       <module>project/project</module>
   </modules>
