@@ -79,10 +79,15 @@
   <modules>
 
     <module>basic/architecture</module>
+
     <module>basic/background</module>
+
     <module>basic/comment</module>
+
     <module>basic/keyword</module>
+
     <module>basic/operation</module>
+
     <module>basic/type</module>
 
     <module>common/common</module>
@@ -91,14 +96,13 @@
 
     <module>algorithm/algorithm</module>
 
-    <module>pattern/pattern</module>
+    <module>pattern/singleton</module>
 
     <module>library/mybatis-plus</module>
 
     <module>framework/spring-boot</module>
 
     <module>project/project</module>
-
 
   </modules>
 

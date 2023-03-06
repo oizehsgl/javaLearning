@@ -8,7 +8,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>pattern</artifactId>
+  <artifactId>singleton</artifactId>
 
   <dependencies>
     <dependency>
