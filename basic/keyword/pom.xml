@@ -8,7 +8,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>background</artifactId>
+  <artifactId>keyword</artifactId>
 
   <dependencies>
     <dependency>
