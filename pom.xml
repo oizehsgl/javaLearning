@@ -20,7 +20,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven-archetype-plugin.version>3.0.1</maven-archetype-plugin.version>
         <junit.version>4.13.1</junit.version>
     </properties>
 
@@ -35,18 +34,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-archetype-plugin</artifactId>
-                    <version>${maven-archetype-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <developers>
         <developer>
             <id>oizehsgl</id>
@@ -56,13 +43,11 @@
     </developers>
 
   <modules>
-      <module>basic/basic</module>
-      <module>grammar/grammar</module>
+      <module>basic/background</module>
       <module>common/common</module>
       <module>structure/structure</module>
       <module>algorithm/algorithm</module>
       <module>pattern/pattern</module>
-      <module>library/library</module>
       <module>library/mybatis-plus</module>
       <module>framework/spring-boot</module>
       <module>project/project</module>
