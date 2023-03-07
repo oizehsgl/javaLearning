@@ -2,15 +2,18 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test
+    url: jdbc:h2:mem:test;mode=mysql
     username: root
     password: test
   sql:
     init:
-      schema-locations: classpath:db/schema-h2.sql
-      data-locations: classpath:db/data-h2.sql
+      schema-locations:
+      - classpath:db/schema-id_type.sql
+      - classpath:db/schema-sys_user.sql
+      data-locations:
+      - classpath:db/data-id_type.sql
+      - classpath:db/data-sys_user.sql
       mode: always
-
 # Logger Config
 logging:
   level:
