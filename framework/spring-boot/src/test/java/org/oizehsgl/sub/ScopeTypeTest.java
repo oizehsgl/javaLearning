@@ -33,9 +33,11 @@ public class ScopeTypeTest {
     public void testAddress() {
         String address1 = scopeSingleton.toString();
         String address2 = scopeSingletonTest.toString();
+        System.out.printf("%s==%s\n",address1,address2);
         Assert.isTrue(address1.equals(address2), "单例类地址应该相同");
         String address3 = scopePrototype.toString();
         String address4 = scopePrototypeTest.toString();
+        System.out.printf("%s!=%s\n",address3,address4);
         Assert.isTrue(!address3.equals(address4), "原型类地址应该不同");
     }
 }
