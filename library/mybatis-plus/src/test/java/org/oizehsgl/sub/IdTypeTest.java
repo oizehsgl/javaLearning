@@ -22,8 +22,10 @@ public class IdTypeTest {
     public void list() {
         idTypeService.list(null).forEach(System.out::println);
         IdType idType = new IdType();
+        idType.setData("1");
         idTypeService.save(idType);
         idType = new IdType();
+        idType.setData("2");
         idTypeService.save(idType);
         idTypeService.list(null).forEach(System.out::println);
     }

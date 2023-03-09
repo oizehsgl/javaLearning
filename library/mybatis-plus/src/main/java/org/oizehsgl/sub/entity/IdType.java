@@ -11,18 +11,17 @@ import lombok.Data;
  */
 @Data
 public class IdType {
-    //无法自增
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.AUTO)
-
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.ASSIGN_ID)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.NONE)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.INPUT)
-    @TableId
-    private Integer intId;
     //@TableId
+    private Integer intId;
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.ASSIGN_ID)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.NONE)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.INPUT)
-    //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.ASSIGN_UUID)
+    @TableId(type = com.baomidou.mybatisplus.annotation.IdType.ASSIGN_UUID)
+    //@TableId
     private String stringId;
+    private String data;
 }
