@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -78,31 +77,21 @@
 
   <modules>
 
-    <module>basic/architecture</module>
+    <module>basic</module>
 
-    <module>basic/background</module>
+    <module>common</module>
 
-    <module>basic/comment</module>
+    <module>structure</module>
 
-    <module>basic/keyword</module>
+    <module>algorithm</module>
 
-    <module>basic/operation</module>
+    <module>pattern</module>
 
-    <module>basic/type</module>
+    <module>library</module>
 
-    <module>common/common</module>
+    <module>framework</module>
 
-    <module>structure/structure</module>
-
-    <module>algorithm/algorithm</module>
-
-    <module>pattern/singleton</module>
-
-    <module>library/mybatis-plus</module>
-
-    <module>framework/spring-boot</module>
-
-    <module>project/project</module>
+    <module>project</module>
 
   </modules>
 
