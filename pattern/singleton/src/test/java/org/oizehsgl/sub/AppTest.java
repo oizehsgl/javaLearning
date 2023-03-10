@@ -15,5 +15,6 @@ public class AppTest {
     @Test
     public void testApp() {
         assertTrue(true);
+        // TODO 单例测试
     }
 }
