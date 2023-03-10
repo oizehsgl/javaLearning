@@ -19,13 +19,13 @@
 
   <groupId>org.oizehsgl.sup</groupId>
 
-  <artifactId>.</artifactId>
+  <artifactId>sup</artifactId>
 
   <version>1.0-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
-  <description>.</description>
+  <description>sup</description>
 
   <url>http://www.example.com</url>
 
