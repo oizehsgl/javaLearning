@@ -26,7 +26,7 @@ public class DataAnnotation {
     private final double[] cached = expensive();
 
     private double[] expensive() {
-        double[] result = new double[1000000];
+        double[] result = new double[10];
         for (int i = 0; i < result.length; i++) {
             result[i] = Math.asin(i);
         }
