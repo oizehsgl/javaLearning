@@ -6,24 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * customSequenceProvider
+ * demoSequenceProvider
  *
  * @author oizehsgl
  * @since 3/13/23
  */
-public class CustomSequenceProvider implements DefaultGroupSequenceProvider<DemoData> {
+public class DemoSequenceProvider implements DefaultGroupSequenceProvider<DemoData> {
     @Override
     public List<Class<?>> getValidationGroups(DemoData demoData) {
         List<Class<?>> defaultGroupSequence = new ArrayList<>();
 
         defaultGroupSequence.add(DemoData.class);
 
-        if (demoData != null && demoData.getInteger() % 2 == 0) {
-            defaultGroupSequence.add(Group.Insert.class);
+        if (demoData != null && demoData.getRange() != null && demoData.getRange() % 2 == 0) {
+            defaultGroupSequence.add(ValidatedGroup.Insert.class);
         }
 
-        if (demoData != null && demoData.getInteger() % 2 == 1) {
-            defaultGroupSequence.add(Group.Update.class);
+        if (demoData != null && demoData.getRange() != null && demoData.getRange() % 2 == 1) {
+            defaultGroupSequence.add(ValidatedGroup.Update.class);
         }
 
         return defaultGroupSequence;

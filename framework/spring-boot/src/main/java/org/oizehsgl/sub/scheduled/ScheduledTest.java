@@ -1,6 +1,7 @@
 package org.oizehsgl.sub.scheduled;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @since 3/10/23
  */
 @Component
+@RestController
 public class ScheduledTest {
     //@Async
     //@Scheduled(cron = "*/2 * * * * ?", zone = "Asia/Shanghai")

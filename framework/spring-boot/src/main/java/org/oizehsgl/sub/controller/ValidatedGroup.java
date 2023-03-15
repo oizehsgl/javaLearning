@@ -1,12 +1,12 @@
 package org.oizehsgl.sub.controller;
 
 /**
- * group
+ * validatedGroup
  *
  * @author oizehsgl
  * @since 3/13/23
  */
-public interface Group {
+public interface ValidatedGroup {
     interface Update {
     }
 
