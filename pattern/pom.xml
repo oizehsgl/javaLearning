@@ -18,5 +18,6 @@
         <module>strategy</module>
       <module>template</module>
     <module>factory</module>
+    <module>builder</module>
   </modules>
 </project>
