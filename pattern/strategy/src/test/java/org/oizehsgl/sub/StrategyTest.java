@@ -11,8 +11,8 @@ import org.junit.Test;
 public class StrategyTest {
     @Test
     public void test(){
-        Context context = new Context();
-        context.setStrategy(new BestStrategy());
-        context.execute();
+        DemoContext demoContext = new DemoContext();
+        demoContext.setStrategy(new BestDemoStrategy());
+        demoContext.execute();
     }
 }

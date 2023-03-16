@@ -1,11 +1,11 @@
 package org.oizehsgl.sub;
 
 /**
- * strategy
+ * demoStrategy
  *
  * @author oizehsgl
  * @since 3/16/23
  */
-public interface Strategy {
+public interface DemoStrategy {
     void execute();
 }

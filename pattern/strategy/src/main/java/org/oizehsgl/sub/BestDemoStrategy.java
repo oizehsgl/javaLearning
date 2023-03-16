@@ -1,12 +1,12 @@
 package org.oizehsgl.sub;
 
 /**
- * middleStrategy
+ * bestDemoStrategy
  *
  * @author oizehsgl
  * @since 3/16/23
  */
-public class MiddleStrategy implements Strategy {
+public class BestDemoStrategy implements DemoStrategy {
     @Override
     public void execute() {
         System.out.println(this.getClass().getSimpleName());
