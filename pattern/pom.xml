@@ -19,5 +19,6 @@
       <module>template</module>
     <module>factory</module>
     <module>builder</module>
+    <module>prototype</module>
   </modules>
 </project>
