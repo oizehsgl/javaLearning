@@ -22,5 +22,6 @@
         <module>prototype</module>
         <module>adapter</module>
         <module>bridge</module>
+    <module>filter</module>
   </modules>
 </project>
