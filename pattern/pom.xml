@@ -29,5 +29,6 @@
     <module>flyweight</module>
     <module>proxy</module>
     <module>chainOfResponsibility</module>
+    <module>command</module>
   </modules>
 </project>
