@@ -25,5 +25,6 @@
     <module>filter</module>
     <module>composite</module>
     <module>decorator</module>
+    <module>facade</module>
   </modules>
 </project>
