@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-                    
+                      
+  
   
   
   
@@ -9,7 +10,8 @@
   
   
   <modelVersion>4.0.0</modelVersion>
-                    
+                      
+  
   
   
   
@@ -18,7 +20,8 @@
   
   
   <parent>
-                                        
+                                            
+    
     
     
     
@@ -27,7 +30,8 @@
     
     
     <artifactId>sup</artifactId>
-                                        
+                                            
+    
     
     
     
@@ -36,7 +40,8 @@
     
     
     <groupId>org.oizehsgl.sup</groupId>
-                                        
+                                            
+    
     
     
     
@@ -45,7 +50,8 @@
     
     
     <version>1.0-SNAPSHOT</version>
-                                    
+                                        
+  
   
   
   
@@ -54,7 +60,8 @@
   
   
   </parent>
-                    
+                      
+  
   
   
   
@@ -63,7 +70,8 @@
   
   
   <groupId>org.oizehsgl.pattern</groupId>
-                    
+                      
+  
   
   
   
@@ -72,7 +80,8 @@
   
   
   <artifactId>pattern</artifactId>
-                    
+                      
+  
   
   
   
@@ -81,7 +90,8 @@
   
   
   <version>1.0-SNAPSHOT</version>
-                    
+                      
+  
   
   
   
@@ -90,7 +100,8 @@
   
   
   <packaging>pom</packaging>
-                    
+                      
+  
   
   
   
@@ -99,7 +110,8 @@
   
   
   <description>pattern</description>
-                    
+                      
+  
   
   
   
@@ -108,7 +120,8 @@
   
   
   <modules>
-                                        
+                                            
+    
     
     
     
@@ -117,7 +130,8 @@
     
     
     <module>singleton</module>
-                                        
+                                            
+    
     
     
     
@@ -126,7 +140,8 @@
     
     
     <module>strategy</module>
-                                        
+                                            
+    
     
     
     
@@ -135,7 +150,8 @@
     
     
     <module>template</module>
-                                        
+                                            
+    
     
     
     
@@ -144,7 +160,8 @@
     
     
     <module>factory</module>
-                                        
+                                            
+    
     
     
     
@@ -153,7 +170,8 @@
     
     
     <module>builder</module>
-                                        
+                                            
+    
     
     
     
@@ -162,7 +180,8 @@
     
     
     <module>prototype</module>
-                                        
+                                            
+    
     
     
     
@@ -171,7 +190,8 @@
     
     
     <module>adapter</module>
-                                        
+                                            
+    
     
     
     
@@ -180,7 +200,8 @@
     
     
     <module>bridge</module>
-                                    
+                                        
+    
     
     
     
@@ -189,7 +210,8 @@
     
     
     <module>filter</module>
-                                    
+                                        
+    
     
     
     
@@ -198,7 +220,8 @@
     
     
     <module>composite</module>
-                                    
+                                        
+    
     
     
     
@@ -207,7 +230,8 @@
     
     
     <module>decorator</module>
-                                    
+                                        
+    
     
     
     
@@ -216,7 +240,8 @@
     
     
     <module>facade</module>
-                                    
+                                        
+    
     
     
     
@@ -225,7 +250,8 @@
     
     
     <module>flyweight</module>
-                                    
+                                        
+    
     
     
     
@@ -234,7 +260,8 @@
     
     
     <module>proxy</module>
-                                    
+                                        
+    
     
     
     
@@ -243,7 +270,8 @@
     
     
     <module>chainOfResponsibility</module>
-                                    
+                                        
+    
     
     
     
@@ -252,7 +280,8 @@
     
     
     <module>command</module>
-                                    
+                                        
+    
     
     
     
@@ -261,7 +290,8 @@
     
     
     <module>interpreter</module>
-                                  
+                                      
+    
     
     
     
@@ -270,7 +300,8 @@
     
     
     <module>iterator</module>
-                              
+                                  
+    
     
     
     
@@ -278,34 +309,43 @@
     
     
     <module>mediator</module>
-                          
+                              
+    
     
     
     
     
     
     <module>memento</module>
-                      
+                          
+    
     
     
     
     
     <module>observer</module>
-                  
+                      
+    
     
     
     
     <module>state</module>
-              
+                  
+    
     
     
     <module>nullObject</module>
-          
+              
+    
     
     <module>visitor</module>
+          
+    
+    <module>mvc</module>
       
   </modules>
-                
+                  
+
 
 
 
