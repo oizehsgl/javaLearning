@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -15,11 +16,11 @@ import java.util.Optional;
  * @since 3/18/23
  */
 @Slf4j
-@Service("userService")
+@Service
 @Transactional(readOnly = true, rollbackFor = Exception.class)
 @RequiredArgsConstructor
 public class UserInfoServiceImpl implements UserInfoService {
-    private final UserInfoRespository userInfoRespository;
+    private final UserInfoRepository userInfoRepository;
     private final EmailDetailRepository emailDetailRepository;
     private final ApplicationEventPublisher applicationEventPublisher;
 
@@ -27,15 +28,16 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(rollbackFor = Exception.class)
     public UserInfo create(UserInfo userInfo) {
         Long begin = System.currentTimeMillis();
-        userInfoRespository.save(userInfo);
-        applicationEventPublisher.publishEvent(new SendEmailEvent(this, userInfo.getId()));
+        userInfoRepository.save(userInfo);
+        //applicationEventPublisher.publishEvent(new SendEmailEvent(this, userInfo.getId()));
         Long end = System.currentTimeMillis();
         return userInfo;
     }
 
     @Override
     public UserInfo findOne(Long id) {
-        Optional<UserInfo> optionalUserInfo = userInfoRespository.findById(id);
+        Optional<UserInfo> optionalUserInfo = userInfoRepository.findById(id);
+        List<UserInfo> userInfos= userInfoRepository.findAll();
         return optionalUserInfo.orElse(new UserInfo());
     }
 }

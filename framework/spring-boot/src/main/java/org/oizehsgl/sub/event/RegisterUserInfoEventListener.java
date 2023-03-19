@@ -20,14 +20,14 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RegisterUserInfoEventListener {
     @Autowired
-    private UserInfoRespository userInfoRespository;
+    private UserInfoRepository userInfoRepository;
     @Autowired
     private EmailDetailRepository emailDetailRepository;
 
     @EventListener
     @Async
     public void sendEmail(SendEmailEvent sendEmailEvent) {
-        Optional<UserInfo> optionalUserInfo = userInfoRespository.findById(sendEmailEvent.getId());
+        Optional<UserInfo> optionalUserInfo = userInfoRepository.findById(sendEmailEvent.getId());
         if (optionalUserInfo.isPresent()) {
             UserInfo userInfo = optionalUserInfo.get();
             log.info("userInfo<{}>", userInfo);

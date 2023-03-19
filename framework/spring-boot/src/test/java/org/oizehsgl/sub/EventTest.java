@@ -38,7 +38,7 @@ public class EventTest {
 
     @Test
     public void testPost() throws Exception {
-        UserInfo userInfo = UserInfo.builder().id(10L).email("eee").name("nnn").build();
+        UserInfo userInfo = UserInfo.builder().email("eee").name("nnn").build();
         mockMvc.perform(MockMvcRequestBuilders.post("/userInfo")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JSONObject.toJSONString(userInfo))
@@ -50,7 +50,7 @@ public class EventTest {
 
     @Test
     public void testGet() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/userInfo/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/userInfo/2")
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk())
