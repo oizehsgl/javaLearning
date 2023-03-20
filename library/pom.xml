@@ -47,6 +47,8 @@
     <module>h2</module>
           
     
+    <module>rabbitmq</module>
+    <module>property</module>
   </modules>
     
 
