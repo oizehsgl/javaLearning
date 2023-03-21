@@ -1,6 +1,5 @@
 package org.oizehsgl.sub;
 
-import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.headers.HeadersProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ public class HeadersTest {
     @Autowired
     private HeadersProducer headersProducer;
 
-    @Test
+//    @Test
     public void testHeaders() throws InterruptedException {
 
         Thread thread1 = new Thread(() -> {

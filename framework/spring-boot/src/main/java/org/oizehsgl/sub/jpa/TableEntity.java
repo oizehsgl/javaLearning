@@ -30,4 +30,7 @@ public class TableEntity {
     private String String;
     @Column(name = "integer")
     private Integer integer;
+
+    @Version
+    private Long version;
 }

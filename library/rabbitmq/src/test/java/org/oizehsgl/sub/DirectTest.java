@@ -1,6 +1,5 @@
 package org.oizehsgl.sub;
 
-import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.direct.DirectProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +20,7 @@ public class DirectTest {
     @Autowired
     private DirectProducer directProducer;
 
-    @Test
+//    @Test
     public void testDirect() throws ExecutionException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 

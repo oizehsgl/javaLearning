@@ -1,0 +1,19 @@
+mqtt:
+  consumer:
+    url: tcp://127.0.0.1:1884
+    username: admin
+    password: admin123
+    qos: 1
+    clientId: mqttConsumer
+    topic: /defaultTopic
+    timeout: 10
+    keepAlive: 20
+  producer:
+    url: tcp://127.0.0.1:1884
+    username: admin
+    password: admin123
+    qos: 1
+    clientId: mqttProducer
+    topic: /defaultTopic
+    timeout: 10
+    keepAlive: 20

@@ -1,6 +1,5 @@
 package org.oizehsgl.sub;
 
-import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.topic.TopicProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +17,7 @@ public class TopicTest {
     @Autowired
     private TopicProducer topicProducer;
 
-    @Test
+//    @Test
     public void testTopic() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(2);
 

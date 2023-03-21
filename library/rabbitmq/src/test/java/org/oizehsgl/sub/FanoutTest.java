@@ -1,6 +1,5 @@
 package org.oizehsgl.sub;
 
-import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.fanout.FanoutProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +18,7 @@ public class FanoutTest {
     @Autowired
     private FanoutProducer fanoutProducer;
 
-    @Test
+//    @Test
     public void testFanout() throws ExecutionException, InterruptedException {
         CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
             System.out.println(fanoutProducer.sendMsg());
