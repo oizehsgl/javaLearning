@@ -5,7 +5,10 @@ import org.oizehsgl.sub.direct.DirectProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * directTest
@@ -19,13 +22,18 @@ public class DirectTest {
     private DirectProducer directProducer;
 
     @Test
-    public void testDirect() {
-        System.out.println(directProducer.sendMsg());
-        System.out.println(directProducer.sendMsg());
-        try {
-            TimeUnit.SECONDS.sleep(10);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void testDirect() throws ExecutionException, InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        Future<?> future1 = executor.submit(() -> {
+            System.out.println(directProducer.sendMsg());
+        });
+
+        Future<?> future2 = executor.submit(() -> {
+            System.out.println(directProducer.sendMsg());
+        });
+        future1.get();
+        future2.get();
+        executor.shutdown();
     }
 }

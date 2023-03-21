@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class TopicBindingConfig {
-    public static final String ROUTING_KEY="topicRoutingKey*";
+    public static final String ROUTING_KEY="topic.routing.key";
 
     @Bean
     public Binding bindingTopicExchange1(Queue topicQueue1, TopicExchange topicExchange) {
@@ -24,6 +24,6 @@ public class TopicBindingConfig {
 
     @Bean
     public Binding bindingTopicExchange2(Queue topicQueue2, TopicExchange topicExchange) {
-        return BindingBuilder.bind(topicQueue2).to(topicExchange).with("#");
+        return BindingBuilder.bind(topicQueue2).to(topicExchange).with("#.routing.#");
     }
 }

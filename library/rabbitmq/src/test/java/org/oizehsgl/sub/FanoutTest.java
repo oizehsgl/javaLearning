@@ -5,7 +5,8 @@ import org.oizehsgl.sub.fanout.FanoutProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * fanoutTest
@@ -19,13 +20,13 @@ public class FanoutTest {
     private FanoutProducer fanoutProducer;
 
     @Test
-    public void testFanout() {
-        System.out.println(fanoutProducer.sendMsg());
-        System.out.println(fanoutProducer.sendMsg());
-        try {
-            TimeUnit.SECONDS.sleep(10);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void testFanout() throws ExecutionException, InterruptedException {
+        CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
+            System.out.println(fanoutProducer.sendMsg());
+        });
+        CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> {
+            System.out.println(fanoutProducer.sendMsg());
+        });
+        CompletableFuture.allOf(future1, future2).get();
     }
 }

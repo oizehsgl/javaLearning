@@ -1,8 +1,8 @@
-package org.oizehsgl.sub.topic;
+package org.oizehsgl.sub.headers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.oizehsgl.sub.topic.config.TopicExchangeConfig;
-import org.oizehsgl.sub.topic.config.TopicQueueConfig;
+import org.oizehsgl.sub.headers.config.HeadersExchangeConfig;
+import org.oizehsgl.sub.headers.config.HeadersQueueConfig;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.*;
@@ -10,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * topicConsumer
+ * headersConsumer
  *
  * @author oizehsgl
  * @since 3/20/23
  */
 @Slf4j
 @Component
-public class TopicConsumer {
+public class HeadersConsumer {
     @Autowired
-    private TopicQueueConfig topicQueueConfig;
+    private HeadersQueueConfig headersQueueConfig;
 
     /**
      * *  (星号) 用来表示一个单词 (必须出现的)
@@ -28,34 +28,34 @@ public class TopicConsumer {
      * @param message
      */
     @RabbitHandler
-    @RabbitListener(queues = TopicQueueConfig.QUEUE1, ackMode = "MANUAL")
+    @RabbitListener(queues = HeadersQueueConfig.QUEUE1, ackMode = "MANUAL")
     public void consumer1(Message message) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                TopicQueueConfig.QUEUE1,
+                HeadersQueueConfig.QUEUE1,
                 new String(message.getBody()));
     }
 
     @RabbitHandler
-    @RabbitListener(queues = TopicQueueConfig.QUEUE2)
+    @RabbitListener(queues = HeadersQueueConfig.QUEUE2)
     public void consumer2(Message message) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                TopicQueueConfig.QUEUE2,
+                HeadersQueueConfig.QUEUE2,
                 new String(message.getBody()));
     }
 
     @RabbitHandler
-    @RabbitListener(queuesToDeclare = @Queue(TopicQueueConfig.QUEUE1))
+    @RabbitListener(queuesToDeclare = @Queue(HeadersQueueConfig.QUEUE1))
     public void consumer3(Message message) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                TopicQueueConfig.QUEUE1,
+                HeadersQueueConfig.QUEUE1,
                 new String(message.getBody()));
     }
 
     @RabbitHandler
-    @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(value = TopicExchangeConfig.EXCHANGE, type = ExchangeTypes.TOPIC)))
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(value = HeadersExchangeConfig.EXCHANGE, type = ExchangeTypes.HEADERS)))
     public void consumer4(Message message) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -64,7 +64,7 @@ public class TopicConsumer {
     }
 
     @RabbitHandler
-    @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(value = TopicExchangeConfig.EXCHANGE, type = ExchangeTypes.TOPIC)))
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(value = HeadersExchangeConfig.EXCHANGE, type = ExchangeTypes.HEADERS)))
     public void consumer5(Message message) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),

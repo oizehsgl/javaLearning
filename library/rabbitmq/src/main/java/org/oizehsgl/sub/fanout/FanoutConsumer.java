@@ -1,5 +1,6 @@
 package org.oizehsgl.sub.fanout;
 
+import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.sub.fanout.config.FanoutExchangeConfig;
 import org.oizehsgl.sub.fanout.config.FanoutQueueConfig;
@@ -35,7 +36,7 @@ public class FanoutConsumer {
      */
     @RabbitHandler
     @RabbitListener(queues = FanoutQueueConfig.QUEUE1, ackMode = "MANUAL")
-    public void consumer1(Message message) {
+    public void consumer1(Message message,Channel channel) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 FanoutQueueConfig.QUEUE1,
@@ -44,7 +45,7 @@ public class FanoutConsumer {
 
     @RabbitHandler
     @RabbitListener(queues = FanoutQueueConfig.QUEUE2)
-    public void consumer2(Message message) {
+    public void consumer2(Message message,Channel channel) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
                 FanoutQueueConfig.QUEUE2,
@@ -65,7 +66,16 @@ public class FanoutConsumer {
     public void consumer4(Message message) {
         System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                FanoutQueueConfig.QUEUE1,
+                null,
+                new String(message.getBody()));
+    }
+
+    @RabbitHandler
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(value = FanoutExchangeConfig.EXCHANGE, type = ExchangeTypes.FANOUT)))
+    public void consumer5(Message message, Channel channel) {
+        System.out.printf("消费者: <%s> 从: <%s> 消息: <%s>%n",
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
+                null,
                 new String(message.getBody()));
     }
 }

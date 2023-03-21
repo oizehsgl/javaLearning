@@ -25,10 +25,12 @@ public class TopicProducer {
     public Object sendMsg() {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         MessageProperties messageProperties = new MessageProperties();
-        messageProperties.setExpiration("5000");
-        Message message = new Message("hello world".getBytes(), messageProperties);
+        messageProperties.setExpiration("10000");
+        String exchange = TopicExchangeConfig.EXCHANGE;
+        String routingKey = TopicBindingConfig.ROUTING_KEY;
+        Message message = new Message(String.format("%s + %s", exchange, routingKey).getBytes(), messageProperties);
         System.out.println("开始发送消息 : " + message);
-        rabbitTemplate.convertAndSend(TopicExchangeConfig.EXCHANGE, TopicBindingConfig.ROUTING_KEY, message, correlationData);
+        rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
         System.out.println("结束发送消息 : " + message);
         return correlationData;
     }

@@ -5,7 +5,7 @@ import org.oizehsgl.sub.topic.TopicProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * topicTest
@@ -19,13 +19,18 @@ public class TopicTest {
     private TopicProducer topicProducer;
 
     @Test
-    public void testTopic() {
-        System.out.println(topicProducer.sendMsg());
-        System.out.println(topicProducer.sendMsg());
-        try {
-            TimeUnit.SECONDS.sleep(10);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void testTopic() throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(2);
+
+        new Thread(() -> {
+            System.out.println(topicProducer.sendMsg());
+            latch.countDown();
+        }).start();
+        new Thread(() -> {
+            System.out.println(topicProducer.sendMsg());
+            latch.countDown();
+        }).start();
+
+        latch.await();
     }
 }
