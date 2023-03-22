@@ -5,7 +5,7 @@ mqtt:
     password: admin123
     qos: 1
     clientId: mqttConsumer
-    topic: /defaultTopic
+    topics: /defaultTopic
     timeout: 10
     keepAlive: 20
   producer:
@@ -14,6 +14,6 @@ mqtt:
     password: admin123
     qos: 1
     clientId: mqttProducer
-    topic: /defaultTopic
+    topics: /defaultTopic
     timeout: 10
     keepAlive: 20

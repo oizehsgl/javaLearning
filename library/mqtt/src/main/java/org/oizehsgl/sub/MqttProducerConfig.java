@@ -68,7 +68,7 @@ public class MqttProducerConfig {
         defaultMqttPahoClientFactory.setConnectionOptions(getMqttConnectOptions());
         MqttPahoMessageHandler mqttPahoMessageHandler = new MqttPahoMessageHandler(mqttProducerProperties.getClientId(), defaultMqttPahoClientFactory);
         mqttPahoMessageHandler.setAsync(true);
-        mqttPahoMessageHandler.setDefaultTopic(mqttProducerProperties.getTopic());
+        mqttPahoMessageHandler.setDefaultTopic(mqttProducerProperties.getTopics()[0]);
         mqttPahoMessageHandler.setDefaultQos(mqttProducerProperties.getQos());
         return mqttPahoMessageHandler;
     }

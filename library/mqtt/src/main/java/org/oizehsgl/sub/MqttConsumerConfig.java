@@ -74,7 +74,7 @@ public class MqttConsumerConfig {
         MqttPahoMessageDrivenChannelAdapter mqttPahoMessageDrivenChannelAdapter = new MqttPahoMessageDrivenChannelAdapter(
                 mqttConsumerProperties.getClientId(),
                 defaultMqttPahoClientFactory,
-                mqttConsumerProperties.getTopic().split(","));
+                mqttConsumerProperties.getTopics());
         // 设置完成超时时间
         //mqttPahoMessageDrivenChannelAdapter.setCompletionTimeout(30000);
         // 消息转换器

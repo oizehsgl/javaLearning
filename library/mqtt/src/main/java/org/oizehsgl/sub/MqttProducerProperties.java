@@ -33,5 +33,5 @@ public class MqttProducerProperties {
     private Integer qos;
     private Integer timeout;
     private Integer keepAlive;
-    private String topic;
+    private String[] topics;
 }
