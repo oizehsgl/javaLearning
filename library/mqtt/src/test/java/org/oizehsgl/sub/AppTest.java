@@ -15,7 +15,6 @@ public class AppTest {
      */
     @Test
     public void testApp() {
-        System.out.println(MqttConfig.class);
         Assert.isTrue(true);
     }
 }

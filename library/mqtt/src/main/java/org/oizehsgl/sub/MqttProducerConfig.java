@@ -51,7 +51,7 @@ public class MqttProducerConfig {
      *
      * @return {@link org.springframework.messaging.MessageChannel}
      */
-    @Bean(name = MqttConfig.CHANNEL_NAME_OUT)
+    @Bean(name = MqttConstant.Channel.OUT)
     public MessageChannel mqttOutboundChannel() {
         return new DirectChannel();
     }
@@ -62,7 +62,7 @@ public class MqttProducerConfig {
      * @return {@link org.springframework.messaging.MessageHandler}
      */
     @Bean
-    @ServiceActivator(inputChannel = MqttConfig.CHANNEL_NAME_OUT)
+    @ServiceActivator(inputChannel = MqttConstant.Channel.OUT)
     public MessageHandler mqttOutbound() {
         DefaultMqttPahoClientFactory defaultMqttPahoClientFactory = new DefaultMqttPahoClientFactory();
         defaultMqttPahoClientFactory.setConnectionOptions(getMqttConnectOptions());

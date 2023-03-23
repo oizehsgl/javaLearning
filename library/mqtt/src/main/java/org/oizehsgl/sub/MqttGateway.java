@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @since 3/21/23
  */
 @Component
-@MessagingGateway(defaultRequestChannel = MqttConfig.CHANNEL_NAME_OUT)
+@MessagingGateway(defaultRequestChannel = MqttConstant.Channel.OUT)
 public interface MqttGateway {
     /**
      * 指定质量主题发送负载

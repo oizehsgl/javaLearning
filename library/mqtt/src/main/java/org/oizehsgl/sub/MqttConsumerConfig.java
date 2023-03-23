@@ -55,7 +55,7 @@ public class MqttConsumerConfig {
      *
      * @return {@link org.springframework.messaging.MessageChannel}
      */
-    @Bean(name = MqttConfig.CHANNEL_NAME_IN)
+    @Bean(name = MqttConstant.Channel.IN)
     public MessageChannel mqttInboundChannel() {
         return new DirectChannel();
     }
@@ -95,7 +95,7 @@ public class MqttConsumerConfig {
      * @return {@link org.springframework.messaging.MessageHandler}
      */
     @Bean
-    @ServiceActivator(inputChannel = MqttConfig.CHANNEL_NAME_IN)
+    @ServiceActivator(inputChannel = MqttConstant.Channel.IN)
     public MessageHandler handler() {
         return message -> {
             // 收到的消息是字节格式
