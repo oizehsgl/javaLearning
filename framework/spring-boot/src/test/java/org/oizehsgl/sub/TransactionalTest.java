@@ -28,7 +28,6 @@ public class TransactionalTest {
         test(transactionalDemo::testTransactional2, false);
     }
 
-    /// ??????不知道为何mvn clean test测试不能通过
     @Test
     public void testTransactional3() {
         test(transactionalDemo::testTransactional3, false);
