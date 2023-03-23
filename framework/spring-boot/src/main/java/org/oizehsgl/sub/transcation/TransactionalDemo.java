@@ -41,6 +41,11 @@ public class TransactionalDemo {
     public TableEntity get() {
         return tableRepository.findById(1L).get();
     }
+    public void reset() {
+        TableEntity tableEntity = tableRepository.findById(1L).get();
+        tableEntity.setInteger(1);
+        tableRepository.save(tableEntity);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     public void testTransactional1() {

@@ -5,6 +5,7 @@ import org.oizehsgl.sub.jpa.TableEntity;
 import org.oizehsgl.sub.transcation.TransactionalDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 /**
  * transactionalTest
@@ -28,7 +29,7 @@ public class TransactionalTest {
     }
 
     /// ??????不知道为何mvn clean test测试不能通过
-    //@Test
+    @Test
     public void testTransactional3() {
         test(transactionalDemo::testTransactional3, false);
     }
@@ -47,6 +48,7 @@ public class TransactionalTest {
         TableEntity tableEntity2 = transactionalDemo.get();
         System.out.println("tableEntity1 = " + tableEntity1);
         System.out.println("tableEntity2 = " + tableEntity2);
-        //Assert.isTrue(tableEntity1.equals(tableEntity2) == b);
+        Assert.isTrue(tableEntity1.equals(tableEntity2) == b);
+        transactionalDemo.reset();
     }
 }
