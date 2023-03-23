@@ -1,9 +1,7 @@
 package org.oizehsgl.sub.jpa;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -16,8 +14,8 @@ import javax.persistence.*;
  */
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Entity
 @Table(name = "t_table")
 public class TableEntity {
@@ -27,7 +25,7 @@ public class TableEntity {
     @Column(name = "id")
     private Long id;
     @Column(name = "string")
-    private String String;
+    private String string;
     @Column(name = "integer")
     private Integer integer;
 

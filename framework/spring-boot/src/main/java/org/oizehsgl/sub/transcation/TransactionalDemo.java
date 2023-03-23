@@ -28,11 +28,11 @@ public class TransactionalDemo {
     @PostConstruct
     public void init() {
         List<TableEntity> tableEntityList = new ArrayList<>();
-        TableEntity tableEntity = new TableEntity();
+        TableEntity tableEntity = TableEntity.builder().build();
         tableEntity.setInteger(1);
         tableEntity.setString("1");
         tableRepository.save(tableEntity);
-        TableEntity tableEntity2 = new TableEntity();
+        TableEntity tableEntity2 = TableEntity.builder().build();
         tableEntity2.setInteger(2);
         tableEntity2.setString("2");
         tableRepository.save(tableEntity2);

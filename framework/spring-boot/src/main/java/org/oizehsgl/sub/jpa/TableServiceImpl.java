@@ -27,7 +27,7 @@ public class TableServiceImpl implements TableService {
         for (int i = 0; i < 5; i++) {
             TableEntity tableEntity = TableEntity.builder()
                     .id(i + 10L)
-                    .String(String.valueOf(i))
+                    .string(String.valueOf(i))
                     .integer(i)
                     .build();
             tableEntityList.add(tableEntity);
