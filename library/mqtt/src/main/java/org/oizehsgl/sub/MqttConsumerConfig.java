@@ -15,6 +15,8 @@ import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * mqttConsumerConfig
  *
@@ -74,7 +76,7 @@ public class MqttConsumerConfig {
         MqttPahoMessageDrivenChannelAdapter mqttPahoMessageDrivenChannelAdapter = new MqttPahoMessageDrivenChannelAdapter(
                 mqttConsumerProperties.getClientId(),
                 defaultMqttPahoClientFactory,
-                mqttConsumerProperties.getTopics());
+        mqttConsumerProperties.getTopics());
         // 设置完成超时时间
         //mqttPahoMessageDrivenChannelAdapter.setCompletionTimeout(30000);
         // 消息转换器
@@ -107,6 +109,12 @@ public class MqttConsumerConfig {
             //设备上报主题/test/pub/ + 设备编号
             if (MqttTopic.isMatched("/defaultTopic", topic)) {
                 System.out.println("负载为：" + payload);
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println(Thread.currentThread().getName());
             } else {
                 System.out.println("丢弃消息：主题[" + topic + "]，负载：" + payload);
             }

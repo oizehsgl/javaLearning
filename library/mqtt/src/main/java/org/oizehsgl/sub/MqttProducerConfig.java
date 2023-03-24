@@ -29,6 +29,8 @@ public class MqttProducerConfig {
      */
     public MqttConnectOptions getMqttConnectOptions() {
         MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+        // 修复过多发布bug
+        mqttConnectOptions.setMaxInflight(1000);
         // 设置是否清空session，
         mqttConnectOptions.setCleanSession(true);
         // 设置连接的用户名

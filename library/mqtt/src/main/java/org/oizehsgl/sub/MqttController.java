@@ -28,7 +28,14 @@ public class MqttController {
     @ResponseBody
     @GetMapping(value = "/mqtt/{msg}")
     public ResponseEntity<String> sendMqtt(@PathVariable(name = "msg") String message) {
-        mqttGateway.send("/defaultTopic", 1, message);
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            new Thread(() -> {
+                for (int j = 0; j < 10; j++) {
+                    mqttGateway.send("/defaultTopic", 1, message + finalI + j);
+                }
+            }).start();
+        }
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 }
