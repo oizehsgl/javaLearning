@@ -87,4 +87,10 @@ public class StreamTest {
         System.out.println(streamDemoList.stream().collect(Collectors.groupingBy(StreamDemo::getInteger, Collectors.groupingBy(StreamDemo::getString))));
         System.out.println(streamDemoList.stream().map(StreamDemo::getString).collect(Collectors.joining("---")));
     }
+
+    @Test
+    public void testNpe(){
+        List<Integer> integerList = Arrays.asList(1,2,3,null);
+        integerList.stream().map(Integer::bitCount).forEach(System.out::println);
+    }
 }
