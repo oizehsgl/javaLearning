@@ -89,8 +89,24 @@ public class StreamTest {
     }
 
     @Test
-    public void testNpe(){
-        List<Integer> integerList = Arrays.asList(1,2,3,null);
-        integerList.stream().map(Integer::bitCount).forEach(System.out::println);
+    public void testNpe() {
+        class Tmp {
+            private Integer integer;
+
+            public Integer getInteger() {
+                return integer;
+            }
+
+            public Tmp(Integer integer) {
+                this.integer = integer;
+            }
+        }
+        List<Tmp> integerList = Arrays.asList(new Tmp(1), new Tmp(2), null, new Tmp(null));
+        integerList.stream()
+                .filter(Objects::nonNull)
+                .map(Tmp::getInteger)
+                .filter(Objects::nonNull)
+                .sorted(Comparator.comparingInt(Integer::intValue).reversed())
+                .forEach(System.out::println);
     }
 }
