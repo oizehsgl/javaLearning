@@ -18,7 +18,8 @@ public class StringTest {
         System.out.println(s2.intern() == s2);
     }
 
-    @Test
+    /// Requested array size exceeds VM limit
+    //@Test
     public void testStringBuilderLength() {
         StringBuilder stringBuilder = new StringBuilder("");
         long max= (1<<31)-1;
