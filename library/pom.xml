@@ -75,6 +75,7 @@
     <module>container</module>
     <module>optional</module>
     <module>acl3</module>
+    <module>guava</module>
   </modules>
       
 
