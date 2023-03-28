@@ -72,6 +72,7 @@
     <module>concurrent</module>
       
     <module>stream</module>
+    <module>container</module>
   </modules>
       
 
