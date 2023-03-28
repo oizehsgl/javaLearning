@@ -83,7 +83,49 @@ public class QueueTest {
     @Test
     public void testConcurrentLinkedQueue() {
         Queue<Integer> queue = new ConcurrentLinkedQueue<>();
-        Stream.iterate(0, i -> i + 1).limit(100).parallel().forEach(queue::add);
+        Stream.iterate(0, i -> i + 1).limit(1000000).parallel().forEach(queue::add);
         System.out.println(queue.size());
+    }
+
+
+    // 经过测试linkedBlockingQueue性能比concurrentLinkedQueue好
+    @Test
+    public void testHighConcurrentLinkedQueueAndLinkedBlockingQueue() {
+        testHigh(new ConcurrentLinkedQueue());
+        testHigh(new LinkedBlockingQueue());
+    }
+
+    @Test
+    public void testHigh(Queue queue) {
+        int threadCount = 10;
+        int iterations = 10000;
+
+        Thread[] threads = new Thread[threadCount];
+
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < threadCount; i++) {
+            threads[i] = new Thread(() -> {
+                for (int j = 0; j < iterations; j++) {
+                    queue.offer(j);
+                }
+            });
+        }
+        for (int i = 0; i < threadCount; i++) {
+            threads[i].start();
+        }
+
+        try {
+            for (Thread thread : threads) {
+                thread.join();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Total time: " + (endTime - startTime) + "ms");
+        System.out.println("Queue size: " + queue.size());
     }
 }

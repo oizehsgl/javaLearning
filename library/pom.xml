@@ -73,6 +73,8 @@
       
     <module>stream</module>
     <module>container</module>
+    <module>optional</module>
+    <module>acl3</module>
   </modules>
       
 
