@@ -3,9 +3,9 @@ package org.oizehsgl.sub;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.entity.IdType;
 import org.oizehsgl.sub.service.IdTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
 
 /**
  * idType test
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  */
 @SpringBootTest
 public class IdTypeTest {
-    @Resource
+    @Autowired
     private IdTypeService idTypeService;
 
     @Test

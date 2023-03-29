@@ -2,8 +2,6 @@ package org.oizehsgl.sub;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author oizehsgl
  * @since 3/13/23

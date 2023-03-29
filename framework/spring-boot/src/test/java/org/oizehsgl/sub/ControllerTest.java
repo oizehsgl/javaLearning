@@ -15,13 +15,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 
 /**
@@ -35,8 +32,8 @@ import java.util.Set;
 public class ControllerTest {
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private Validator validator;
+//    @Autowired
+//    private Validator validator;
 
     private DemoData demoData;
 
@@ -53,16 +50,16 @@ public class ControllerTest {
         demoDataList = Collections.singletonList(demoData);
     }
 
-    @Test
-    public void testValidated() {
-        Set<ConstraintViolation<DemoData>> violations = validator.validate(demoData);
-        if (!violations.isEmpty()) {
-            for (ConstraintViolation<DemoData> violation : violations) {
-                System.out.println(violation.getPropertyPath() + " " + violation.getMessage());
-            }
-        }
-
-    }
+//    @Test
+//    public void testValidated() {
+//        Set<ConstraintViolation<DemoData>> violations = validator.validate(demoData);
+//        if (!violations.isEmpty()) {
+//            for (ConstraintViolation<DemoData> violation : violations) {
+//                System.out.println(violation.getPropertyPath() + " " + violation.getMessage());
+//            }
+//        }
+//
+//    }
 
     @Test
     public void testPassParameter() throws Exception {

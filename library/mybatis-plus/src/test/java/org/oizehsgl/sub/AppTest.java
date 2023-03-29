@@ -9,10 +9,10 @@ import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWra
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.entity.SysUser;
 import org.oizehsgl.sub.service.ISysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,14 +20,14 @@ import java.util.List;
  */
 @SpringBootTest
 public class AppTest {
-    @Resource
+    @Autowired
     private ISysUserService sysUserService;
     /**
      * Rigorous Test :-)
      */
     @Test
     public void testApp() {
-        Assert.isTrue(true);
+        Assert.isTrue(true,"");
     }
 
     @Test

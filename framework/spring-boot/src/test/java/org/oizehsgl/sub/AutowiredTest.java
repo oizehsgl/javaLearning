@@ -1,5 +1,6 @@
 package org.oizehsgl.sub;
 
+import jakarta.annotation.PostConstruct;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.autowired.AutowiredService;
 import org.oizehsgl.sub.autowired.impl.AutowiredServiceImpl;
@@ -7,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 /**
  * autowired测试
@@ -20,16 +19,17 @@ import javax.annotation.Resource;
 public class AutowiredTest {
     @Autowired
     private AutowiredServiceImpl autowiredServiceImplA;
-    @Resource
+    @Autowired
     private AutowiredService autowiredServiceImplB;
     @Autowired
     @Qualifier("autowiredServiceImpl2")
     private AutowiredServiceImpl autowiredServiceImplC;
-    @Resource(name = "autowiredServiceImpl3")
+    @Autowired
+    @Qualifier("autowiredServiceImpl3")
     private AutowiredService autowiredServiceImplD;
     @Autowired
     private AutowiredServiceImpl autowiredServiceImpl4;
-    @Resource
+    @Autowired
     private AutowiredService autowiredServiceImpl5;
     private final AutowiredServiceImpl autowiredServiceImplG;
 
@@ -51,9 +51,10 @@ public class AutowiredTest {
     }
 
     private AutowiredService autowiredServiceImplJ;
-    @Resource(name = "autowiredServiceImpl9")
+    @Autowired
+    @Qualifier("autowiredServiceImpl9")
     private void setAutowiredServiceImplJ(AutowiredService autowiredService) {
-        System.out.println("set方法: @Resource");
+        System.out.println("set方法: @Autowired");
         this.autowiredServiceImplJ = autowiredService;
     }
     @PostConstruct

@@ -95,7 +95,6 @@ public class QueueTest {
         testHigh(new LinkedBlockingQueue());
     }
 
-    @Test
     public void testHigh(Queue queue) {
         int threadCount = 10;
         int iterations = 10000;

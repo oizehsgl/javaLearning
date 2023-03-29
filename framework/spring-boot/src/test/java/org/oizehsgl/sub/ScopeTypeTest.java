@@ -5,11 +5,10 @@ import org.oizehsgl.sub.scopeType.ScopePrototype;
 import org.oizehsgl.sub.scopeType.ScopePrototypeTest;
 import org.oizehsgl.sub.scopeType.ScopeSingleton;
 import org.oizehsgl.sub.scopeType.ScopeSingletonTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
-import javax.annotation.Resource;
 
 /**
  * scopeTypeTest
@@ -20,13 +19,13 @@ import javax.annotation.Resource;
 @SpringBootTest
 @Service
 public class ScopeTypeTest {
-    @Resource
+    @Autowired
     private ScopeSingleton scopeSingleton;
-    @Resource
+    @Autowired
     private ScopeSingletonTest scopeSingletonTest;
-    @Resource
+    @Autowired
     private ScopePrototype scopePrototype;
-    @Resource
+    @Autowired
     private ScopePrototypeTest scopePrototypeTest;
 
     @Test

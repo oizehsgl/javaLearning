@@ -1,9 +1,9 @@
 package org.oizehsgl.sub.controller;
 
+import jakarta.validation.constraints.Negative;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.validation.constraints.Negative;
 
 /**
  * demoElement

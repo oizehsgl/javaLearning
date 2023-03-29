@@ -39,6 +39,7 @@
           
     <module>method</module>
       
+    <module>feature</module>
   </modules>
   
 </project>

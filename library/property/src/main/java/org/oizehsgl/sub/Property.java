@@ -1,10 +1,10 @@
 package org.oizehsgl.sub;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +26,6 @@ public class Property {
     private List<String> stringList;
     private List<Map<String, String>> mapList;
     private Map<String, String> map;
-    @Resource
+    @Autowired
     private SubProperty sub;
 }

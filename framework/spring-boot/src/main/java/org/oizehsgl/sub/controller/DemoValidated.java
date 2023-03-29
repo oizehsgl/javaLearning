@@ -1,13 +1,15 @@
 package org.oizehsgl.sub.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.*;
 import org.hibernate.validator.constraints.time.DurationMax;
 import org.hibernate.validator.constraints.time.DurationMin;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
 
@@ -26,11 +28,11 @@ public class DemoValidated {
     private Boolean assertFalse;
     @AssertTrue
     private Boolean assertTrue;
-    @javax.validation.constraints.Email
+    @Email
     private String email;
     @Pattern(regexp = "^[0x]?[0-9a-fA-F]+$")
     private String pattern;
-    @javax.validation.constraints.NotBlank
+    @NotBlank
     private String notBlank;
     @NotEmpty
     private String notEmpty;

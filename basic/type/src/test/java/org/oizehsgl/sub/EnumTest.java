@@ -2,7 +2,10 @@ package org.oizehsgl.sub;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.HashMap;
 
 /**
  * enumTest
