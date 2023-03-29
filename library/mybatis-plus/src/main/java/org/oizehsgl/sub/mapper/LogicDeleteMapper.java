@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Repository
 public interface LogicDeleteMapper extends BaseMapper<LogicDelete> {
-    @Select("select * from logic_delete where deleted = #{flag}")
+    @Select("select * from logic_delete where deleted_boolean = #{flag} or true")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "data", column = "id")

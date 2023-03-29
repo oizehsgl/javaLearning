@@ -21,9 +21,9 @@ public class LogicDeleteTest {
     @Test
     public void testLogicDeleteBoolean() {
         logicDeleteService.list(null).forEach(System.out::println);
-        logicDeleteService.lambdaUpdate().ge(LogicDelete::getId, 2).remove();
+        logicDeleteService.lambdaUpdate().ge(LogicDelete::getId, 4).remove();
         logicDeleteService.list(null).forEach(System.out::println);
-        logicDeleteService.list(Wrappers.<LogicDelete>lambdaUpdate().eq(LogicDelete::getDeleted,true)).forEach(System.out::println);
+        logicDeleteService.list(Wrappers.<LogicDelete>lambdaUpdate().eq(LogicDelete::getDeletedBoolean,true)).forEach(System.out::println);
         logicDeleteService.findDeleted().forEach(System.out::println);
         logicDeleteService.findOdd().forEach(System.out::println);
     }

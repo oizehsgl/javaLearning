@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * logicDelete
  *
@@ -24,7 +26,14 @@ public class LogicDelete {
     private Integer id;
     @TableField("data")
     private String data;
-    @TableLogic
-    @TableField("deleted")
-    private Boolean deleted;
+    //@TableLogic
+    @TableField("deleted_integer")
+    private Integer deletedInteger;
+    //@TableLogic
+    @TableField("deleted_boolean")
+    private Boolean deletedBoolean;
+
+    @TableLogic(delval = "now()", value = "null")
+    @TableField("deleted_datetime")
+    private Date deletedDatetime;
 }
