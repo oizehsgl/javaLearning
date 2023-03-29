@@ -1,7 +1,10 @@
 package org.oizehsgl.sub.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * idType
@@ -10,6 +13,9 @@ import lombok.Data;
  * @since 3/7/23
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class IdType {
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.AUTO)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.ASSIGN_ID)

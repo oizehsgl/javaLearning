@@ -8,17 +8,25 @@ spring:
   sql:
     init:
       schema-locations:
-      - classpath:db/schema-id_type.sql
-      - classpath:db/schema-sys_user.sql
+        - classpath:db/schema-id_type.sql
+        - classpath:db/schema-sys_user.sql
+        - classpath:db/schema-logic_delete.sql
       data-locations:
-      - classpath:db/data-id_type.sql
-      - classpath:db/data-sys_user.sql
+        - classpath:db/data-id_type.sql
+        - classpath:db/data-sys_user.sql
+        - classpath:db/data-logic_delete.sql
       mode: always
 # Logger Config
 logging:
   level:
     org.oizehsgl.sub: debug
-##mybatis
-#mybatis-plus:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis
+mybatis-plus:
+  #  configuration:
+  #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/**.xml
+  global-config:
+    db-config:
+      logic-delete-field: deleted # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: true # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: false # 逻辑未删除值(默认为 0)
