@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * logicDelete
@@ -35,5 +35,5 @@ public class LogicDelete {
 
     @TableLogic(delval = "now()", value = "null")
     @TableField("deleted_datetime")
-    private Date deletedDatetime;
+    private LocalDateTime deletedDatetime;
 }
