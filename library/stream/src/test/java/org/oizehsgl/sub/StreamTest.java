@@ -1,10 +1,12 @@
 package org.oizehsgl.sub;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,6 +17,7 @@ import java.util.stream.Stream;
  * @author oizehsgl
  * @since 3/23/23
  */
+@Slf4j
 @SpringBootTest
 public class StreamTest {
     private static List<StreamDemo> streamDemoList;
@@ -108,5 +111,22 @@ public class StreamTest {
                 .filter(Objects::nonNull)
                 .sorted(Comparator.comparingInt(Integer::intValue).reversed())
                 .forEach(System.out::println);
+    }
+
+    @Test
+    public void testOptional() {
+        Stream.iterate(0, i -> i + 1).limit(3).forEach(System.out::println);
+        Stream.iterate(0, i -> i + 1).limit(3).map(Optional::ofNullable).forEach(System.out::println);
+        Stream.of(1,2,null).map(Optional::ofNullable).forEach(logWrapper(i->i.orElseThrow(RuntimeException::new)));
+    }
+
+    private <T> Consumer<T> logWrapper(Consumer<T> consumer) {
+        return t -> {
+            try {
+                consumer.accept(t);
+            } catch (Exception e) {
+                log.warn(e.getMessage(), e);
+            }
+        };
     }
 }
