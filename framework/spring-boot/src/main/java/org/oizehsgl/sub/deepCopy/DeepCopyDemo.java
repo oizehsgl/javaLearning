@@ -18,12 +18,18 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeepCopyDemo implements Serializable {
+public class DeepCopyDemo implements Serializable, IInterface {
     private Integer integer;
     private String string;
     private List<Integer> integerList;
+    private DeepCopyDemo deepCopyDemo;
 
     public DeepCopyDemo deepCopy() {
         return null;
+    }
+
+    @Override
+    public void addList0() {
+        integerList.set(0, integerList.get(0) + 1);
     }
 }

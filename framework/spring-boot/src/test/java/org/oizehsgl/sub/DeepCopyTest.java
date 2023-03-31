@@ -1,15 +1,17 @@
 package org.oizehsgl.sub;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sub.deepCopy.DeepCopyDemo;
-import org.springframework.beans.BeanUtils;
+import org.oizehsgl.sub.deepCopy.IInterface;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cglib.beans.BeanCopier;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,63 +26,43 @@ public class DeepCopyTest {
     @Test
     public void testDeepCopy() {
         AtomicInteger i = new AtomicInteger(-1);
-        DeepCopyDemo deepCopyDemo = DeepCopyDemo.builder().integer(1).string("s").integerList(Stream.iterate((i.incrementAndGet()) * 2, x -> x + 1).limit(2).collect(Collectors.toList())).build();
-/// error
-//        testCglib(deepCopyDemo, (DeepCopyDemo demo) -> {
-//            demo.setIntegerList(Stream.iterate((i.incrementAndGet()) * 2, x -> x + 1).limit(2).collect(Collectors.toList()));
-//        });
-        testSpring(deepCopyDemo, (DeepCopyDemo demo) -> {
+        DeepCopyDemo deepCopyDemo = DeepCopyDemo.builder()
+                .integer(1)
+                .string("1")
+                .integerList(Stream.iterate((i.incrementAndGet()) * 2, x -> x + 1).limit(2).collect(Collectors.toList()))
+                .deepCopyDemo(DeepCopyDemo.builder()
+                        .integer(2)
+                        .string("2")
+                        .integerList(Stream.iterate(0, x -> x + 1).limit(2).collect(Collectors.toList()))
+                        .build()
+                )
+                .build();
+        testT(deepCopyDemo, DeepCopyDemo::new, (DeepCopyDemo demo) -> {
             demo.setIntegerList(Stream.iterate((i.incrementAndGet()) * 2, x -> x + 1).limit(2).collect(Collectors.toList()));
         });
-        testAcl3(deepCopyDemo, (DeepCopyDemo demo) -> {
-            demo.setIntegerList(Stream.iterate((i.incrementAndGet()) * 2, x -> x + 1).limit(2).collect(Collectors.toList()));
-        });
+    }
 
+    private <T extends IInterface> void testT(T tSrc, Supplier<T> supplier, Consumer<T> consumer) {
+        T tDst = supplier.get();
+        //BeanUtils.copyProperties(tSrc, tDst);
+        //tDst = SerializationUtils.clone(tSrc);
         try {
-            testJava(deepCopyDemo, (DeepCopyDemo demo) -> {
-                demo.setIntegerList(Stream.iterate((i.incrementAndGet()) * 2, x -> x + 1).limit(2).collect(Collectors.toList()));
-            });
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(bos);
+            out.writeObject(tSrc);
+            out.flush();
+            out.close();
+            ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
+            tDst = (T) in.readObject();
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        System.out.printf("src: %s dst: %s%n", tSrc, tDst);
+        tSrc.setString("");
+        tSrc.addList0();
+        tSrc.getDeepCopyDemo().setString("");
+        System.out.printf("src: %s dst: %s%n", tSrc, tDst);
     }
-
-    private void testSpring(DeepCopyDemo deepCopyDemo, Consumer<DeepCopyDemo> consumer) {
-        DeepCopyDemo deepCopyDemoCopied = new DeepCopyDemo();
-        BeanUtils.copyProperties(deepCopyDemo, deepCopyDemoCopied);
-        showDiff(deepCopyDemo, deepCopyDemoCopied, consumer);
-    }
-
-    private void testCglib(DeepCopyDemo deepCopyDemo, Consumer<DeepCopyDemo> consumer) {
-        BeanCopier beanCopier = BeanCopier.create(DeepCopyDemo.class, DeepCopyTest.class, false);
-        DeepCopyDemo deepCopyDemoCopied = new DeepCopyDemo();
-        beanCopier.copy(deepCopyDemo, deepCopyDemoCopied, null);
-        showDiff(deepCopyDemo, deepCopyDemoCopied, consumer);
-    }
-
-    private void testAcl3(DeepCopyDemo deepCopyDemo, Consumer<DeepCopyDemo> consumer) {
-        DeepCopyDemo deepCopyDemoCopied = SerializationUtils.clone(deepCopyDemo);
-        showDiff(deepCopyDemo, deepCopyDemoCopied, consumer);
-    }
-
-    private void testJava(DeepCopyDemo deepCopyDemo, Consumer<DeepCopyDemo> consumer) throws IOException, ClassNotFoundException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream out = new ObjectOutputStream(bos);
-        out.writeObject(deepCopyDemo);
-        out.flush();
-        out.close();
-        ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
-        DeepCopyDemo deepCopyDemoCopied = (DeepCopyDemo) in.readObject();
-        in.close();
-        showDiff(deepCopyDemo, deepCopyDemoCopied, consumer);
-    }
-
-    private void showDiff(DeepCopyDemo deepCopyDemo0, DeepCopyDemo deepCopyDemoCopied, Consumer<DeepCopyDemo> consumer) {
-        System.out.println(deepCopyDemoCopied);
-        consumer.accept(deepCopyDemo0);
-        System.out.println(deepCopyDemoCopied);
-    }
-
 }
