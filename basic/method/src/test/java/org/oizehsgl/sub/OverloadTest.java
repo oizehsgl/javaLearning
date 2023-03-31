@@ -83,6 +83,16 @@ public class OverloadTest {
         // 不能根据i类型来决定fun()类型,所以test方法不能确定
         // 所以箭头函数i->fun()的参数列表不是()而是i,fun()只是方法调用
         // 决定方法不是先看是否有冲突方法再看参数列表，而是用参数列表再去看是否有冲突方法
+        // 应该是默认表达式中函数调用了i,才会出现i有类型才区推断表达式函数的结论
+        test((Integer i) -> fun(""));
+        test((Integer i) -> fun(i));
+        test((String i) -> fun(0));
+        test((String i) -> fun(i));
+        test((String i) -> fun());
+        test((Integer i) -> fun());
+        test(i -> i);
+        test(i -> "");
+        test(i -> 0);
         //test(i -> fun(i));
         //test(i -> fun());
     }
