@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -113,20 +114,49 @@ public class StreamTest {
                 .forEach(System.out::println);
     }
 
+
     @Test
-    public void testOptional() {
-        Stream.iterate(0, i -> i + 1).limit(3).forEach(System.out::println);
-        Stream.iterate(0, i -> i + 1).limit(3).map(Optional::ofNullable).forEach(System.out::println);
-        Stream.of(1,2,null).map(Optional::ofNullable).forEach(logWrapper(i->i.orElseThrow(RuntimeException::new)));
+    public void testTryStream() {
+        Stream.iterate(0, i -> i + 1).limit(3).map(logWrapper(i -> i == i)).forEach(logWrapper(i -> {
+            System.out.println(i);
+        }));
+        Stream.iterate(0, i -> i + 1).limit(3).forEach(logWrapper((Integer i) -> System.out.println(i)));
     }
 
+    /**
+     * 日志包装器
+     *
+     * @param consumer 消费者
+     * @param <T>      泛型
+     * @return 异常捕获并输出日志的消费者
+     */
     private <T> Consumer<T> logWrapper(Consumer<T> consumer) {
         return t -> {
             try {
+                System.out.println("consumer");
                 consumer.accept(t);
             } catch (Exception e) {
                 log.warn(e.getMessage(), e);
             }
+        };
+    }
+
+    /**
+     * 日志包装器
+     *
+     * @param function 函数
+     * @param <T>      泛型
+     * @return 异常捕获并输出日志的函数
+     */
+    private <T, R> Function<T, R> logWrapper(Function<T, R> function) {
+        return t -> {
+            try {
+                System.out.println("function");
+                return function.apply(t);
+            } catch (Exception e) {
+                log.warn(e.getMessage(), e);
+            }
+            return null;
         };
     }
 }
