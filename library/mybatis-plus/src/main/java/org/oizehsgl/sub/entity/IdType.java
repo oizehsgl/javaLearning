@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IdType {
+public class IdType implements DataInterface {
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.AUTO)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.ASSIGN_ID)
     //@TableId(type = com.baomidou.mybatisplus.annotation.IdType.NONE)
