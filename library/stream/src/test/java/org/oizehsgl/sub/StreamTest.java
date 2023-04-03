@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.LinkedMultiValueMap;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -87,9 +88,10 @@ public class StreamTest {
     @Test
     public void testCollect() {
         System.out.println(streamDemoList.stream().collect(Collectors.averagingDouble(StreamDemo::getInteger)));
-        System.out.println(streamDemoList.stream().collect(Collectors.partitioningBy(s->s.getInteger()>2)));
+        System.out.println(streamDemoList.stream().collect(Collectors.partitioningBy(s -> s.getInteger() > 2)));
         System.out.println(streamDemoList.stream().collect(Collectors.groupingBy(StreamDemo::getInteger, Collectors.groupingBy(StreamDemo::getString))));
-        System.out.println(streamDemoList.stream().map(StreamDemo::getString).collect(Collectors.joining("---")));
+        System.out.println(String.valueOf(streamDemoList.stream().collect(Collectors.groupingBy(StreamDemo::getInteger, LinkedMultiValueMap::new, Collectors.mapping(e -> e.getInteger() + 1, Collectors.toList())))));
+        System.out.println(streamDemoList.stream().map(StreamDemo::getString).collect(Collectors.joining("--", "<<", ">>")));
     }
 
     @Test
