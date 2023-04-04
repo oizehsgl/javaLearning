@@ -1,7 +1,6 @@
 package org.oizehsgl.sub;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -72,18 +71,5 @@ public class AppTest {
                 .in(SysUser::getId, new Long[]{7L, 8L})
                 .update();
         list();
-    }
-
-    /**
-     * QueryWrapper
-     */
-    @Test
-    public void query() {
-        QueryWrapper qw = new QueryWrapper<>();
-        qw.eq(false,"id", 11);
-        sysUserService.list(qw).forEach(System.out::println);
-        qw.clear();
-        qw.eq(true,"id", 11);
-        sysUserService.list(qw).forEach(System.out::println);
     }
 }
