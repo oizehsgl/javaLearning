@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * wrapperTest
+ * queryWrapperTest
  *
  * @author oizehsgl
  * @since 4/4/23
  */
 @SpringBootTest
-public class WrapperTest {
+public class QueryWrapperTest {
     @Autowired
     private ISysUserService sysUserService;
 
@@ -40,5 +40,10 @@ public class WrapperTest {
         LambdaQueryChainWrapper<SysUser> lambdaQueryChainWrapper = new LambdaQueryChainWrapper<>(sysUserService.getBaseMapper()).eq(SysUser::getId, 11);
         lambdaQueryChainWrapper.list().forEach(System.out::println);
         new LambdaQueryChainWrapper<>(sysUserService.getBaseMapper()).eq(true, SysUser::getId, 11).list().forEach(System.out::println);
+    }
+
+    @Test
+    public void testSelect() {
+        sysUserService.lambdaQuery().eq(true, SysUser::getId, 11).select(SysUser::getId, SysUser::getName).list().forEach(System.out::println);
     }
 }
