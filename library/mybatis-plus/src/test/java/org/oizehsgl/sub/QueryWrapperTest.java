@@ -45,5 +45,6 @@ public class QueryWrapperTest {
     @Test
     public void testSelect() {
         sysUserService.lambdaQuery().eq(true, SysUser::getId, 11).select(SysUser::getId, SysUser::getName).list().forEach(System.out::println);
+        sysUserService.lambdaQuery().eq(true, SysUser::getId, 11).select(SysUser.class, e -> !e.getColumn().equals("id") && !e.getColumn().equals("name")).list().forEach(System.out::println);
     }
 }
