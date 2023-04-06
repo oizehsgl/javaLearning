@@ -1,0 +1,29 @@
+# DataSource Config
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 10
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;mode=mysql
+    username: user
+    password: pswd
+  sql:
+    init:
+      schema-locations:
+        - classpath:db/schema-demo.sql
+      data-locations:
+        - classpath:db/data-demo.sql
+      mode: always
+
+#Mybatis-plus配置
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+
+
