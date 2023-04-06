@@ -1,4 +1,4 @@
-package org.oizehsgl.sub.event;
+package org.oizehsgl.sub.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package org.oizehsgl.sub.event;
+package org.oizehsgl.sub.jpa;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

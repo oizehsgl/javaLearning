@@ -1,4 +1,4 @@
-package org.oizehsgl.sub.event;
+package org.oizehsgl.sub.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
