@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -20,10 +21,17 @@ public class VarargsTest {
         varargs(stringArray);
         varargs(stringList.toArray(new String[0]));
         varargs();
-        varargs(null);
+        varargs((String[]) null);
+        varargs((String) null);
     }
 
     private void varargs(String... strings) {
+        System.out.println("use varargs->" + Objects.isNull(strings));
         Optional.ofNullable(strings).ifPresent(s -> Arrays.stream(s).forEach(System.out::println));
+    }
+
+    private void varargs(String strings) {
+        System.out.println("not varargs->" + Objects.isNull(strings));
+        Optional.ofNullable(strings).ifPresent(System.out::println);
     }
 }
