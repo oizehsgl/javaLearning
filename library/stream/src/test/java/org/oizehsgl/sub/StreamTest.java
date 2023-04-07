@@ -24,6 +24,43 @@ import java.util.stream.Stream;
 public class StreamTest {
     private static List<StreamDemo> streamDemoList;
 
+    /**
+     * 日志包装器
+     *
+     * @param consumer 消费者
+     * @param <T>      泛型
+     * @return 异常捕获并输出日志的消费者
+     */
+    private <T> Consumer<T> logWrapper(Consumer<T> consumer) {
+        return t -> {
+            try {
+                System.out.println("consumer");
+                consumer.accept(t);
+            } catch (Exception e) {
+                log.warn(e.getMessage(), e);
+            }
+        };
+    }
+
+    /**
+     * 日志包装器
+     *
+     * @param function 函数
+     * @param <T>      泛型
+     * @return 异常捕获并输出日志的函数
+     */
+    private <T, R> Function<T, R> logWrapper(Function<T, R> function) {
+        return t -> {
+            try {
+                System.out.println("function");
+                return function.apply(t);
+            } catch (Exception e) {
+                log.warn(e.getMessage(), e);
+            }
+            return null;
+        };
+    }
+
     @BeforeEach
     public void init() {
         streamDemoList = new ArrayList<>();
@@ -125,40 +162,23 @@ public class StreamTest {
         Stream.iterate(0, i -> i + 1).limit(3).forEach(logWrapper((Integer i) -> System.out.println(i)));
     }
 
-    /**
-     * 日志包装器
-     *
-     * @param consumer 消费者
-     * @param <T>      泛型
-     * @return 异常捕获并输出日志的消费者
-     */
-    private <T> Consumer<T> logWrapper(Consumer<T> consumer) {
-        return t -> {
-            try {
-                System.out.println("consumer");
-                consumer.accept(t);
-            } catch (Exception e) {
-                log.warn(e.getMessage(), e);
-            }
-        };
+    @Test
+    public void testGroupingBy() {
+        List<Integer> integers1 = Stream.iterate(0, e -> e + 1).limit(5).collect(Collectors.toList());
+        List<Integer> integers2 = Stream.iterate(0, e -> 2 * e + 1).limit(5).collect(Collectors.toList());
+        List<Integer> integers = Stream.of(integers1.stream(), integers2.stream()).flatMap(e -> e).collect(Collectors.toList());
+        integers.stream().forEach(System.out::println);
+        integers = integers.stream().sorted(Comparator.comparing(e -> e + 1)).collect(Collectors.toList());
+        Map<Integer, List<Integer>> integerListMap = integers.stream().sorted(Comparator.comparing(e -> e)).collect(Collectors.groupingBy(e -> e, Collectors.mapping(e -> e + 1, Collectors.toList())));
+        System.out.println(integerListMap);
     }
 
-    /**
-     * 日志包装器
-     *
-     * @param function 函数
-     * @param <T>      泛型
-     * @return 异常捕获并输出日志的函数
-     */
-    private <T, R> Function<T, R> logWrapper(Function<T, R> function) {
-        return t -> {
-            try {
-                System.out.println("function");
-                return function.apply(t);
-            } catch (Exception e) {
-                log.warn(e.getMessage(), e);
-            }
-            return null;
-        };
+    @Test
+    public void testSorted() {
+        List<Integer> integers = Stream.iterate(10, e -> e - 1).limit(5).collect(Collectors.toList());
+        integers.stream().sorted(Comparator.comparing(e -> e + 1, Comparator.reverseOrder())).forEach(System.out::println);
+        integers.stream().sorted(Comparator.comparing(e -> e + 1)).forEach(System.out::println);
+        integers.stream().sorted(Comparator.comparing((Integer e) -> e + 1).reversed()).forEach(System.out::println);
+        integers.stream().sorted((e1, e2) -> e2 - e1).forEach(System.out::println);
     }
 }
