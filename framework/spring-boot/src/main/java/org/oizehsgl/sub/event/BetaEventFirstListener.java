@@ -3,7 +3,6 @@ package org.oizehsgl.sub.event;
 import lombok.SneakyThrows;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -16,7 +15,6 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class BetaEventFirstListener {
-    @Async
     @SneakyThrows
     @EventListener(condition = EventConstant.TYPE_A_CONDITION)
     @Order(1)

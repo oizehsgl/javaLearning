@@ -25,6 +25,6 @@ public class EventTest {
     public void testPublisher() throws InterruptedException {
         alphaEventPublisher.publish();
         betaEventPublisher.publish();
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
     }
 }

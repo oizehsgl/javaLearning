@@ -19,7 +19,7 @@ public class EventSecondListener {
 
     @Async
     @SneakyThrows
-    @Order(1)
+    @Order(2)
     @EventListener(value = {AlphaEvent.class})
     public void onApplicationEvent(BaseEvent event) {
         System.out.printf("Class: %s Event: --> %s%n", this.getClass().getSimpleName(), event);
