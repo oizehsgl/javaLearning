@@ -181,4 +181,10 @@ public class StreamTest {
         integers.stream().sorted(Comparator.comparing((Integer e) -> e + 1).reversed()).forEach(System.out::println);
         integers.stream().sorted((e1, e2) -> e2 - e1).forEach(System.out::println);
     }
+
+    @Test
+    public void testSingle() {
+        Integer integer = null;
+        Stream.of(integer).map(e -> "-" + e).forEach(System.out::println);
+    }
 }
