@@ -46,17 +46,35 @@
     <dependencies>
 
       <dependency>
-
-        <groupId>junit</groupId>
-
-        <artifactId>junit</artifactId>
-
-        <version>${junit.version}</version>
-
-        <scope>test</scope>
-
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>LATEST</version>
       </dependency>
-
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>LATEST</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>LATEST</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>LATEST</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>LATEST</version>
+      </dependency>
+      <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>LATEST</version>
+      </dependency>
     </dependencies>
 
   </dependencyManagement>
@@ -88,6 +106,8 @@
     <module>pattern</module>
 
     <module>framework</module>
+
+    <module>project</module>
 
   </modules>
 
