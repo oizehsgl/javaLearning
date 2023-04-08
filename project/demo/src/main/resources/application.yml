@@ -1,0 +1,21 @@
+spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/mybatis_plus?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimeZone=UTC
+    username: bdtd
+    password: Mima!@2202
+    driver-class-name: com.mysql.cj.jdbc.Driver
+## 代码生成器相关配置
+#code-generator:
+#  parent: com.walker.shiro # 父包
+#  author: walker # 作者名称
+#  moduleName: business # 模块名称
+#  controllerName: domain.controller # controller的位置
+#  serviceName: domain.service #service的位置
+#  serviceImplName: domain.service.impl # service实现类位置
+#  entityName: domain.model # 数据库实体类位置
+#  mapperName: domain.mapper # mapper位置
+#  formatEntity: "%s" # entity的名称
+#  formatService: "%sService" # service名称
+#  formatServiceImpl: "%sServiceImpl" # service实现类名称
+#  enableSwagger: false # 是否开启swagger

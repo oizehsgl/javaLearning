@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import com.baomidou.mybatisplus.generator.fill.Column;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,11 +36,11 @@ public class GeneratorTest {
         //数据库表的设置
         List<String> listTable = Arrays.asList("user");  //设置需要自动代码生成的表名
         List<String> listTableSuffix = Arrays.asList("_b");    //设置 过滤 表的后缀
-        List<String> listTablePrefix = Arrays.asList("t_", "c_"); //设置 过滤 表的后缀
+        List<String> listTablePrefix = Arrays.asList("t_", "c_"); //设置 过滤 表的前缀
 
         //基本信息
         String author = "柯南";    //作者
-        String parent = "com";   //父包名
+        String parent = "org.oizehsgl.sub";   //父包名
         String module = "example";   //模块包名
 
 
@@ -122,7 +121,7 @@ public class GeneratorTest {
 
                 })
                 //5、模板
-                .templateEngine(new VelocityTemplateEngine())
+                //.templateEngine(new VelocityTemplateEngine())
                 /*
                     模板引擎配置，默认 Velocity 可选模板引擎 Beetl 或 Freemarker(以下两个引擎用哪个就保留哪个)
                    .templateEngine(new BeetlTemplateEngine())
