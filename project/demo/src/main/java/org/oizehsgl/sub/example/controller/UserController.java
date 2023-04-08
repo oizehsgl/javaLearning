@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
  *  前端控制器
  * </p>
  *
- * @author 柯南
- * @since 2023-04-09 12:33:09
+ * @author oizehsgl
+ * @since 2023-04-09 02:02:37
  */
 @RestController
 @RequestMapping("/example/user")
