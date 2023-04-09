@@ -1,21 +1,15 @@
 package org.oizehsgl.sub.example.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.Version;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
+import org.oizehsgl.sub.base.entity.BaseEntity;
 
 /**
  * <p>
@@ -23,22 +17,18 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 11:13:41
+ * @since 2023-04-10 12:36:16
  */
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
 @TableName("t_simple_demo")
 @ApiModel(value = "SimpleDemo对象", description = "简单示例表")
-public class SimpleDemo implements Serializable {
+public class SimpleDemo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty("主键")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
 
     @ApiModelProperty("姓名")
     @TableField("name")
@@ -47,34 +37,4 @@ public class SimpleDemo implements Serializable {
     @ApiModelProperty("年龄")
     @TableField("age")
     private Integer age;
-
-    @ApiModelProperty("创建用户")
-    @TableField("create_user")
-    private String createUser;
-
-    @ApiModelProperty("更新用户")
-    @TableField("update_user")
-    private String updateUser;
-
-    @ApiModelProperty("创建时刻")
-    @TableField(value = "create_datetime", fill = FieldFill.INSERT)
-    private LocalDateTime createDatetime;
-
-    @ApiModelProperty("更新时刻")
-    @TableField(value = "update_datetime", fill = FieldFill.UPDATE)
-    private LocalDateTime updateDatetime;
-
-    @ApiModelProperty("删除状态")
-    @TableField(value = "deleted", fill = FieldFill.INSERT)
-    @TableLogic
-    private Boolean deleted;
-
-    @ApiModelProperty("删除时刻")
-    @TableField("delete_datetime")
-    private Boolean deleteDatetime;
-
-    @ApiModelProperty("版本")
-    @TableField("version")
-    @Version
-    private Long version;
 }
