@@ -8,7 +8,7 @@ import ${mapperAnnotationClass.name};
 
 /**
  * <p>
- * ${table.comment!} Mapper 接口
+ * ${table.comment!} Mapper 数据持久
  * </p>
  *
  * @author ${author}

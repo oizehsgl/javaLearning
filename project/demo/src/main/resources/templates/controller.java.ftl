@@ -12,7 +12,7 @@ import ${superControllerClassPackage};
 
 /**
  * <p>
- * ${table.comment!} 前端控制器
+ * ${table.comment!} 访问控制
  * </p>
  *
  * @author ${author}

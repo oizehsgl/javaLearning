@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * ${table.comment!}
+ * ${table.comment!} 数据模型
  * </p>
  *
  * @author ${author}

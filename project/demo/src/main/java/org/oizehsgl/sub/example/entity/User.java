@@ -17,11 +17,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *  数据模型
  * </p>
  *
- * @author oizehsgl
- * @since 2023-04-09 02:02:37
+ * @author 123456
+ * @since 2023-04-09 03:24:43
  */
 @Getter
 @Setter

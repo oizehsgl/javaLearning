@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- * ${table.comment!} 服务实现类
+ * ${table.comment!} 业务实现
  * </p>
  *
  * @author ${author}

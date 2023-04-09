@@ -15,6 +15,6 @@ public class AppTest {
      */
     @Test
     public void testApp() {
-        Assertions.assertTrue(true);
+        Assertions.assertTrue(Boolean.TRUE);
     }
 }
