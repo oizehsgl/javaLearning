@@ -9,7 +9,7 @@ import org.oizehsgl.sub.base.service.IBaseService;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-10 12:36:16
+ * @since 2023-04-10 12:56:56
  */
 public interface SimpleDemoService extends IBaseService<SimpleDemo> {
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-10 12:36:16
+ * @since 2023-04-10 12:56:56
  */
 @Service
 public class SimpleDemoServiceImpl extends BaseServiceImpl<SimpleDemoMapper, SimpleDemo> implements SimpleDemoService {
