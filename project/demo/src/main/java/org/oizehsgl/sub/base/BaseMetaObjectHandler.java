@@ -1,4 +1,4 @@
-package org.oizehsgl.sub.generator.config;
+package org.oizehsgl.sub.base;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
- * DemoMetaObjectHandler
+ * BaseMetaObjectHandler
  *
  * @author oizehsgl
  * @since 4/9/23
  */
 @Component
-public class DemoMetaObjectHandler implements MetaObjectHandler {
+public class BaseMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("deleted", false, metaObject);

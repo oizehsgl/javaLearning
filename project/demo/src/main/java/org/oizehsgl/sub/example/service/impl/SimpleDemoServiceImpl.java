@@ -3,7 +3,7 @@ package org.oizehsgl.sub.example.service.impl;
 import org.oizehsgl.sub.example.entity.SimpleDemo;
 import org.oizehsgl.sub.example.mapper.SimpleDemoMapper;
 import org.oizehsgl.sub.example.service.SimpleDemoService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.oizehsgl.sub.base.service.impl.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 11:13:41
+ * @since 2023-04-10 12:36:16
  */
 @Service
-public class SimpleDemoServiceImpl extends ServiceImpl<SimpleDemoMapper, SimpleDemo> implements SimpleDemoService {
+public class SimpleDemoServiceImpl extends BaseServiceImpl<SimpleDemoMapper, SimpleDemo> implements SimpleDemoService {
 
 }

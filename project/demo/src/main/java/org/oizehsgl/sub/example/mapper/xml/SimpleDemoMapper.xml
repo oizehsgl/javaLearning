@@ -4,21 +4,31 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.oizehsgl.sub.example.entity.SimpleDemo">
-        <id column="id" property="id" />
+        <result column="id" property="id" />
+        <result column="create_user" property="createUser" />
+        <result column="create_datetime" property="createDatetime" />
+        <result column="update_user" property="updateUser" />
+        <result column="update_datetime" property="updateDatetime" />
+        <result column="delete_user" property="deleteUser" />
+        <result column="delete_datetime" property="deleteDatetime" />
+        <result column="deleted" property="deleted" />
+        <result column="version" property="version" />
         <result column="name" property="name" />
         <result column="age" property="age" />
-        <result column="create_user" property="createUser" />
-        <result column="update_user" property="updateUser" />
-        <result column="create_datetime" property="createDatetime" />
-        <result column="update_datetime" property="updateDatetime" />
-        <result column="deleted" property="deleted" />
-        <result column="delete_datetime" property="deleteDatetime" />
-        <result column="version" property="version" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, age, create_user, update_user, create_datetime, update_datetime, deleted, delete_datetime, version
+        id,
+        create_user,
+        create_datetime,
+        update_user,
+        update_datetime,
+        delete_user,
+        delete_datetime,
+        deleted,
+        version,
+        name, age
     </sql>
 
 </mapper>

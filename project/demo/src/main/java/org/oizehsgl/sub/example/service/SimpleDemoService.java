@@ -1,7 +1,7 @@
 package org.oizehsgl.sub.example.service;
 
 import org.oizehsgl.sub.example.entity.SimpleDemo;
-import com.baomidou.mybatisplus.extension.service.IService;
+import org.oizehsgl.sub.base.service.IBaseService;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 11:13:41
+ * @since 2023-04-10 12:36:16
  */
-public interface SimpleDemoService extends IService<SimpleDemo> {
+public interface SimpleDemoService extends IBaseService<SimpleDemo> {
 
 }

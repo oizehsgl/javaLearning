@@ -25,6 +25,7 @@ public class CrudTest {
         simpleDemoService.list(null).stream().forEach(System.out::println);
         simpleDemoService.lambdaUpdate().eq(SimpleDemo::getAge, 1).set(SimpleDemo::getName, LocalTime.now()).update(SimpleDemo.builder().build());
         simpleDemoService.lambdaUpdate().ne(SimpleDemo::getId,1).remove();
-        simpleDemoService.save(SimpleDemo.builder().age(1).build());
+        //simpleDemoService.save(SimpleDemo.builder().age(1).build());
+        //simpleDemoService.deleteAll();
     }
 }

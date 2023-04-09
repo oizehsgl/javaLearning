@@ -6,7 +6,7 @@ package org.oizehsgl.sub.example.manager;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 11:13:41
+ * @since 2023-04-10 12:36:16
  */
 public class SimpleDemoManager {
 

@@ -7,6 +7,10 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.fill.Column;
 import lombok.Getter;
+import org.oizehsgl.sub.base.entity.BaseEntity;
+import org.oizehsgl.sub.base.service.impl.BaseServiceImpl;
+import org.oizehsgl.sub.base.mapper.IBaseMapper;
+import org.oizehsgl.sub.base.service.IBaseService;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -74,6 +78,8 @@ public class DemoStrategyConfig {
                     .addTableFills(new Column("deleted", FieldFill.INSERT))
                     //设置主键自增
                     .idType(IdType.AUTO)
+                    //基类
+                    .superClass(BaseEntity.class)
 
                     //controller策略配置
                     .controllerBuilder()
@@ -94,6 +100,9 @@ public class DemoStrategyConfig {
                     .formatServiceFileName("%sService")
                     //格式化 service 实现类文件名称，%s进行匹配表名，如 UserServiceImpl
                     .formatServiceImplFileName("%sServiceImpl")
+                    //基类
+                    .superServiceClass(IBaseService.class)
+                    .superServiceImplClass(BaseServiceImpl.class)
 
                     //Mapper策略配置
                     .mapperBuilder()
@@ -110,7 +119,10 @@ public class DemoStrategyConfig {
                     //格式化Xml文件名称
                     .formatXmlFileName("%sMapper")
                     //格式化Mapper文件名称
-                    .formatMapperFileName("%sMapper");
+                    .formatMapperFileName("%sMapper")
+                    //基类
+                    .superClass(IBaseMapper.class)
+            ;
         }
     };
 }

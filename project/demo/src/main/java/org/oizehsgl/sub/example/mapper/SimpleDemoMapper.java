@@ -1,7 +1,7 @@
 package org.oizehsgl.sub.example.mapper;
 
 import org.oizehsgl.sub.example.entity.SimpleDemo;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.oizehsgl.sub.base.mapper.IBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 11:13:41
+ * @since 2023-04-10 12:36:16
  */
 @Mapper
-public interface SimpleDemoMapper extends BaseMapper<SimpleDemo> {
+public interface SimpleDemoMapper extends IBaseMapper<SimpleDemo> {
 
 }
