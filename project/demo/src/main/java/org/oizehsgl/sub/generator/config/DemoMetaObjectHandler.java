@@ -17,10 +17,9 @@ public class DemoMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("deleted", false, metaObject);
-        this.setFieldValByName("version", 1, metaObject);
+        this.setFieldValByName("version", 1L, metaObject);
 
         this.strictInsertFill(metaObject, "createDatetime", LocalDateTime.class, LocalDateTime.now());
-        this.strictUpdateFill(metaObject, "updateDatetime", LocalDateTime.class, LocalDateTime.now());
     }
 
     @Override

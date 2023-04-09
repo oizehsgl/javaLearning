@@ -1,6 +1,14 @@
 package org.oizehsgl.sub.example.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -9,16 +17,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
 /**
  * <p>
  * 简单示例表 数据模型
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 10:07:16
+ * @since 2023-04-09 11:13:41
  */
 @Data
 @Builder
@@ -56,7 +61,7 @@ public class SimpleDemo implements Serializable {
     private LocalDateTime createDatetime;
 
     @ApiModelProperty("更新时刻")
-    @TableField(value = "update_datetime", fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_datetime", fill = FieldFill.UPDATE)
     private LocalDateTime updateDatetime;
 
     @ApiModelProperty("删除状态")

@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author oizehsgl
- * @since 2023-04-09 10:07:16
+ * @since 2023-04-09 11:13:41
  */
 @Mapper
 public interface SimpleDemoMapper extends BaseMapper<SimpleDemo> {

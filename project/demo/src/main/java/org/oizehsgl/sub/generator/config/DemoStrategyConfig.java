@@ -69,7 +69,7 @@ public class DemoStrategyConfig {
                     .addTableFills(new Column("create_datetime", FieldFill.INSERT))
                     //modify_time字段自动填充为插入修改时间
                     //.addTableFills(new Property("updateDatetime", FieldFill.UPDATE))
-                    .addTableFills(new Column("update_datetime", FieldFill.INSERT_UPDATE))
+                    .addTableFills(new Column("update_datetime", FieldFill.UPDATE))
                     //逻辑删除自动填充
                     .addTableFills(new Column("deleted", FieldFill.INSERT))
                     //设置主键自增
