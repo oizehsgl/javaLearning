@@ -2,7 +2,7 @@ package org.oizehsgl.sub;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import org.junit.jupiter.api.Test;
-import org.oizehsgl.sub.config.*;
+import org.oizehsgl.sub.generator.config.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

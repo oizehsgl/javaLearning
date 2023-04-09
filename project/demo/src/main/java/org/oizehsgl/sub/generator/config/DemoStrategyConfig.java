@@ -1,4 +1,4 @@
-package org.oizehsgl.sub.config;
+package org.oizehsgl.sub.generator.config;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -26,29 +26,29 @@ public class DemoStrategyConfig {
         public void accept(StrategyConfig.Builder builder) {
             builder
                     //开启大写
-                    .enableCapitalMode()
+                    //.enableCapitalMode()
                     //创建实体类的时候跳过视图
                     .enableSkipView()
                     // 设置需要生成的数据表名
-                    .addInclude(Arrays.asList("user"))
+                    .addInclude(Arrays.asList("t_simple_demo"))
                     //设置 过滤 表的后缀
                     .addTableSuffix(Arrays.asList("_b"))
                     // 设置 过滤 表的前缀
                     .addTablePrefix(Arrays.asList("t_", "c_"))
-                    //字段后缀
-                    .addFieldSuffix()
-                    //字段前缀
-                    .addFieldPrefix()
+                    //字段后缀??
+                    //.addFieldSuffix()
+                    //字段前缀??
+                    //.addFieldPrefix()
 
-                    //4.1、实体类策略配置
+                    //实体类策略配置
                     .entityBuilder()
                     //覆盖文件
                     .enableFileOverride()
                     //开启链式模型
                     .enableChainModel()
-                    // 默认是开启实体类序列化，可以手动disable使它不序列化。由于项目中需要使用序列化就按照默认开启了
+                    //关闭实体类序列化
                     //.disableSerialVersionUID()
-                    // 开启生成实体时生成字段注解
+                    //开启生成实体时生成字段注解
                     .enableTableFieldAnnotation()
                     //开启 Lombok
                     .enableLombok()
@@ -59,22 +59,23 @@ public class DemoStrategyConfig {
                     //逻辑删除字段名(数据库)
                     .logicDeleteColumnName("deleted")
                     //逻辑删除属性名(实体)
-                    .logicDeletePropertyName("deleteFlag")
+                    .logicDeletePropertyName("deleted")
                     //数据库表映射到实体的命名策略：默认是下划线转驼峰命。这里可以不设置
                     .naming(NamingStrategy.underline_to_camel)
                     //数据库表字段映射到实体的命名策略：下划线转驼峰命。（默认是和naming一致，所以也可以不设置）
                     .columnNaming(NamingStrategy.underline_to_camel)
                     //添加表字段填充
-                    .addTableFills(
-                            // "create_time"字段自动填充为插入时间
-                            new Column("create_time", FieldFill.INSERT),
-                            // "modify_time"字段自动填充为插入修改时间
-                            new Column("modify_time", FieldFill.INSERT_UPDATE)
-                    )
+                    //create_time字段自动填充为插入时间
+                    .addTableFills(new Column("create_datetime", FieldFill.INSERT))
+                    //modify_time字段自动填充为插入修改时间
+                    //.addTableFills(new Property("updateDatetime", FieldFill.UPDATE))
+                    .addTableFills(new Column("update_datetime", FieldFill.INSERT_UPDATE))
+                    //逻辑删除自动填充
+                    .addTableFills(new Column("deleted", FieldFill.INSERT))
                     //设置主键自增
                     .idType(IdType.AUTO)
 
-                    //4.2、Controller策略配置
+                    //controller策略配置
                     .controllerBuilder()
                     //覆盖文件
                     .enableFileOverride()
@@ -85,7 +86,7 @@ public class DemoStrategyConfig {
                     //开启生成 @RestController 控制器
                     .enableRestStyle()
 
-                    //4.3、service 策略配置
+                    //service策略配置
                     .serviceBuilder()
                     //覆盖文件
                     .enableFileOverride()
@@ -94,7 +95,7 @@ public class DemoStrategyConfig {
                     //格式化 service 实现类文件名称，%s进行匹配表名，如 UserServiceImpl
                     .formatServiceImplFileName("%sServiceImpl")
 
-                    //4.4、Mapper策略配置
+                    //Mapper策略配置
                     .mapperBuilder()
                     //覆盖文件
                     .enableFileOverride()
@@ -104,8 +105,6 @@ public class DemoStrategyConfig {
                     .enableBaseResultMap()
                     //启用 BaseColumnList
                     .enableBaseColumnList()
-                    //格式化 mapper 文件名称
-                    .formatMapperFileName("%sMapper")
                     //开启 @Mapper 注解
                     .enableMapperAnnotation()
                     //格式化Xml文件名称

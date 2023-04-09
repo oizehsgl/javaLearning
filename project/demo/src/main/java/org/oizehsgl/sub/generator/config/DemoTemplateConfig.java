@@ -1,4 +1,4 @@
-package org.oizehsgl.sub.config;
+package org.oizehsgl.sub.generator.config;
 
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
