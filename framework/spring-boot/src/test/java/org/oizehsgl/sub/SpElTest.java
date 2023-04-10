@@ -27,6 +27,7 @@ public class SpElTest {
         System.out.println(spelExpressionParser.parseExpression("{T(java.lang.Math).random()}").getValue());
         System.out.println(spelExpressionParser.parseExpression(spel).getValue());
         System.out.println(value);
+        System.out.println(spelExpressionParser.parseExpression("{'1','2'}.contains('1')").getValue());
     }
 
     public static String string = "staticString";
