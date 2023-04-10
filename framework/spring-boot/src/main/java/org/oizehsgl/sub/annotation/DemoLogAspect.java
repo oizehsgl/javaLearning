@@ -44,10 +44,9 @@ public class DemoLogAspect {
     public Object around(ProceedingJoinPoint proceedingJoinPoint, DemoLog demoLog) throws Throwable {
         log(proceedingJoinPoint, demoLog);
         try {
-            //--------------------方法执行前------------------------
-            String methodName = proceedingJoinPoint.getSignature().getName();
-            //--------------------方法执行后------------------------
+            System.out.println("--------------------方法执行前------------------------");
             Object resultObject = proceedingJoinPoint.proceed();
+            System.out.println("--------------------方法执行后------------------------");
             return resultObject;
         } catch (Exception e) {
             return null;
