@@ -5,9 +5,11 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.SourceLocation;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 /**
@@ -88,19 +90,24 @@ public class DemoLogAspect {
     }
 
     private void log(JoinPoint joinPoint, DemoLog demoLog, Object object, int i) {
-        Signature signature = joinPoint.getSignature();
-        String className = signature.getDeclaringType().getSimpleName();
-        String classFullName = signature.getDeclaringTypeName();
-        String name = signature.getName();
-        Object[] args = joinPoint.getArgs();
+        SourceLocation sourceLocation = joinPoint.getSourceLocation();
+        JoinPoint.StaticPart staticPart = joinPoint.getStaticPart();
         System.out.printf("执行了%s方法%n", Thread.currentThread().getStackTrace()[i].getMethodName());
-        System.out.printf("\t jointPoint:<%s>%n", joinPoint);
-        System.out.printf("\t class:<%s>%n", className);
-        System.out.printf("\t name:<%s>%n", name);
-        System.out.printf("\t classFullName:<%s>%n", classFullName);
-        System.out.printf("\t args:<%s>%n", Arrays.toString(args));
-        System.out.printf("\t annotation:<%s>%n", demoLog);
-        System.out.printf("\t returnOrThrow:<%s>%n", object);
+        System.out.printf("\t 切点:<%s>%n", joinPoint);
+        Signature signature = joinPoint.getSignature();
+        System.out.printf("\t 方法参数:<%s>%n", Arrays.toString(joinPoint.getArgs()));
+        System.out.printf("\t 目标对象:<%s>%n", joinPoint.getTarget().getClass());
+        System.out.printf("\t 代理对象:<%s>%n", joinPoint.getThis().getClass());
+        System.out.printf("\t 类型:<%s>%n", joinPoint.getKind());
+        System.out.printf("\t 静态信息:<%s>%n", staticPart);
+        System.out.printf("\t 源码位置:<%s>%n", sourceLocation);
+        System.out.printf("\t 方法签名:<%s>%n", signature);
+        System.out.printf("\t 方法修饰:<%s>%n", Modifier.toString(signature.getModifiers()));
+        System.out.printf("\t 类:<%s>%n", signature.getDeclaringType());
+        System.out.printf("\t 类名:<%s>%n", signature.getDeclaringTypeName());
+        System.out.printf("\t 方法名:<%s>%n", signature.getName());
+        System.out.printf("\t 注解:<%s>%n", demoLog);
+        System.out.printf("\t 返回或异常:<%s>%n", object);
         System.out.println();
     }
 }
