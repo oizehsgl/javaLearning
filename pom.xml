@@ -80,6 +80,16 @@
         <artifactId>h2</artifactId>
         <version>LATEST</version>
       </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>LATEST</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>LATEST</version>
+      </dependency>
     </dependencies>
 
   </dependencyManagement>
