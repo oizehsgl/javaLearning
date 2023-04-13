@@ -131,6 +131,7 @@
     
     <module>demo</module>
       
+    <module>sqlserver</module>
   </modules>
           
 
