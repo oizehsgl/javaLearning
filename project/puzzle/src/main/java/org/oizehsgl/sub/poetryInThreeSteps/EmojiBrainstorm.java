@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * emojiBrainstorm
@@ -22,5 +20,4 @@ import java.util.Map;
 @AllArgsConstructor
 public class EmojiBrainstorm {
     List<String> expressions = new ArrayList<>(7);
-    Map<String, String> expressionMap = new HashMap<>(7);
 }

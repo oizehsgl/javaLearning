@@ -5,6 +5,7 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
@@ -13,9 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -91,28 +91,49 @@ public class PoetryService {
     @SneakyThrows
     public void readCsv2PoetryThenPredicateAndConsumer(Function<String, List<EmojiBrainstorm>> function, BiConsumer<Poetry, EmojiBrainstorm> consumer) throws IOException {
         Path path = Path.of(Objects.requireNonNull(this.getClass().getResource("/poetry/sevenCharacter.csv")).getPath());
-        CSVParser csvRecords = CSVParser.parse(Files.newBufferedReader(path), CSVFormat.Builder.create().build());
-        for (CSVRecord csvRecord : csvRecords) {
-            Poetry poetry = Poetry.builder()
-                    .title(csvRecord.get(0))
-                    .dynasty(csvRecord.get(1))
-                    .author(csvRecord.get(2))
-                    .genre(csvRecord.get(3))
-                    .content(List.of(StringUtils.split(csvRecord.get(4), "，|。")))
-                    .build();
-            for (String s : poetry.getContent()) {
-                for (String py : PinyinUtils.enZh2MultiPinyin(s)) {
-                    py = PinyinUtils.sort(py);
-                    List<EmojiBrainstorm> emojiBrainstormList = function.apply(py);
-                    if (ObjectUtils.isNotEmpty(emojiBrainstormList)) {
-                        for (EmojiBrainstorm emojiBrainstorm : emojiBrainstormList) {
-                            if (ObjectUtils.isNotEmpty(emojiBrainstorm.getExpressions())) {
-                                consumer.accept(poetry, emojiBrainstorm);
+        Path pathResult = Path.of(Objects.requireNonNull(this.getClass().getResource("/poetry/result.txt")).getPath());
+        File file=pathResult.toFile();
+        FileOutputStream fileOutputStream = new FileOutputStream(pathResult.toFile());
+        OutputStreamWriter outputStreamWriter= new OutputStreamWriter(fileOutputStream);
+        PrintWriter printWriter=new PrintWriter(pathResult.toFile());
+        FileUtils.writeStringToFile(file,"", StandardCharsets.UTF_8,true);
+        try {
+            CSVParser csvRecords = CSVParser.parse(Files.newBufferedReader(path), CSVFormat.Builder.create().build());
+            for (CSVRecord csvRecord : csvRecords) {
+                try {
+                    Poetry poetry = Poetry.builder()
+                            .title(csvRecord.get(0))
+                            .dynasty(csvRecord.get(1))
+                            .author(csvRecord.get(2))
+                            .genre(csvRecord.get(3))
+                            .content(List.of(StringUtils.split(csvRecord.get(4), "，|。")))
+                            .build();
+                    for (String s : poetry.getContent()) {
+                        for (String py : PinyinUtils.enZh2MultiPinyin(s)) {
+                            String sortPy = PinyinUtils.sort(py);
+                            List<EmojiBrainstorm> emojiBrainstormList = function.apply(sortPy);
+                            if (ObjectUtils.isNotEmpty(emojiBrainstormList)) {
+                                for (EmojiBrainstorm emojiBrainstorm : emojiBrainstormList) {
+                                    if (ObjectUtils.isNotEmpty(emojiBrainstorm.getExpressions())) {
+                                        //consumer.accept(poetry, emojiBrainstorm);
+                                        String result = String.format("%s-->%s->%s->%s    %s%n",
+                                                String.join("", emojiBrainstorm.getExpressions()),
+                                                sortPy,
+                                                py,
+                                                s,
+                                                poetry.getContent()
+                                        );
+                                        FileUtils.writeStringToFile(file, result, StandardCharsets.UTF_8, true);
+                                    }
+                                }
                             }
                         }
                     }
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
+        }finally {
         }
     }
 }

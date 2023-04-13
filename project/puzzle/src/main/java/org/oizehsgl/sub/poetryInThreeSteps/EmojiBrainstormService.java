@@ -32,7 +32,7 @@ public class EmojiBrainstormService {
 //                "ghost", "spirit", "fetch", "soul", "spectre", "anima", "atman", "鬼", "灵", "怪"
 //        ).collect(Collectors.toSet()));
 //        put(4, Stream.of(
-//                "car", "vehicle", "rook", "lathe", "castle", "车"
+//                "car", "vehicle", "rook", "lathe", "castle", "车", "轨", "轮", "轧", "载", "拉"
 //        ).collect(Collectors.toSet()));
 //        put(5, Stream.of(
 //                "silence", "tranquil", "mum", "mute", "quite", "寥", "谧", "嘘", "默", "噤", "缄", "静", "寂"
@@ -43,27 +43,57 @@ public class EmojiBrainstormService {
 //        put(7, Stream.of(
 //                "gun", "rifle", "firearm", "blunderbuss", "pistol", "peacemaker", "枪", "毙", "铳", "杀"
 //        ).collect(Collectors.toSet()));
-
+//
+//        put(1, Stream.of(
+//                "bu","步"
+//        ).collect(Collectors.toSet()));
+//        put(2, Stream.of(
+//                "jin"
+//        ).collect(Collectors.toSet()));
+//        put(3, Stream.of(
+//                "chang"
+//        ).collect(Collectors.toSet()));
+//        put(4, Stream.of(
+//                "jiang"
+//        ).collect(Collectors.toSet()));
+//        put(5, Stream.of(
+//                "gun"
+//        ).collect(Collectors.toSet()));
+//        put(6, Stream.of(
+//                "gun"
+//        ).collect(Collectors.toSet()));
+//        put(7, Stream.of(
+//                "lai"
+//        ).collect(Collectors.toSet()));
         put(1, Stream.of(
-                "bu"
+                //"why","how", "疑", "惑", "谜", "问", "猜","晕","懵"
+                "why", "how", "yi", "huo", "mi", "wen", "cai","yun","meng"
         ).collect(Collectors.toSet()));
         put(2, Stream.of(
-                "jin"
+                //"eye", "see", "look", "view", "看", "观", "望", "瞧", "赏", "瞄", "视", "窥", "瞥", "眼", "眸", "目", "睛", "瞟", "盯"
+                "eye", "see", "look", "view", "kan", "guan", "wang", "qiao", "shang"
+                //,
+                //"miao", "shi", "kui", "pie", "yan", "mou", "mu", "jing", "piao", "ding"
         ).collect(Collectors.toSet()));
         put(3, Stream.of(
-                "chang"
+                //"atman","anima","soul", "鬼", "灵", "怪", "魑", "魅", "魍", "魉","妖","魔","怕","惊","恐"
+                "atman","anima", "soul", "gui", "ling", "guai", "chi", "mei", "wang", "liang", "yao", "mo","pa","jing","kong"
         ).collect(Collectors.toSet()));
         put(4, Stream.of(
-                "jiang"
+                //"taxi","lathe","car", "rook", "车", "轨", "轮", "轧", "载", "拉", "乘","开","驶","驾"
+                "taxi","lathe","car", "rook", "che", "gui", "lun", "ya", "zai", "la", "cheng","kai","jia","shi"
         ).collect(Collectors.toSet()));
         put(5, Stream.of(
-                "gun"
+                // "mum", "mute", "quite", "寥", "谧", "嘘", "默", "噤", "缄", "静", "寂"
+                "mum", "mute", "quite", "liao", "mi", "xu", "mo", "jin", "jian", "jing", "ji"
         ).collect(Collectors.toSet()));
         put(6, Stream.of(
-                "gun"
+                //"care","love", "enfold", "hug",  "hold", "拥", "抱","友","爱","慰"
+               "care","love","enfold", "hug", "hold", "yong", "bao","you","ai","wei"
         ).collect(Collectors.toSet()));
         put(7, Stream.of(
-                "lai"
+                //"gun", "rifle", "pistol", "枪", "毙", "铳", "杀","恼","怒","气"
+                "gun", "rifle", "pistol", "qiang", "bi", "chong", "sha","nao","nu","qi"
         ).collect(Collectors.toSet()));
     }};
     Map<String, Set<String>> cacheMap = new HashMap<>();
@@ -88,10 +118,13 @@ public class EmojiBrainstormService {
                             for (String s6 : map.get(6)) {
                                 for (String s7 : map.get(7)) {
                                     EmojiBrainstorm emojiBrainstorm = EmojiBrainstorm.builder().expressions(Arrays.asList(s1, s2, s3, s4, s5, s6, s7)).build();
-                                    Set<String> strings = descartes(convertOrCache(s1), convertOrCache(s2), convertOrCache(s3), convertOrCache(s4), convertOrCache(s5), convertOrCache(s6), convertOrCache(s7));
-                                    for (String string : strings) {
-                                        allExpressionMultiValueMap.add(string, emojiBrainstorm);
-                                    }
+                                    //Set<String> strings = descartes(convertOrCache(s1), convertOrCache(s2), convertOrCache(s3), convertOrCache(s4), convertOrCache(s5), convertOrCache(s6), convertOrCache(s7));
+                                    //for (String string : strings) {
+                                    //    allExpressionMultiValueMap.add(string, emojiBrainstorm);
+                                    //}
+                                    String string = String.format("%s%s%s%s%s%s%s", s1, s2, s3, s4, s5, s6, s7);
+                                    string = PinyinUtils.sort(string);
+                                    allExpressionMultiValueMap.add(string, emojiBrainstorm);
                                     System.out.printf("%10d / %-10d%n", allExpressionMultiValueMap.size(), size);
                                 }
                             }
