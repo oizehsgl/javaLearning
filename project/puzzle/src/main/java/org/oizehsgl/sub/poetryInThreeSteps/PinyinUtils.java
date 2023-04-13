@@ -7,9 +7,9 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -50,14 +50,23 @@ public class PinyinUtils {
      * @param words 单词
      * @return {@link String}
      */
-    public static List<String> enZh2MultiPinyin(String words) throws BadHanyuPinyinOutputFormatCombination {
-        List<String> stringList = new ArrayList<>();
+    public static Set<String> enZh2MultiPinyin(String words) throws BadHanyuPinyinOutputFormatCombination {
+        Set<String> stringList = new HashSet<>();
         for (char c : words.toCharArray()) {
             if (Character.toString(c).matches("[\\u4E00-\\u9FA5]+")) {
                 String[] strings = PinyinHelper.toHanyuPinyinStringArray(c, hanyuPinyinOutputFormat);
-                stringList = stringList.stream().flatMap(e -> Arrays.stream(strings).map(e1 -> e + e1)).collect(Collectors.toList());
+                if (stringList.isEmpty()) {
+                    stringList = Stream.of(strings).collect(Collectors.toSet());
+                } else {
+                    stringList = stringList.stream().flatMap(e -> Arrays.stream(strings).map(e1 -> e + e1)).collect(Collectors.toSet());
+                }
             } else {
-                stringList = stringList.stream().flatMap(e -> Stream.of(c).map(e1 -> e + e1)).collect(Collectors.toList());
+                if (stringList.isEmpty()) {
+                    stringList = new HashSet<>();
+                    stringList.add(String.valueOf(c));
+                } else {
+                    stringList = stringList.stream().flatMap(e -> Stream.of(c).map(e1 -> e + e1)).collect(Collectors.toSet());
+                }
             }
         }
         return stringList;

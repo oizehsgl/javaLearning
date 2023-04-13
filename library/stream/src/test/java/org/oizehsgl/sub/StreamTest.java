@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.ObjectUtils;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -186,5 +187,64 @@ public class StreamTest {
     public void testSingle() {
         Integer integer = null;
         Stream.of(integer).map(e -> "-" + e).forEach(System.out::println);
+    }
+
+    @Test
+    public void testReduce() {
+        List<String> props = List.of("k1=v1", "k2=v2", "k3=v3");
+        Map<String, String> map = props.stream().map(kv -> {
+            String[] ss = kv.split("=", 2);
+            return Map.of(ss[0], ss[1]);
+        }).reduce(new HashMap<String, String>(), (m, kv) -> {
+            m.putAll(kv);
+            return m;
+        });
+
+        map.forEach((k, v) -> {
+            System.out.println(k);
+            System.out.println(v);
+        });
+
+    }
+
+    @Test
+    public void testReduce2() {
+        List<Integer> integerList = Stream.iterate(0, i -> i + 1).limit(10).toList();
+        System.out.println(integerList.stream().reduce(1, (seed, e) -> seed + e));
+        System.out.println(integerList.stream().parallel().reduce(1, (seed, e) -> seed + e));
+    }
+
+    @Test
+    public void testReduces() {
+        List<Integer> integers1 = Stream.iterate(0, i -> i + 1).limit(3).toList();
+        List<Integer> integers2 = Stream.iterate(3, i -> i + 1).limit(3).toList();
+        List<Integer> integers3 = Stream.iterate(6, i -> i + 1).limit(3).toList();
+        System.out.println(cartesianProduct(integers1, integers3, integers2));
+    }
+
+    private <T> List<List<T>> cartesianProduct(List<T>... lists) {
+        List<List<T>> seed = new ArrayList<>();
+        for (List<T> list : lists) {
+            if (ObjectUtils.isEmpty(seed)) {
+                list.stream().map(Collections::singletonList).forEach(seed::add);
+            } else {
+                seed = seed.stream().flatMap(e -> list.stream().map(e1 -> {
+                            List<T> tList = new ArrayList<>(e);
+                            tList.add(e1);
+                            return tList;
+                        })
+                ).collect(Collectors.toList());
+            }
+        }
+        return seed;
+    }
+
+    @Test
+    public void testReduce3() {
+        List<Integer> integerList = Stream.iterate(0, i -> i + 1).limit(10).toList();
+        System.out.println(integerList.stream().reduce(0, (seed, e) -> seed + e, (e1, e2) -> e1 + e2));
+        System.out.println(integerList.stream().parallel().reduce(0, (seed, e) -> seed + e, (e1, e2) -> e1 + e2));
+        System.out.println(integerList.stream().reduce(1, (seed, e) -> seed + e, (e1, e2) -> e1 + e2));
+        System.out.println(integerList.stream().parallel().reduce(1, (seed, e) -> seed + e, (e1, e2) -> e1 + e2));
     }
 }

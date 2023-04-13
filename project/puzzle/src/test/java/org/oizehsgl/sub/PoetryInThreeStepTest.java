@@ -3,7 +3,8 @@ package org.oizehsgl.sub;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.jupiter.api.Test;
-import org.oizehsgl.sub.poetryInThreeSteps.AllExpressionService;
+import org.oizehsgl.sub.poetryInThreeSteps.EmojiBrainstorm;
+import org.oizehsgl.sub.poetryInThreeSteps.EmojiBrainstormService;
 import org.oizehsgl.sub.poetryInThreeSteps.Poetry;
 import org.oizehsgl.sub.poetryInThreeSteps.PoetryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * poetryInThreeStepsTest
@@ -25,19 +29,24 @@ public class PoetryInThreeStepTest {
     @Autowired
     private PoetryService poetryService;
     @Autowired
-    private AllExpressionService allExpressionService;
+    private EmojiBrainstormService emojiBrainstormService;
 
     @Test
     public void testPoetryInThreeSteps() throws IOException, BadHanyuPinyinOutputFormatCombination {
-        Map<String, String> pinyinMap = allExpressionService.getCombination2Pinyin();
-        MultiValueMap<String, Triple<String, String, Poetry>> tripleMap = poetryService.getPinyin2TripleMap();
+        MultiValueMap<String, EmojiBrainstorm> allExpressionMultiValueMap = emojiBrainstormService.getCombination2Pinyin();
         MultiValueMap<String, Triple<String, String, Poetry>> map = new LinkedMultiValueMap<>();
-        for (Map.Entry<String, String> stringStringEntry : pinyinMap.entrySet()) {
-            List<Triple<String, String, Poetry>> tripleList = tripleMap.get(stringStringEntry.getValue());
+        poetryService.readCsv2PoetryThenPredicateAndConsumer(string -> allExpressionMultiValueMap.get(string)
+                , (poetry, emojiBrainstorm) -> {
+                    System.out.println(poetry);
+                    System.out.println(emojiBrainstorm);
+                });
+        for (Map.Entry<String, List<EmojiBrainstorm>> stringStringEntry : allExpressionMultiValueMap.entrySet()) {
+            List<Triple<String, String, Poetry>> tripleList = null;
             if (Objects.nonNull(tripleList)) {
                 map.put(stringStringEntry.getKey(), tripleList);
             }
         }
+
         System.out.printf("%n%n%n");
         map.entrySet().forEach(e -> {
             List<Triple<String, String, Poetry>> tripleList = e.getValue();
