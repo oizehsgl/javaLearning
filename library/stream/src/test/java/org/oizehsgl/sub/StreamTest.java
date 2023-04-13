@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StopWatch;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -216,27 +217,97 @@ public class StreamTest {
 
     @Test
     public void testReduces() {
-        List<Integer> integers1 = Stream.iterate(0, i -> i + 1).limit(3).toList();
-        List<Integer> integers2 = Stream.iterate(3, i -> i + 1).limit(3).toList();
-        List<Integer> integers3 = Stream.iterate(6, i -> i + 1).limit(3).toList();
-        System.out.println(cartesianProduct(integers1, integers3, integers2));
+        int size = 9;
+        int length = 5;
+        List<List<Integer>> listList = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            listList.add(Stream.iterate(0, x -> x + 1).limit(length).toList());
+        }
+        List<Integer> integers1 = Stream.iterate(0, x -> x + 1).limit(3).toList();
+        List<Integer> integers2 = Stream.iterate(0, x -> x + 1).limit(3).toList();
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("0");
+        List<List<Integer>> listList0 = cartesianProduct0(listList);
+        //System.out.println(listList0);
+        stopWatch.stop();
+        stopWatch.start("1");
+        List<List<Integer>> listList1 = cartesianProduct1(listList);
+        //System.out.println(listList1);
+        stopWatch.stop();
+        stopWatch.start("2");
+        List<List<Integer>> listList2 = cartesianProduct2(listList);
+        //System.out.println(listList2);
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
+
+    }
+
+    private <T> List<List<T>> cartesianProduct0(List<List<T>> lists) {
+        List<List<T>> product = new ArrayList<>();
+        for (List<T> list : lists) {
+            if (ObjectUtils.isEmpty(product)) {
+                for (T t : list) {
+                    List<T> tList = new ArrayList<>();
+                    tList.add(t);
+                    product.add(tList);
+                }
+            } else {
+                List<List<T>> listList = new ArrayList<>();
+                for (List<T> tList : product) {
+                    for (T t : list) {
+                        List<T> tListCopy = new ArrayList<>(tList);
+                        tListCopy.add(t);
+                        listList.add(tListCopy);
+                    }
+                }
+                product=listList;
+            }
+        }
+        return product;
+    }
+
+    private <T> List<List<T>> cartesianProduct1(List<List<T>> lists) {
+        List<List<T>> product = new ArrayList<>();
+        for (List<T> list : lists) {
+            if (ObjectUtils.isEmpty(product)) {
+                list.stream().map(Collections::singletonList).forEach(product::add);
+            } else {
+                product = product.stream().flatMap(e -> list.stream().map(e1 -> {
+                    List<T> tList = new ArrayList<>(e);
+                    tList.add(e1);
+                    return tList;
+                })).collect(Collectors.toList());
+            }
+        }
+        return product;
+    }
+
+    private <T> List<List<T>> cartesianProduct2(List<List<T>> lists) {
+        List<List<T>> product = new ArrayList<>();
+        for (List<T> list : lists) {
+            if (ObjectUtils.isEmpty(product)) {
+                list.stream().map(Collections::singletonList).forEach(product::add);
+            } else {
+                product = product.stream().flatMap(e -> list.stream().map(e1 -> Stream.concat(e.stream(), Stream.of(e1)).collect(Collectors.toList()))).collect(Collectors.toList());
+            }
+        }
+        return product;
     }
 
     private <T> List<List<T>> cartesianProduct(List<T>... lists) {
-        List<List<T>> seed = new ArrayList<>();
+        List<List<T>> product = new ArrayList<>();
         for (List<T> list : lists) {
-            if (ObjectUtils.isEmpty(seed)) {
-                list.stream().map(Collections::singletonList).forEach(seed::add);
+            if (ObjectUtils.isEmpty(product)) {
+                list.stream().map(Collections::singletonList).forEach(product::add);
             } else {
-                seed = seed.stream().flatMap(e -> list.stream().map(e1 -> {
-                            List<T> tList = new ArrayList<>(e);
-                            tList.add(e1);
-                            return tList;
-                        })
-                ).collect(Collectors.toList());
+                product = product.stream().flatMap(e -> list.stream().map(e1 -> {
+                    List<T> tList = new ArrayList<>(e);
+                    tList.add(e1);
+                    return tList;
+                })).collect(Collectors.toList());
             }
         }
-        return seed;
+        return product;
     }
 
     @Test
