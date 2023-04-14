@@ -217,8 +217,8 @@ public class StreamTest {
 
     @Test
     public void testReduces() {
-        int size = 9;
-        int length = 5;
+        int size = 3;
+        int length = 3;
         List<List<Integer>> listList = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
             listList.add(Stream.iterate(0, x -> x + 1).limit(length).toList());
@@ -237,6 +237,10 @@ public class StreamTest {
         stopWatch.start("2");
         List<List<Integer>> listList2 = cartesianProduct2(listList);
         //System.out.println(listList2);
+        stopWatch.stop();
+        stopWatch.start("3");
+        List<List<Integer>> listList3 = cartesianProduct2(listList);
+//        System.out.println(listList3);
         stopWatch.stop();
         System.out.println(stopWatch.prettyPrint());
 
@@ -289,6 +293,19 @@ public class StreamTest {
                 list.stream().map(Collections::singletonList).forEach(product::add);
             } else {
                 product = product.stream().flatMap(e -> list.stream().map(e1 -> Stream.concat(e.stream(), Stream.of(e1)).collect(Collectors.toList()))).collect(Collectors.toList());
+            }
+        }
+        return product;
+    }
+
+    private <T> List<List<T>> cartesianProduct3(List<List<T>> lists) {
+        List<List<T>> product = new ArrayList<>();
+        for (List<T> list : lists) {
+            if (ObjectUtils.isEmpty(product)) {
+                list.stream().map(Collections::singletonList).forEach(product::add);
+            } else {
+                product = product.stream().flatMap(e -> list.stream().map(Collections::singletonList).peek(e1 -> e1.addAll(e))).collect(Collectors.toList());
+                //product = product.stream().flatMap(e -> list.stream().map(e1->new ArrayList(e))).collect(Collectors.toList());
             }
         }
         return product;
