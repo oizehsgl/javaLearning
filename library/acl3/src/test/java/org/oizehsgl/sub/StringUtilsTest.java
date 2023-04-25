@@ -18,4 +18,15 @@ public class StringUtilsTest {
     public void testSplit(){
         Stream.of(StringUtils.split("a,b.c", ",|.")).forEach(System.out::println);
     }
+
+    @Test
+    public void testAbbreviate(){
+        abbreviate("1234567");
+        abbreviate("中文测试五个字");
+        abbreviate("");
+        abbreviate(null);
+    }
+    private void abbreviate(String s){
+        System.out.printf("<%s>%n",StringUtils.abbreviate(s,"" ,5));
+    }
 }
