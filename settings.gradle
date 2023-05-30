@@ -1,1 +1,5 @@
 rootProject.name = 'javaLearning'
+//include 'basic'
+include ':basic:keyword'
+include ':framework:springBoot'
+include ':library:apacheCommonsLang3'

@@ -1,22 +1,32 @@
 plugins {
-	id 'java'
 	id 'org.springframework.boot' version '3.1.0'
 	id 'io.spring.dependency-management' version '1.1.0'
 }
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
-
-repositories {
-	mavenCentral()
+allprojects {
+	group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/central'
+        }
+        mavenCentral()
+    }
 }
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+dependencyManagement {
+    imports {
+        mavenBom "org.apache.commons:commons-lang3:3.12.0"
+    }
 }
-
-tasks.named('test') {
-	useJUnitPlatform()
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+    sourceCompatibility = '17'
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	}
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
 }
