@@ -1,11 +1,14 @@
 package com.example.apacheCommonsLang3;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsProvider;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
@@ -14,24 +17,44 @@ import java.util.stream.Stream;
  */
 @SpringBootTest
 public class StringUtilsTest {
-    @Test
-    public void testSplit() {
-        String str = ",a,b,,c,.d..e.f.";
-        String separatorChars = ",.";
-        Stream.of(StringUtils.split(str, separatorChars)).forEach(System.out::println);
+    static class testSplitArgumentProvider implements ArgumentsProvider {
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
+            return Stream.of(
+                    Arguments.of("", ""),
+                    Arguments.of("", ","),
+                    Arguments.of("a,b", ""),
+                    Arguments.of("a,b", ","),
+                    Arguments.of("a,,b", ","),
+                    Arguments.of("a,,b", ",,"),
+                    Arguments.of("a,.b", ",."),
+                    Arguments.of("a,.b", null),
+                    Arguments.of(null, ",."),
+                    Arguments.of((Object) null, (Object) null));
+        }
     }
 
     @ParameterizedTest
-    @CsvSource({
-            ",",
-            "''",
-            "'",
-            "0123",
-            "01234",
-            "012345",
-            "中文截取测试",
-    })
-    // BUG: 单引号不能正确显示
+    @ArgumentsSource(testSplitArgumentProvider.class)
+    public void testSplit(String str, String separatorChars) {
+        System.out.printf("<%s> + <%s> -> %s%n",str,separatorChars,Arrays.toString(StringUtils.split(str, separatorChars)));
+    }
+
+    static class testAbbreviateArgumentProvider implements ArgumentsProvider {
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
+            return Stream.of(
+                    Arguments.of(""),
+                    Arguments.of("0123"),
+                    Arguments.of("01234"),
+                    Arguments.of("012345"),
+                    Arguments.of("中文截取测试"),
+                    Arguments.of((Object) null));
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(testAbbreviateArgumentProvider.class)
     public void testAbbreviate(String str) {
         System.out.printf("<%s> --> <%s>%n", str, StringUtils.abbreviate(str, "", 5));
     }
