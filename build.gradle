@@ -15,6 +15,8 @@ allprojects {
 dependencyManagement {
     imports {
         mavenBom "org.apache.commons:commons-lang3:3.12.0"
+		mavenBom 'org.springframework.boot:spring-boot-starter-aop:3.1.0'
+		mavenBom 'org.projectlombok:lombok:1.18.28'
     }
 }
 subprojects {
@@ -25,6 +27,9 @@ subprojects {
 	dependencies {
 		implementation 'org.springframework.boot:spring-boot-starter'
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation 'org.springframework.boot:spring-boot-starter-aop'
+		implementation 'org.apache.commons:commons-lang3'
+		compileOnly 'org.projectlombok:lombok'
 	}
 	tasks.named('test') {
 		useJUnitPlatform()
