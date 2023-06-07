@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @since 6/1/23
  */
 @SpringBootTest
-public class CustomAnnotTest {
+public class CustomAnnotMethodTest {
     @Autowired
     private CustomAnnotSupService customAnnotSupService;
     @Autowired

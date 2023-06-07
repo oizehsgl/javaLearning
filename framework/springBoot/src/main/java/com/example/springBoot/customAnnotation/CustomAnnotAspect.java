@@ -1,5 +1,6 @@
 package com.example.springBoot.customAnnotation;
 
+import com.example.springBoot.customAnnotation.annotation.CustomAnnotMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -21,7 +22,7 @@ import java.util.Arrays;
 @Order(0)
 @Component
 public class CustomAnnotAspect {
-    @Pointcut(value = "@annotation(com.example.springBoot.customAnnotation.CustomAnnot)")
+    @Pointcut(value = "@annotation(com.example.springBoot.customAnnotation.annotation.CustomAnnotMethod)")
     public void pointCutByAnnotation() {
     }
 
@@ -37,15 +38,55 @@ public class CustomAnnotAspect {
     public void pointCutByMethod() {
     }
 
-    @Pointcut("pointCutByMethod()")
+    @Pointcut("args()")
+    public void pointCutArgs() {
+    }
+
+    @Pointcut("@args(com.example.springBoot.customAnnotation.annotation.CustomAnnotMethod)")
+    public void pointCutAtArgs() {
+    }
+
+    @Pointcut("within(com.example.springBoot.customAnnotation.CustomAnnotSupService)")
+    public void pointCutWithin() {
+    }
+
+    @Pointcut("@within(com.example.springBoot.customAnnotation.annotation.CustomAnnotMethod)")
+    public void pointCutAtWithin() {
+    }
+
+    @Pointcut("target(com.example.springBoot.customAnnotation.CustomAnnotSupService)")
+    public void pointCutTarget() {
+    }
+
+    @Pointcut("@target(com.example.springBoot.customAnnotation.annotation.CustomAnnotMethod)")
+    public void pointCutAtTarget() {
+    }
+
+    @Pointcut("this(com.example.springBoot.customAnnotation.CustomAnnotSupService)")
+    public void pointCutThis() {
+    }
+
+    @Pointcut("bean(customAnnotSupService)")
+    public void pointCutBean() {
+    }
+
+    //@Pointcut("pointCutByMethod()")
+    //@Pointcut("pointCutArgs()")
+    //@Pointcut("pointCutAtArgs()")
+    //@Pointcut("pointCutWithin()")
+    //@Pointcut("pointCutAtWithin()")
+    //@Pointcut("pointCutTarget()")
+    @Pointcut("pointCutAtTarget()")
+    //@Pointcut("pointCutThis()")
+    //@Pointcut("pointCutBean()")
     public void pointCut() {
     }
 
     /**
      * 前置通知：方法执行前调用
      */
-    @Before(value = "pointCut() && @annotation(customAnnot)")
-    public void before(JoinPoint joinPoint, CustomAnnot customAnnot) {
+    @Before(value = "pointCut() && @annotation(customAnnotMethod)")
+    public void before(JoinPoint joinPoint, CustomAnnotMethod customAnnotMethod) {
         SourceLocation sourceLocation = joinPoint.getSourceLocation();
         JoinPoint.StaticPart staticPart = joinPoint.getStaticPart();
         Signature signature = joinPoint.getSignature();
@@ -61,7 +102,7 @@ public class CustomAnnotAspect {
         System.out.printf("before\t类:<%s>%n", signature.getDeclaringType());
         System.out.printf("before\t类名:<%s>%n", signature.getDeclaringTypeName());
         System.out.printf("before\t方法名:<%s>%n", signature.getName());
-        System.out.printf("before\t注解:<%s>%n", customAnnot);
+        System.out.printf("before\t注解:<%s>%n", customAnnotMethod);
     }
 
     /**
@@ -70,9 +111,9 @@ public class CustomAnnotAspect {
      * 可以决定目标方法在什么时候执行，如何执行，甚至可以完全阻止目标目标方法的执行；
      * 可以改变执行目标方法的参数值，也可以改变执行目标方法之后的返回值； 当需要改变目标方法的返回值时，只能使用Around方法；
      */
-    @Around("pointCut() && @annotation(customAnnot)")
-    public void around(ProceedingJoinPoint proceedingJoinPoint, CustomAnnot customAnnot) {
-        System.out.printf("around\t注解:<%s>%n", customAnnot);
+    @Around("pointCut() && @annotation(customAnnotMethod)")
+    public void around(ProceedingJoinPoint proceedingJoinPoint, CustomAnnotMethod customAnnotMethod) {
+        System.out.printf("around\t注解:<%s>%n", customAnnotMethod);
         try {
             Object r = proceedingJoinPoint.proceed();
         } catch (Throwable e) {
@@ -83,24 +124,24 @@ public class CustomAnnotAspect {
     /**
      * 后置通知： 方法执行后调用，若方法出现异常，不执行
      */
-    @AfterReturning(value = "pointCut() && @annotation(customAnnot)", returning = "object")
-    public void afterReturning(JoinPoint joinPoint, CustomAnnot customAnnot, Object object) {
+    @AfterReturning(value = "pointCut() && @annotation(customAnnotMethod)", returning = "object")
+    public void afterReturning(JoinPoint joinPoint, CustomAnnotMethod customAnnotMethod, Object object) {
         System.out.printf("afterReturning\t返回:<%s>%n", object);
     }
 
     /**
      * 异常通知：方法抛出异常时执行
      */
-    @AfterThrowing(value = "pointCut() && @annotation(customAnnot)", throwing = "throwable")
-    public void afterThrowing(JoinPoint joinPoint, CustomAnnot customAnnot, Throwable throwable) {
+    @AfterThrowing(value = "pointCut() && @annotation(customAnnotMethod)", throwing = "throwable")
+    public void afterThrowing(JoinPoint joinPoint, CustomAnnotMethod customAnnotMethod, Throwable throwable) {
         System.out.printf("afterThrowing\t异常:<%s>%n", throwable);
     }
 
     /**
      * 最终通知：无论无何都会调用，类似于：try/catch中的finally
      */
-    @After(value = "pointCut() && @annotation(customAnnot)")
-    public void after(JoinPoint joinPoint, CustomAnnot customAnnot) {
+    @After(value = "pointCut() && @annotation(customAnnotMethod)")
+    public void after(JoinPoint joinPoint, CustomAnnotMethod customAnnotMethod) {
         System.out.printf("after%n");
     }
 }
