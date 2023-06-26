@@ -37,7 +37,7 @@ public class StringUtilsTest {
     @ParameterizedTest
     @ArgumentsSource(testSplitArgumentProvider.class)
     public void testSplit(String str, String separatorChars) {
-        System.out.printf("<%s> + <%s> -> %s%n",str,separatorChars,Arrays.toString(StringUtils.split(str, separatorChars)));
+        System.out.printf("<%s> split by <%s> -> %s%n",str,separatorChars,Arrays.toString(StringUtils.split(str, separatorChars)));
     }
 
     static class testAbbreviateArgumentProvider implements ArgumentsProvider {
@@ -48,7 +48,7 @@ public class StringUtilsTest {
                     Arguments.of("0123"),
                     Arguments.of("01234"),
                     Arguments.of("012345"),
-                    Arguments.of("中文截取测试"),
+                    Arguments.of("零一二三四五"),
                     Arguments.of((Object) null));
         }
     }
@@ -56,6 +56,6 @@ public class StringUtilsTest {
     @ParameterizedTest
     @ArgumentsSource(testAbbreviateArgumentProvider.class)
     public void testAbbreviate(String str) {
-        System.out.printf("<%s> --> <%s>%n", str, StringUtils.abbreviate(str, "", 5));
+        System.out.printf("<%s> --> <%s>%n", str, StringUtils.abbreviate(str, "..",5, 5));
     }
 }
