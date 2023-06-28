@@ -34,4 +34,8 @@ subprojects {
 	tasks.named('test') {
 		useJUnitPlatform()
 	}
+    test {
+      testLogging.showStandardStreams = true
+      testLogging.exceptionFormat = 'full'
+    }
 }
