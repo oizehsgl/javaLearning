@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
  * @since 6/28/23
  */
 @Component
-public class DatatypeByte extends Datatype<Byte> {
+public class DatatypeInteger extends Datatype<Integer> {
     public void test() {
-        test(Byte.MIN_VALUE, Byte.MAX_VALUE);
+        test(Integer.MIN_VALUE,Integer.MAX_VALUE);
     }
 }

@@ -1,9 +1,11 @@
 package com.example.keyword;
 
-import com.example.keyword.keywordDatatype.DatatypeByte;
+import com.example.keyword.keywordDatatype.Datatype;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 /**
  * @author oizehsgl
@@ -12,9 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class KeywordDatatypeTest {
     @Resource
-    DatatypeByte datatypeByte;
+    List<Datatype> datatypeList;
     @Test
     public void testByte(){
-        datatypeByte.test();
+        datatypeList.forEach(Datatype::test);
     }
 }
