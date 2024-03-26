@@ -1,0 +1,13 @@
+#!/bin/bash
+#projectBasedir="$(./mvnw help:evaluate -DforceStdout -q -Dexpression=project.basedir)"
+projectBasedir=./
+
+#for protoFile in $(find "${projectBasedir}"/src/main/resources/protobuf/ -type f)
+#do
+#  protoc --java_out="${projectBasedir}"/src/main/java/ "${protoFile}"
+#done
+
+find "${projectBasedir}"/src/main/resources/protobuf/ \
+  -type f -name '*.proto' -exec \
+  protoc --java_out="${projectBasedir}"/src/main/java/ \
+  --proto_path="${projectBasedir}"/src/main/resources/protobuf/  {} \+

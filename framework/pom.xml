@@ -16,5 +16,6 @@
 
     <modules>
         <module>spring-boot</module>
+        <module>javaLearning-spring-boot-demo</module>
     </modules>
 </project>

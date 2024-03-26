@@ -1,0 +1,8 @@
+#!/bin/bash
+if test _${1} = _2
+then
+  grep -rl 'import jakarta.' src|xargs sed 's/import jakarta./import javax./' -i
+elif test _${1} = _3
+then
+  grep -rl 'import javax.' src|xargs sed 's/import javax./import jakarta./' -i
+fi

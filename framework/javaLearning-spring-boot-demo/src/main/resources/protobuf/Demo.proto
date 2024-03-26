@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "PhoneNumber.proto";
+option java_package = "org.oizehsgl.javaLearning.springbootdemo.model.dto";
+option java_outer_classname = "DemoProtobufDto";
+message Demo  {
+  //简单属性
+  int32 id = 1;
+  int32 age = 2;
+  string name = 3;
+  string email = 4;
+
+  // list示例
+  repeated PhoneNumber phone = 5;
+
+  // map示例
+  message Map {
+    string key = 1;
+    int32 value = 2;
+  }
+  Map map = 6;
+}
