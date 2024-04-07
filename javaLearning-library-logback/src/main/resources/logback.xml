@@ -13,13 +13,13 @@
     <!--### logback -->
     <property name="ENCODER_CLASS" value="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
     <!--### TLog: 不支持SpringBoot3 -->
-    <property name="ENCODER_CLASS" value="com.yomahub.tlog.core.enhance.logback.AspectLogbackEncoder"/>
+    <!-- <property name="ENCODER_CLASS" value="com.yomahub.tlog.core.enhance.logback.AspectLogbackEncoder"/> -->
     <!--## 日志输出格式 -->
     <property name="LOG_PATTERN"
               value="[%d{yyyy-MM-dd}T%d{HH:mm:ss.SSS}] [%-5level] [%logger{30}] [%thread,%method,%line] %msg%n"/>
     <!-- <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{50} %L: %msg%n"/>-->
     <!--## 日志存放路径 -->
-    <property name="PROJECT_LOG_DIR" value="/home/inrevo/logs/example/"/>
+    <property name="PROJECT_LOG_DIR" value="/tmp/javaLearning/"/>
     <!--## 日志最大的历史天数-->
     <property name="MAX_HISTORY" value="3"/>
     <!--## 项目log级别 -->
