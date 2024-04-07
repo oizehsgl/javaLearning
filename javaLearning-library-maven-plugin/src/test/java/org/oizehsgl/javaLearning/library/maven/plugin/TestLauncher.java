@@ -1,4 +1,4 @@
-package org.oizehsgl.javaLearning.library.mavenPlugin;
+package org.oizehsgl.javaLearning.library.maven.plugin;
 
 import java.util.Arrays;
 
