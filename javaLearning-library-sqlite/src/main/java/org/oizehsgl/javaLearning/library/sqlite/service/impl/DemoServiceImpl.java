@@ -1,7 +1,7 @@
 package org.oizehsgl.javaLearning.library.sqlite.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.oizehsgl.javaLearning.library.sqlite.Po.DemoPo;
+import org.oizehsgl.javaLearning.library.sqlite.entity.DemoEntity;
 import org.oizehsgl.javaLearning.library.sqlite.mapper.DemoMapper;
 import org.oizehsgl.javaLearning.library.sqlite.service.DemoService;
 import org.springframework.stereotype.Service;
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Service;
  * @author yueyuanzhi
  */
 @Service
-public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoPo> implements DemoService {
+public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoEntity> implements DemoService {
 }

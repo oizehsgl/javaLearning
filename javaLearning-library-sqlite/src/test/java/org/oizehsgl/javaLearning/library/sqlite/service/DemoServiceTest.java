@@ -1,12 +1,10 @@
 package org.oizehsgl.javaLearning.library.sqlite.service;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
-import org.oizehsgl.javaLearning.library.sqlite.Po.DemoPo;
+import org.oizehsgl.javaLearning.library.sqlite.entity.DemoEntity;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author yueyuanzhi
@@ -18,9 +16,9 @@ class DemoServiceTest {
 
     @Test
     public void test() {
-        DemoPo demoPo = DemoPo.builder().name("testName").build();
-        demoService.save(demoPo);
-        List<DemoPo> demoPoList = demoService.list();
-        System.out.println(demoPoList);
+        DemoEntity demoEntity = DemoEntity.builder().name("testName").build();
+        demoService.save(demoEntity);
+        List<DemoEntity> demoEntityList = demoService.list();
+        System.out.println(demoEntityList);
     }
 }

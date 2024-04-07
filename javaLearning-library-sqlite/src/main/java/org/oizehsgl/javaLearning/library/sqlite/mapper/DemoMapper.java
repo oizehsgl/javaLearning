@@ -2,8 +2,7 @@ package org.oizehsgl.javaLearning.library.sqlite.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.oizehsgl.javaLearning.library.sqlite.Po.DemoPo;
-import org.springframework.stereotype.Repository;
+import org.oizehsgl.javaLearning.library.sqlite.entity.DemoEntity;
 
 /**
  * 示例mapper
@@ -11,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @author yueyuanzhi
  */
 @Mapper
-public interface DemoMapper extends BaseMapper<DemoPo> {
+public interface DemoMapper extends BaseMapper<DemoEntity> {
 }
