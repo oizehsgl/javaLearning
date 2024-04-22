@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.oizehsgl.javaLearning</groupId>
-    <artifactId>javaLearning-library-guava</artifactId>
+    <artifactId>javaLearning-library-javax-script</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>javaLearning-library-guava</name>
-    <description>javaLearning-library-guava</description>
+    <name>javaLearning-library-javax-script</name>
+    <description>javaLearning-library-javax-script</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -42,14 +42,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>33.1.0-jre</version>
-        </dependency>
-
     </dependencies>
 
     <build>
