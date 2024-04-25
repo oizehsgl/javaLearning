@@ -1,21 +1,46 @@
 package org.oizehsgl.javaLearning.library.mirai.consumer;
 
-import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 import net.mamoe.mirai.message.data.*;
+import net.mamoe.mirai.utils.ExternalResource;
+import org.oizehsgl.javaLearning.library.mirai.property.ProjectProperties;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
  * @author yueyuanzhi
  */
-@Builder
-public class EncyclopediaConsumer implements Consumer<GroupMessageEvent> {
+//@Component
+@Getter
+@RequiredArgsConstructor
+public class EncyclopediaConsumer extends ProjectConsumer {
+    @Setter
+    private Boolean switchOn;
+    private final ProjectProperties projectProperties;
+    private final Map<String, Consumer<GroupMessageEvent>> consumerMap = new HashMap<>() {{
+        consumerMap.put("项目管理 帮助", groupMessageEvent -> {
+            MessageChainBuilder messageChainBuilder = new MessageChainBuilder();
+            for (String s : consumerMap.keySet()) {
+                messageChainBuilder.append(s);
+            }
+            groupMessageEvent.getSubject().sendMessage(messageChainBuilder.build());
+        });
+    }};
 
     @Override
     public void accept(GroupMessageEvent groupMessageEvent) {
-        if (groupMessageEvent.getGroup().getId() == 634466080L &&
-                groupMessageEvent.getSender().getId() == 3423501402L) {
+        // 获取事件发生的群号
+        Long groupId = groupMessageEvent.getGroup().getId();
+        if (Objects.equals(projectProperties.getGroupId(), groupId)) {
+            // 获取事件发送者qq号
+            Long senderId = groupMessageEvent.getSender().getId();
             // 收到的消息
             MessageChain messageChain = groupMessageEvent.getMessage();
             MessageContent at = messageChain.get(At.Key);
@@ -25,17 +50,17 @@ public class EncyclopediaConsumer implements Consumer<GroupMessageEvent> {
             System.out.println(firstSingleMessage);
             System.out.println(firstSingleMessage.equals(new At(1874637099)));
             System.out.println(firstSingleMessage.contentToString());
-            for (SingleMessage singleMessage : groupMessageEvent.getMessage()) {
 
-            }
+            //ExternalResource.uploadAsImage(ExternalResource.create(new File("/tmp/test.png")));
+            Image image = groupMessageEvent.getGroup().uploadImage(ExternalResource.create(new File("/tmp/test.png")));
             groupMessageEvent.getSubject().sendMessage(new MessageChainBuilder()
                     .append(new QuoteReply(groupMessageEvent.getMessage()))
                     .append(new PlainText("Hi, you just said:---- '"))
                     .append(groupMessageEvent.getMessage())
                     .append(new PlainText("'"))
                     .append(Image.fromId("{f8f1ab55-bf8e-4236-b55e-955848d7069f}.png"))
-                    .build()
-            );
+                    .append(image)
+                    .build());
         }
     }
 }
