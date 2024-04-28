@@ -19,9 +19,12 @@ public class BotConfig {
     @Bean("qrCodeBot")
     public Bot bot() {
         Bot bot = BotFactory.INSTANCE.newBot(1874637099, BotAuthorization.byQRCode());
+        //Bot bot = BotFactory.INSTANCE.newBot(1874637099, BotAuthorization.byPassword("O_2wmj7ddnxk"));
+        //Bot bot1 =MockBotFactory.newMockBotBuilder();
         BotConfiguration botConfiguration = bot.getConfiguration();
         // 切换登录协议
         botConfiguration.setProtocol(BotConfiguration.MiraiProtocol.ANDROID_WATCH);
+        //botConfiguration.setProtocol(BotConfiguration.MiraiProtocol.ANDROID_PHONE);
         //// 切换心跳策略
         //botConfiguration.setHeartbeatStrategy(BotConfiguration.HeartbeatStrategy.REGISTER);
         //// 验证码登录处理器

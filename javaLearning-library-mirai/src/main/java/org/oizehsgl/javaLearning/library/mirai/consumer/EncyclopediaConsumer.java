@@ -1,66 +1,79 @@
 package org.oizehsgl.javaLearning.library.mirai.consumer;
 
+import jakarta.annotation.Resource;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
-import net.mamoe.mirai.message.data.*;
-import net.mamoe.mirai.utils.ExternalResource;
+import org.oizehsgl.javaLearning.library.mirai.model.QuestionAnswerBo;
 import org.oizehsgl.javaLearning.library.mirai.property.ProjectProperties;
+import org.springframework.stereotype.Component;
 
-import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
  * @author yueyuanzhi
  */
-//@Component
 @Getter
-@RequiredArgsConstructor
+@Setter
+@Component
 public class EncyclopediaConsumer extends ProjectConsumer {
-    @Setter
-    private Boolean switchOn;
-    private final ProjectProperties projectProperties;
-    private final Map<String, Consumer<GroupMessageEvent>> consumerMap = new HashMap<>() {{
-        consumerMap.put("项目管理 帮助", groupMessageEvent -> {
-            MessageChainBuilder messageChainBuilder = new MessageChainBuilder();
-            for (String s : consumerMap.keySet()) {
-                messageChainBuilder.append(s);
-            }
-            groupMessageEvent.getSubject().sendMessage(messageChainBuilder.build());
-        });
-    }};
+    @Resource
+    private ProjectProperties projectProperties;
+    // 必需属性
+    private Boolean projectConsumerSwitch;
+    private final Map<String, Consumer<GroupMessageEvent>> consumerMap = new HashMap<>();
+    // 项目属性
+    private Boolean start;
+    private final List<QuestionAnswerBo> questionAnswerBoList = new ArrayList<>();
+    private Integer index;
 
     @Override
-    public void accept(GroupMessageEvent groupMessageEvent) {
-        // 获取事件发生的群号
-        Long groupId = groupMessageEvent.getGroup().getId();
-        if (Objects.equals(projectProperties.getGroupId(), groupId)) {
-            // 获取事件发送者qq号
-            Long senderId = groupMessageEvent.getSender().getId();
-            // 收到的消息
-            MessageChain messageChain = groupMessageEvent.getMessage();
-            MessageContent at = messageChain.get(At.Key);
-            System.out.println(at.contentToString());
-            QuoteReply quoteReply = messageChain.get(QuoteReply.Key);
-            SingleMessage firstSingleMessage = messageChain.get(1);
-            System.out.println(firstSingleMessage);
-            System.out.println(firstSingleMessage.equals(new At(1874637099)));
-            System.out.println(firstSingleMessage.contentToString());
+    public void init() {
+        consumerMap.put("开始", getStartConsumer());
+        consumerMap.put("下一题", getNextConsumer());
+        consumerMap.put("修正", getCorrectCOnsumer());
+        consumerMap.put("排名", getRankConsumer());
+    }
 
-            //ExternalResource.uploadAsImage(ExternalResource.create(new File("/tmp/test.png")));
-            Image image = groupMessageEvent.getGroup().uploadImage(ExternalResource.create(new File("/tmp/test.png")));
-            groupMessageEvent.getSubject().sendMessage(new MessageChainBuilder()
-                    .append(new QuoteReply(groupMessageEvent.getMessage()))
-                    .append(new PlainText("Hi, you just said:---- '"))
-                    .append(groupMessageEvent.getMessage())
-                    .append(new PlainText("'"))
-                    .append(Image.fromId("{f8f1ab55-bf8e-4236-b55e-955848d7069f}.png"))
-                    .append(image)
-                    .build());
-        }
+    public void initQuestionAnswerList() {
+        questionAnswerBoList.add(QuestionAnswerBo.builder()
+                .filePathList(new ArrayList<>() {{
+                    add("");
+                }})
+                .answerScoreMap(new HashMap<>() {{
+                    put("a", 1);
+                    put("b", 2);
+                }})
+                .build());
+    }
+
+    private Consumer<GroupMessageEvent> getStartConsumer() {
+        // 初始化索引
+        index=0;
+        return GroupMessageEvent -> {
+        };
+    }
+
+    private Consumer<GroupMessageEvent> getNextConsumer() {
+        return GroupMessageEvent -> {
+        };
+    }
+
+    private Consumer<GroupMessageEvent> getCorrectCOnsumer() {
+        return GroupMessageEvent -> {
+        };
+    }
+
+    private Consumer<GroupMessageEvent> getRankConsumer() {
+        return GroupMessageEvent -> {
+        };
+    }
+
+    private QuestionAnswerBo loadQuestionAnswerBo(){
+        return null;
     }
 }

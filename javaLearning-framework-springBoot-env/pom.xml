@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.oizehsgl.javaLearning</groupId>
-    <artifactId>javaLearning-library-mirai</artifactId>
+    <artifactId>javaLearning-framework-springBoot-env</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>javaLearning-library-mirai</name>
-    <description>javaLearning-library-mirai</description>
+    <name>javaLearning-framework-springBoot-env</name>
+    <description>javaLearning-framework-springBoot-env</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -42,43 +42,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.mamoe/mirai-core-jvm -->
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
         <dependency>
-            <groupId>net.mamoe</groupId>
-            <artifactId>mirai-core-jvm</artifactId>
-            <version>2.16.0</version>
-            <!-- <version>2.5.0</version> -->
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.45.2.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.6</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/net.mamoe/mirai-console -->
-        <dependency>
-            <groupId>net.mamoe</groupId>
-            <artifactId>mirai-console</artifactId>
-            <version>2.16.0</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.mamoe/mirai-console-terminal -->
-        <dependency>
-            <groupId>net.mamoe</groupId>
-            <artifactId>mirai-console-terminal</artifactId>
-            <version>2.16.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.2.5</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.14.0</version>
-        </dependency>
     </dependencies>
 
     <build>

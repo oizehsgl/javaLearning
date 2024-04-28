@@ -8,7 +8,6 @@ import org.oizehsgl.javaLearning.library.mirai.consumer.ProjectManagerConsumer;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 import java.util.function.Function;
 
 /**
@@ -31,10 +30,10 @@ public enum ProjectEnum {
         return StringUtils.uncapitalize(beanClass.getSimpleName());
     }
 
-    public static <R> ProjectEnum getEnum(Function<ProjectEnum, R> function, R r) {
+    public static <R> ProjectEnum getEnumByFun(Function<ProjectEnum, R> function, R r) {
         return Arrays.stream(ProjectEnum.values())
                 .filter(p -> function.apply(p).equals(r))
                 .findFirst()
-                .orElseThrow(NoSuchElementException::new);
+                .orElse(null);
     }
 }
