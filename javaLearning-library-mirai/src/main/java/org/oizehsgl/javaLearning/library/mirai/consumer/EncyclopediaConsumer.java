@@ -3,20 +3,26 @@ package org.oizehsgl.javaLearning.library.mirai.consumer;
 import jakarta.annotation.Resource;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import net.mamoe.mirai.contact.Member;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
+import net.mamoe.mirai.message.data.At;
+import net.mamoe.mirai.message.data.MessageChainBuilder;
+import net.mamoe.mirai.message.data.PlainText;
+import org.oizehsgl.javaLearning.library.mirai.constant.ProjectConstant;
 import org.oizehsgl.javaLearning.library.mirai.model.QuestionAnswerBo;
 import org.oizehsgl.javaLearning.library.mirai.property.ProjectProperties;
+import org.oizehsgl.javaLearning.library.mirai.util.ProjectUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
  * @author yueyuanzhi
  */
+@Slf4j
 @Getter
 @Setter
 @Component
@@ -30,38 +36,59 @@ public class EncyclopediaConsumer extends ProjectConsumer {
     private Boolean start;
     private final List<QuestionAnswerBo> questionAnswerBoList = new ArrayList<>();
     private Integer index;
+    private String projectDir = "/home/oizehsgl/Downloads/test/";
+
+    private Map<Member, Integer> rankMap = new HashMap<>();
+
 
     @Override
     public void init() {
         consumerMap.put("开始", getStartConsumer());
-        consumerMap.put("下一题", getNextConsumer());
+        consumerMap.put("出题", getNextConsumer());
         consumerMap.put("修正", getCorrectCOnsumer());
         consumerMap.put("排名", getRankConsumer());
     }
 
-    public void initQuestionAnswerList() {
-        questionAnswerBoList.add(QuestionAnswerBo.builder()
-                .filePathList(new ArrayList<>() {{
-                    add("");
-                }})
-                .answerScoreMap(new HashMap<>() {{
-                    put("a", 1);
-                    put("b", 2);
-                }})
-                .build());
-    }
-
     private Consumer<GroupMessageEvent> getStartConsumer() {
         // 初始化索引
-        index=0;
+        index = 0;
         return GroupMessageEvent -> {
+
         };
     }
 
     private Consumer<GroupMessageEvent> getNextConsumer() {
-        return GroupMessageEvent -> {
+      log.info("出题开始");
+        return groupMessageEventTmp -> {
+            log.info("出题开始,执行函数");
+            index++;
+
+            QuestionAnswerBo questionAnswerBo = null;
+            try {
+                questionAnswerBo = QuestionAnswerBo.builder().build().load(projectDir + index);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            QuestionAnswerBo finalQuestionAnswerBo = questionAnswerBo;
+
+            groupMessageEventTmp.getSubject().sendMessage(new MessageChainBuilder()
+                    .append(ProjectUtils.buildMessage(groupMessageEventTmp.getGroup(), questionAnswerBo.getFilePathList().get(0)))
+                    .build());
+
+            Consumer<GroupMessageEvent> groupMessageEventConsumer = groupMessageEvent -> {
+                String s = groupMessageEvent.getMessage().get(2).contentToString().trim();
+                Map<String, Integer> answerScoreMap = finalQuestionAnswerBo.getAnswerScoreMap();
+                if (answerScoreMap.containsKey(s)) {
+                    Member member = groupMessageEvent.getSender();
+                    Integer score = rankMap.getOrDefault(member, 0);
+                    score = score + answerScoreMap.get(s);
+                    rankMap.put(member, score);
+                }
+            };
+            setDefaultConsumer(groupMessageEventConsumer);
         };
     }
+
 
     private Consumer<GroupMessageEvent> getCorrectCOnsumer() {
         return GroupMessageEvent -> {
@@ -70,10 +97,25 @@ public class EncyclopediaConsumer extends ProjectConsumer {
 
     private Consumer<GroupMessageEvent> getRankConsumer() {
         return GroupMessageEvent -> {
+            MessageChainBuilder messageChainBuilder = new MessageChainBuilder();
+            for (Map.Entry<Member, Integer> entry : rankMap.entrySet()) {
+                messageChainBuilder.append(new At(entry.getKey().getId()))
+                        .append("   ")
+                        .append(new PlainText(Optional.ofNullable(entry.getValue()).map(String::valueOf).orElse("0")))
+                        .append(ProjectConstant.LINE_SEPARATOR);
+            }
+            GroupMessageEvent.getSubject().sendMessage(messageChainBuilder.build());
         };
     }
 
-    private QuestionAnswerBo loadQuestionAnswerBo(){
+    private QuestionAnswerBo loadQuestionAnswerBo() {
         return null;
+    }
+
+
+    public Consumer<GroupMessageEvent> getConsumer(int index) {
+
+        return null;
+
     }
 }

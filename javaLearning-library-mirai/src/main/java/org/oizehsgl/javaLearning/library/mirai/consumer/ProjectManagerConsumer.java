@@ -51,9 +51,10 @@ public class ProjectManagerConsumer extends ProjectConsumer {
                     .map(StringUtils::uncapitalize)
                     .map(s -> ProjectEnum.getEnumByFun(ProjectEnum::getBeanName, s))
                     .forEach(pe -> messageChainBuilder.append(pe.getName())
-                            .append("-已")
+                            .append("-")
                             .append(projectService.onOrOff(pe) ? "启动" : "关闭")
-                            .append(""));
+                            .append("中")
+                            .append(ProjectConstant.LINE_SEPARATOR));
             groupMessageEvent.getSubject().sendMessage(messageChainBuilder.build());
         };
     }
