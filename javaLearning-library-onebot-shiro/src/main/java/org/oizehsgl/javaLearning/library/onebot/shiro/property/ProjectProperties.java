@@ -1,4 +1,4 @@
-package org.oizehsgl.javaLearning.library.mirai.property;
+package org.oizehsgl.javaLearning.library.onebot.shiro.property;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

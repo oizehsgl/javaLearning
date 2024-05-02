@@ -43,7 +43,7 @@ public class ProjectService {
 
         }
         // 启动项目管理
-        this.on(ProjectEnum.PROJECT_MANAGEMENT);
+        //this.on(ProjectEnum.PROJECT_MANAGEMENT);
     }
 
     public void on(ProjectEnum projectEnum) {

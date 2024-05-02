@@ -1,9 +1,11 @@
 package org.oizehsgl.javaLearning.library.mirai.config;
 
+import jakarta.annotation.Resource;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
 import net.mamoe.mirai.auth.BotAuthorization;
 import net.mamoe.mirai.utils.BotConfiguration;
+import org.oizehsgl.javaLearning.library.mirai.property.ProjectProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,9 +18,12 @@ import java.io.File;
  */
 @Configuration
 public class BotConfig {
+    @Resource
+    private ProjectProperties projectProperties;
+
     @Bean("qrCodeBot")
     public Bot bot() {
-        Bot bot = BotFactory.INSTANCE.newBot(1874637099, BotAuthorization.byQRCode());
+        Bot bot = BotFactory.INSTANCE.newBot(projectProperties.getRobotId(), BotAuthorization.byQRCode());
         //Bot bot = BotFactory.INSTANCE.newBot(1874637099, BotAuthorization.byPassword("O_2wmj7ddnxk"));
         //Bot bot1 =MockBotFactory.newMockBotBuilder();
         BotConfiguration botConfiguration = bot.getConfiguration();
