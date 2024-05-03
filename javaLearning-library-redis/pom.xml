@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.oizehsgl.javaLearning</groupId>
-    <artifactId>javaLearning-framework-springBoot-statemachine</artifactId>
+    <artifactId>javaLearning-library-redis</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>javaLearning-framework-springBoot-statemachine</name>
-    <description>javaLearning-framework-springBoot-statemachine</description>
+    <name>javaLearning-library-redis</name>
+    <description>javaLearning-library-redis</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -41,20 +41,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-starter -->
-        <dependency>
-            <groupId>org.springframework.statemachine</groupId>
-            <artifactId>spring-statemachine-starter</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-data-redis -->
-        <dependency>
-            <groupId>org.springframework.statemachine</groupId>
-            <artifactId>spring-statemachine-data-redis</artifactId>
-            <version>4.0.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
