@@ -10,11 +10,16 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public enum OrderState {
-    WAIT_PAYMENT(1, "待支付"),
-    WAIT_DELIVER(2, "待发货"),
-    WAIT_RECEIVE(3, "待收货"),
-    FINISH(4, "已完成"),
+public enum DemoState {
+    S1(1, "一"),
+    S2(2, "二"),
+    S3(3, "三"),
+    S4(4, "四"),
+    S5(5, "五"),
+    S6(6, "六"),
+    S7(7, "七"),
+    S8(8, "八"),
+    S9(9, "九"),
     ;
     private final Integer code;
     private final String desc;

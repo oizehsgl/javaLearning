@@ -11,7 +11,7 @@ import org.springframework.statemachine.annotation.WithStateMachine;
  */
 @Slf4j
 @WithStateMachine
-public class OrderStateMachineListenerConfig {
+public class DemoStateMachineListenerConfig {
     @OnTransition(target = "")
     public void create() {
         log.info("订单创建，待支付");
