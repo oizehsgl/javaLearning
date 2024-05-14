@@ -1,7 +1,9 @@
 package org.oizehsgl.javaLearning.framework.springBoot.statemachine.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.statemachine.annotation.OnTransition;
+import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoState;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.statemachine.annotation.OnTransitionEnd;
 import org.springframework.statemachine.annotation.WithStateMachine;
 
 /**
@@ -11,9 +13,11 @@ import org.springframework.statemachine.annotation.WithStateMachine;
  */
 @Slf4j
 @WithStateMachine
-public class DemoStateMachineListenerConfig {
-    @OnTransition(target = "")
+@Configuration
+public class DemoStateMachineListenerConfig  {
+    @OnTransitionEnd()
     public void create() {
+        DemoState.S1.name();
         log.info("订单创建，待支付");
     }
 }

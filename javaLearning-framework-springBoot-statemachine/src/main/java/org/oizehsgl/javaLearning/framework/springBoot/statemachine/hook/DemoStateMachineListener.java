@@ -19,7 +19,16 @@ import java.util.Optional;
 public class DemoStateMachineListener extends StateMachineListenerAdapter<DemoState, DemoEvent> {
     @Override
     public void stateChanged(State<DemoState, DemoEvent> from, State<DemoState, DemoEvent> to) {
-        log.info("状态机监听(状态变更)[from<{}>,to<{}>]", Optional.ofNullable(from).map(State::getId).orElse(null),
+        Optional<State<DemoState, DemoEvent>> fromOptional = Optional.ofNullable(from);
+        Optional<State<DemoState, DemoEvent>> toOptional = Optional.ofNullable(to);
+        DemoState fromState = fromOptional.map(State::getId).orElse(null);
+        DemoState toState = toOptional.map(State::getId).orElse(null);
+
+
+        if (fromState == DemoState.S1 && toState == DemoState.S2) {
+            log.info("oaeioaei");
+        }
+        log.info("状态机事件监听-状态变更[from<{}>,to<{}>]", Optional.ofNullable(from).map(State::getId).orElse(null),
                 Optional.ofNullable(to).map(State::getId).orElse(null));
     }
 }

@@ -18,6 +18,6 @@ public class DemoStateMachineErrorAction implements Action<DemoState, DemoEvent>
     @Override
     public void execute(StateContext<DemoState, DemoEvent> context) {
         Exception e = context.getException();
-        log.error("状态机动作执行(异常)[source<{}>,target<{}>]", context.getSource().getId(), context.getTarget().getId(),e);
+        log.error("状态机动作异常触发[source<{}>,target<{}>]", context.getSource().getId(), context.getTarget().getId(),e);
     }
 }

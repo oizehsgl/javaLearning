@@ -7,6 +7,7 @@ import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoEve
 import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoState;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineFactory;
 
@@ -16,7 +17,7 @@ import org.springframework.statemachine.config.StateMachineFactory;
 @SpringBootTest
 class InMemoryDemoStateMachinePersistTest {
     @Resource
-    @Qualifier(DemoStateMachineFactoryConfig.STATE_MACHINE_FACTORY)
+    @Qualifier(DemoStateMachineFactoryConfig.LABEL)
     private StateMachineFactory<DemoState, DemoEvent> stateMachineFactory;
 
     @Test
@@ -27,6 +28,13 @@ class InMemoryDemoStateMachinePersistTest {
         stateMachine.sendEvent(DemoEvent.E1);
         System.out.println(stateMachine.getState().getId());
         stateMachine.sendEvent(DemoEvent.E2);
+        System.out.println(stateMachine.getState().getId());
+        stateMachine.sendEvent(DemoEvent.E3);
+        System.out.println(stateMachine.getState().getId());
+        stateMachine.sendEvent(MessageBuilder
+                .withPayload(DemoEvent.E4)
+                .setHeader(Object.class.getSimpleName(), new Object())
+                .build());
         System.out.println(stateMachine.getState().getId());
         stateMachine.stop();
         System.out.println(stateMachine.getState().getId());
