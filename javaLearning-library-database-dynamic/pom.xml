@@ -52,6 +52,7 @@
         <!--     <version>4.3.0</version> -->
         <!-- </dependency> -->
 
+        <!-- springboot3 -->
         <!-- https://mvnrepository.com/artifact/com.baomidou/dynamic-datasource-spring-boot3-starter -->
         <dependency>
             <groupId>com.baomidou</groupId>
