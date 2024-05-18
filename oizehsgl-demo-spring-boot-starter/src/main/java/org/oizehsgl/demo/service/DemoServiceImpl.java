@@ -8,10 +8,6 @@ import org.springframework.stereotype.Service;
 /**
  * @author oizehsgl
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Service
 public class DemoServiceImpl implements DemoService {
     @Resource
@@ -19,6 +15,6 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public void demo() {
-        System.out.println(demoProperties.getCode());
+        System.out.println(demoProperties);
     }
 }
