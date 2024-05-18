@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 测试启动类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class TestLauncher {
     public static void main(String[] args) {

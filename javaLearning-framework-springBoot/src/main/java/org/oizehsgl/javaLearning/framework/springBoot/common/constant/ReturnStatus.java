@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 返回状态
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Getter
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ public enum ReturnStatus {
     /**
      * 返回系列
      *
-     * @author yueyuanzhi
+     * @author oizehsgl
      */
     @RequiredArgsConstructor
     public enum Series {

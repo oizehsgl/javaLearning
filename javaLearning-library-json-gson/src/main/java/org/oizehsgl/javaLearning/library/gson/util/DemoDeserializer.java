@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 示例反序列化解析器
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

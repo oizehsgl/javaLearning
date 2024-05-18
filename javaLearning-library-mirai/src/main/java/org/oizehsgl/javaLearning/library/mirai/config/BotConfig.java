@@ -14,7 +14,7 @@ import java.io.File;
 /**
  * 示例机器人
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Configuration
 public class BotConfig {

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 密码切换机猜测对象
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

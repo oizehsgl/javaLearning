@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * openapi配置类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Configuration
 public class OpenapiConfig {

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * 示例调度
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Component

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 项目属性
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Component

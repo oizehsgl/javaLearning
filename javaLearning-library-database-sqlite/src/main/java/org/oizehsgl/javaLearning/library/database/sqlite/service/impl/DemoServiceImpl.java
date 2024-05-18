@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * 示例service实现
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Service
 public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoEntity> implements DemoService {

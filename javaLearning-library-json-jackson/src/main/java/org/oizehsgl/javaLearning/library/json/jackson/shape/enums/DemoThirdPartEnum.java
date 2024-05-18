@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 示例第三方枚举
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Getter
 @RequiredArgsConstructor

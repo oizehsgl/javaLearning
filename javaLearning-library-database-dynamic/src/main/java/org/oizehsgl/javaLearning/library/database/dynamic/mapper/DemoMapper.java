@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.oizehsgl.javaLearning.library.database.dynamic.entity.DemoEntity;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Mapper
 public interface DemoMapper extends BaseMapper<DemoEntity> {

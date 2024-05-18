@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 /**
  * book 存储层
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Repository
 public interface BookRepository {

@@ -20,7 +20,7 @@ import java.util.Objects;
 /**
  * 示例枚举反序列化
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 //@Component
 //public class EnumDeserializer extends JsonDeserializer<DemoThirdPartEnum> {

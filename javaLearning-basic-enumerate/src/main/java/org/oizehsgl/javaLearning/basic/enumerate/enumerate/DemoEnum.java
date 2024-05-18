@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * 示例枚举
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Getter
 @RequiredArgsConstructor

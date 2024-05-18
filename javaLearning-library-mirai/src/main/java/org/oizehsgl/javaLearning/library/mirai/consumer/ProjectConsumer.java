@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 /**
  * 项目消费者接口
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public abstract class ProjectConsumer implements Consumer<GroupMessageEvent> {
     public abstract ProjectProperties getProjectProperties();

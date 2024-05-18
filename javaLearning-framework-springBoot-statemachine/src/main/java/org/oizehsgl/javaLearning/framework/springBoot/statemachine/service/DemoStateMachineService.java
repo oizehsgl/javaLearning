@@ -9,7 +9,7 @@ import org.springframework.statemachine.service.DefaultStateMachineService;
 import org.springframework.stereotype.Component;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class DemoStateMachineService extends DefaultStateMachineService<DemoState, DemoEvent> {

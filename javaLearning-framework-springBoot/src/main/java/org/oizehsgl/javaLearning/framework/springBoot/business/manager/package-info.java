@@ -7,6 +7,6 @@
  * 与dao层统一交互,多个dao层的组合复用
  * 异常: 抛出到service层,如没有service应记录详细日志
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 package org.oizehsgl.javaLearning.framework.springBoot.business.manager;

@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 import java.util.EnumSet;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @SpringBootTest
 class DemoEnumTest {

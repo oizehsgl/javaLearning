@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 /**
  * 示例po
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

@@ -18,7 +18,7 @@ import java.util.function.Function;
 /**
  * 群消息工具类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class ProjectUtils {
     public static String getParam(GroupMessageEvent groupMessageEvent) {

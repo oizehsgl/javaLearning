@@ -5,6 +5,6 @@
  * 当子域嵌套过多时考虑重构到多模块或微服务
  * 当抽象出业务无关子域时考虑重构到二方库
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 package org.oizehsgl.javaLearning.framework.springBoot.module;

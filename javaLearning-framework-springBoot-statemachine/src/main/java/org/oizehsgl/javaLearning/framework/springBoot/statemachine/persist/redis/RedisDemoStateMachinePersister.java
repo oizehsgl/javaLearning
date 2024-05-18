@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Redis-状态机持久化接口
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class RedisDemoStateMachinePersister extends RedisStateMachinePersister<DemoState, DemoEvent> {

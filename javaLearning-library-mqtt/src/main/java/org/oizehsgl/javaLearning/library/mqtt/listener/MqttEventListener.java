@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * mqtt事件监听
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Component

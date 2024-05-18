@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 /**
  * 示例通用逻辑层
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 public class DemoManager {

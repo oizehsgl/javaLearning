@@ -12,7 +12,7 @@ import org.oizehsgl.javaLearning.library.json.jackson.shape.enums.DemoThirdPartE
 /**
  * 示例vo
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

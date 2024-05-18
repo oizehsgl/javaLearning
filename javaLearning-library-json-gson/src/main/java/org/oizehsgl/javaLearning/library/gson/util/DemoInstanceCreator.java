@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 /**
  * 示例实例创建器
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class DemoInstanceCreator implements InstanceCreator<DemoNoNoArgsConstructorDto> {
     @Override

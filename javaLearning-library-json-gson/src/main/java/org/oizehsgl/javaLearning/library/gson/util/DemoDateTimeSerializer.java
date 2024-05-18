@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * 日期时间序列化
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Data

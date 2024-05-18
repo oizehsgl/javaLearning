@@ -7,7 +7,7 @@ import org.springframework.statemachine.data.redis.RedisStateMachineRepository;
 import org.springframework.stereotype.Component;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class RedisDemoStateMachineRuntimePersister extends RedisPersistingStateMachineInterceptor<DemoState, DemoEvent, String> {

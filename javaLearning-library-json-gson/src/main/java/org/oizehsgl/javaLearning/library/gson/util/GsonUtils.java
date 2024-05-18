@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 /**
  * gson工具类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public final class GsonUtils {

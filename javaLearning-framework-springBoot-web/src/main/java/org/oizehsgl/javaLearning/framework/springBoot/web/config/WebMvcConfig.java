@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * 网页模型视图配置
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 订单事件
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Getter
 @RequiredArgsConstructor

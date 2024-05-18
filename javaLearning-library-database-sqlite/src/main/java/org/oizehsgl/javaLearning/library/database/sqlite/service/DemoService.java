@@ -6,7 +6,7 @@ import org.oizehsgl.javaLearning.library.database.sqlite.entity.DemoEntity;
 /**
  * 示例service
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public interface DemoService extends IService<DemoEntity> {
 }

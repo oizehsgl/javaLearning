@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * mqtt消费者处理器
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Component

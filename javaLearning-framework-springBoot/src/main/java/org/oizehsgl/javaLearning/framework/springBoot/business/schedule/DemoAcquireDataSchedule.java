@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * demo定时任务
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class DemoAcquireDataSchedule {

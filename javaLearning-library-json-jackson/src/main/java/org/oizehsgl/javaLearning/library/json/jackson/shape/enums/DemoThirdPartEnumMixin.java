@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * 示例第三方枚举混入类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 
 @JsonMixin(DemoThirdPartEnum.class)

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * swagger配置
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Component

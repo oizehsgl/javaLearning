@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 示例vo
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

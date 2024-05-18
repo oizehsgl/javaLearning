@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * 示例枚举
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Getter
 @RequiredArgsConstructor

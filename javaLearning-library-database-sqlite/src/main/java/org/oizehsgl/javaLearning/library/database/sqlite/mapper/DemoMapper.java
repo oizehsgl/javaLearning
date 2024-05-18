@@ -7,7 +7,7 @@ import org.oizehsgl.javaLearning.library.database.sqlite.entity.DemoEntity;
 /**
  * 示例mapper
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Mapper
 public interface DemoMapper extends BaseMapper<DemoEntity> {

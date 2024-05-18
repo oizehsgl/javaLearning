@@ -9,7 +9,7 @@ import org.oizehsgl.javaLearning.framework.springBoot.common.constant.ReturnStat
 /**
  * 返回结果
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  * @date 2024/01/12
  */
 @Data

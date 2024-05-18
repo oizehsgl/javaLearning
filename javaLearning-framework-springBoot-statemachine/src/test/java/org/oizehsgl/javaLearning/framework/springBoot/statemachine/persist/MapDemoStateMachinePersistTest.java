@@ -15,7 +15,7 @@ import org.springframework.statemachine.config.StateMachineFactory;
 import reactor.core.publisher.Mono;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @SpringBootTest
 class MapDemoStateMachinePersistTest {

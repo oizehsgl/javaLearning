@@ -9,7 +9,7 @@ import java.io.Serial;
 /**
  * 业务异常
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Builder
 @NoArgsConstructor

@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Map-状态机持久化接口类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Data

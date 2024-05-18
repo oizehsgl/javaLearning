@@ -17,7 +17,7 @@ import java.net.URI;
 /**
  * 重定向 控制层
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Controller
 public class RedirectController {

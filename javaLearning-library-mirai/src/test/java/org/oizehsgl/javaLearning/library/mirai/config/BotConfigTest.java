@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.File;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @SpringBootTest
 class BotConfigTest {

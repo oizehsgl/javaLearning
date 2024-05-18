@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * Map-状态机持久化实现
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class MapDemoStateMachinePersister extends AbstractStateMachinePersister<DemoState, DemoEvent,String> {

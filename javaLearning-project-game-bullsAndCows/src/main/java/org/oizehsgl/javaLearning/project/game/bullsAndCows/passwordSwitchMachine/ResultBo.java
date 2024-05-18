@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 密码切换机结果业务对象
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

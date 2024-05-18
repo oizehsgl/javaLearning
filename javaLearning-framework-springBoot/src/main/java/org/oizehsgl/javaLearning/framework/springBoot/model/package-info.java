@@ -8,6 +8,6 @@
  * qo: 查询对象,一般用于展示层传来的查询
  * vo: 视图对象,用于展示层
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 package org.oizehsgl.javaLearning.framework.springBoot.model;

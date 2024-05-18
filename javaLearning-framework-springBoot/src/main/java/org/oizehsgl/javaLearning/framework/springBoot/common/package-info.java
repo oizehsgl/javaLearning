@@ -12,7 +12,7 @@
  * property: 属性
  * util: 工具类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 package org.oizehsgl.javaLearning.framework.springBoot.common;
 

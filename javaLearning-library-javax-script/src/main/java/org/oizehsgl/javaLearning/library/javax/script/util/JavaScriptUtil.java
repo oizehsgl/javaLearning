@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * JavaScript工具类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 public class JavaScriptUtil {

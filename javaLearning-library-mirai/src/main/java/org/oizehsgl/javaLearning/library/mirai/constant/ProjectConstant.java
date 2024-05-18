@@ -3,7 +3,7 @@ package org.oizehsgl.javaLearning.library.mirai.constant;
 /**
  * 项目常量
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class ProjectConstant {
 

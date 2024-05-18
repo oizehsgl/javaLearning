@@ -11,7 +11,7 @@ import java.util.Collection;
 /**
  * book 控制层
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @RestController
 @RequestMapping("/api/book")

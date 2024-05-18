@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * mqtt网关
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 @MessagingGateway(defaultRequestChannel = MqttConstant.Channel.OUT)

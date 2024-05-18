@@ -3,7 +3,7 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.vo;
 /**
  * 示例vo
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class DemoVo {
 }

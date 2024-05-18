@@ -22,7 +22,7 @@ import java.util.UUID;
 /**
  * mqtt消费者配置类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Configuration

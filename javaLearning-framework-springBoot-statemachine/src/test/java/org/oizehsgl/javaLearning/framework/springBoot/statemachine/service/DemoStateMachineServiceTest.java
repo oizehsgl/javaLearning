@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.statemachine.StateMachine;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @SpringBootTest
 class DemoStateMachineServiceTest {

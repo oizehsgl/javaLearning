@@ -7,7 +7,7 @@ import org.springframework.statemachine.data.redis.RedisStateMachineContextRepos
 import org.springframework.stereotype.Component;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class RedisDemoStateMachineContextRepository extends RedisStateMachineContextRepository<DemoState, DemoEvent> {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 示例控制器
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Tag(name = "demo tag", description = "用于简单测试的API")
 @RestController

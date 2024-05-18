@@ -6,7 +6,7 @@ import org.oizehsgl.javaLearning.library.database.dynamic.mapper.DemoMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Service
 //@DS("master")

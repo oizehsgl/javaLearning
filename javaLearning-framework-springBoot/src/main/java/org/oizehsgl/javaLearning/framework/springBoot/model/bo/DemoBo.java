@@ -3,7 +3,7 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.bo;
 /**
  * 示例bo
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 //@Data
 //@Builder

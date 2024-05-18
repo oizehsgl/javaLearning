@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 /**
  * 示例dto
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Builder

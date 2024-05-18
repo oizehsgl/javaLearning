@@ -18,7 +18,7 @@ import java.util.UUID;
 /**
  * mqtt生产者配置类
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Configuration
 public class MqttProducerConfig {

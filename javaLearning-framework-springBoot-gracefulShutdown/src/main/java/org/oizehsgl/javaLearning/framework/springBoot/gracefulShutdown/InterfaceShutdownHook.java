@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 接口关机钩子
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class InterfaceShutdownHook implements DisposableBean {

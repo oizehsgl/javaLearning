@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 注解关机钩子
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Component
 public class AnnotationShutdownHook {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * mqtt消费者配置属性
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Data
 @Component

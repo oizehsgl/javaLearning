@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 /**
  * book
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class Book {
 

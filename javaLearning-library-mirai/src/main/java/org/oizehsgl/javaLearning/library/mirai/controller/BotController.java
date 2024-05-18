@@ -16,7 +16,7 @@ import java.util.Objects;
 /**
  * 机器人控制层
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @RestController
 @RequestMapping("/bot")

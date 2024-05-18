@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.oizehsgl.javaLearning.library.database.dynamic.entity.DemoEntity;
 
 /**
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public interface DemoService extends IService<DemoEntity> {
 }

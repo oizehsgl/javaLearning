@@ -12,7 +12,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 /**
  * 定时任务配置
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 @Slf4j
 @Configuration

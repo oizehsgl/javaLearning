@@ -6,7 +6,7 @@ import net.mamoe.mirai.Bot;
 /**
  * 登录
  *
- * @author yueyuanzhi
+ * @author oizehsgl
  */
 public class Login {
     @Resource
