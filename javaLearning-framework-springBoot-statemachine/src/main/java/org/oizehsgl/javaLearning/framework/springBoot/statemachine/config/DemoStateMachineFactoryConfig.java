@@ -8,6 +8,7 @@ import org.oizehsgl.javaLearning.framework.springBoot.statemachine.hook.DemoStat
 import org.oizehsgl.javaLearning.framework.springBoot.statemachine.hook.DemoStateMachineErrorAction;
 import org.oizehsgl.javaLearning.framework.springBoot.statemachine.hook.DemoStateMachineGuard;
 import org.oizehsgl.javaLearning.framework.springBoot.statemachine.hook.DemoStateMachineListener;
+import org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.redis.runtime.RedisDemoStateMachineRuntimePersister;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
@@ -36,6 +37,8 @@ public class DemoStateMachineFactoryConfig extends EnumStateMachineConfigurerAda
     private DemoStateMachineGuard demoStateMachineGuard;
     @Resource
     private DemoStateMachineErrorAction demoStateMachineErrorAction;
+    @Resource
+    private RedisDemoStateMachineRuntimePersister redisDemoStateMachineRuntimePersister;
 
     /**
      * 配置
@@ -52,9 +55,10 @@ public class DemoStateMachineFactoryConfig extends EnumStateMachineConfigurerAda
                 //.autoStartup(true)
                 // 监听器
                 .listener(demoStateMachineListener)
+                .and().withPersistence()
+                .runtimePersister(redisDemoStateMachineRuntimePersister);
         //.stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL)
         //.stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
-        ;
     }
 
     /**

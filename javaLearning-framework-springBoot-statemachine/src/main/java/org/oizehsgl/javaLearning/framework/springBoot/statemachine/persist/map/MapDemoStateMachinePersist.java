@@ -1,5 +1,7 @@
-package org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist;
+package org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.map;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoEvent;
 import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoState;
 import org.springframework.statemachine.StateMachineContext;
@@ -10,21 +12,27 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 内存状态机持久化
+ * Map-状态机持久化接口类
  *
  * @author yueyuanzhi
  */
-@Component
-public class InMemoryDemoStateMachinePersist implements StateMachinePersist<DemoState, DemoEvent, String> {
+@Slf4j
+@Data
+@Component(MapDemoStateMachinePersist.BEAN_NAME)
+public class MapDemoStateMachinePersist implements StateMachinePersist<DemoState, DemoEvent, String> {
+    public final static String BEAN_NAME = "mapDemoStateMachinePersist";
+
     private final Map<String, StateMachineContext<DemoState, DemoEvent>> contexts = new ConcurrentHashMap<>();
 
     @Override
     public void write(StateMachineContext<DemoState, DemoEvent> context, String contextObj) throws Exception {
+        log.info("状态机持久化(写入)[key<{}>]", contextObj);
         contexts.put(contextObj, context);
     }
 
     @Override
     public StateMachineContext<DemoState, DemoEvent> read(String contextObj) throws Exception {
+        log.info("状态机持久化(读取)[key<{}>]", contextObj);
         return contexts.get(contextObj);
     }
 }
