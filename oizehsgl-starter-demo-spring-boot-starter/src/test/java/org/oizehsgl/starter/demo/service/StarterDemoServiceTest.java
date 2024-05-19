@@ -1,28 +1,23 @@
-package org.oizehsgl.starter.test;
+package org.oizehsgl.starter.demo.service;
 
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.demo.service.DemoService;
-import org.oizehsgl.starter.demo.manager.StarterDemoManager;
-import org.oizehsgl.starter.demo.service.StarterDemoService;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * @author oizehsgl
  */
 @SpringBootTest
-public class DemoTest {
+class StarterDemoServiceTest {
     @Resource
     private StarterDemoService starterDemoService;
-    @Resource
-    private StarterDemoManager starterDemoManager;
     @Resource
     private DemoService demoService;
 
     @Test
-    void test(){
+    void demo() {
         demoService.demo();
         starterDemoService.demo();
-        starterDemoManager.demo();
     }
 }
