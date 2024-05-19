@@ -6,5 +6,5 @@ package org.oizehsgl.javaLearning.library.json.jackson.shape.enums;
  * @author oizehsgl
  */
 public interface IBaseEnum {
-    Object getId();
+  Object getId();
 }

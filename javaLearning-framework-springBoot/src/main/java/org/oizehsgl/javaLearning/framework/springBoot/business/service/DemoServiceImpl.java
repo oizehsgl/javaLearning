@@ -5,5 +5,4 @@ package org.oizehsgl.javaLearning.framework.springBoot.business.service;
  *
  * @author oizehsgl
  */
-public class DemoServiceImpl {
-}
+public class DemoServiceImpl {}

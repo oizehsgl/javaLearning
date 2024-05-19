@@ -9,10 +9,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(value = "ttt.xxx")
 public class RedisTestProperties {
-    /**
-     * 是一个测试的属性
-     */
-    private String testA="YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
-    private String testB="";
-    private String testC;
+  /** 是一个测试的属性 */
+  private String testA = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
+
+  private String testB = "";
+  private String testC;
 }

@@ -6,5 +6,5 @@ package org.oizehsgl.javaLearning.basic.enumerate.enumerate;
  * @author oizehsgl
  */
 public interface IDemoEnum {
-    String getTypeName();
+  String getTypeName();
 }

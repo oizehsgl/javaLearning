@@ -19,21 +19,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DemoDto {
-    @Expose(serialize = true, deserialize = false)
-    private String expose;
-    // 可以添加备选字段名(当多种情况同时出时,以最后一个出现的值为准)
-    @SerializedName(value = "SERIALIZED_NAME", alternate = {"serializedName", "serialized_name"})
-    private String serializedName;
-    @Since(1.0)
-    private String since;
-    @Until(1.0)
-    private String until;
-    // 不参与序列化
-    private transient String transientField;
+  @Expose(serialize = true, deserialize = false)
+  private String expose;
 
-    // 静态内部类才能被实例化
-    static class DemoSubDto {
-        @Until(0.9)
-        private String until;
-    }
+  // 可以添加备选字段名(当多种情况同时出时,以最后一个出现的值为准)
+  @SerializedName(
+      value = "SERIALIZED_NAME",
+      alternate = {"serializedName", "serialized_name"})
+  private String serializedName;
+
+  @Since(1.0)
+  private String since;
+
+  @Until(1.0)
+  private String until;
+
+  // 不参与序列化
+  private transient String transientField;
+
+  // 静态内部类才能被实例化
+  static class DemoSubDto {
+    @Until(0.9)
+    private String until;
+  }
 }

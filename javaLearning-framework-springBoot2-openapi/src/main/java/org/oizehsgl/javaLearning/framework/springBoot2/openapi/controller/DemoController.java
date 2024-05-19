@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "demo tag", description = "用于简单测试的API")
 @RestController
 public class DemoController {
-    @Operation( summary = "demo", description = "一个简单的测试接口")
-    @Parameter(name = "name", description = "名称", required = true, example = "world")
-    @GetMapping("/list")
-    public String demo(DemoVo demoVo) {
-        return demoVo.toString();
-    }
+  @Operation(summary = "demo", description = "一个简单的测试接口")
+  @Parameter(name = "name", description = "名称", required = true, example = "world")
+  @GetMapping("/list")
+  public String demo(DemoVo demoVo) {
+    return demoVo.toString();
+  }
 }

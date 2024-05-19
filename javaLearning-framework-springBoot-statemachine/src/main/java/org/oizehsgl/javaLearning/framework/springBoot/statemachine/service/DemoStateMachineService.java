@@ -13,7 +13,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DemoStateMachineService extends DefaultStateMachineService<DemoState, DemoEvent> {
-    public DemoStateMachineService(StateMachineFactory<DemoState, DemoEvent> stateMachineFactory, @Qualifier("redisDemoStateMachineRuntimePersister") StateMachinePersist<DemoState, DemoEvent, String> stateMachinePersist) {
-        super(stateMachineFactory, stateMachinePersist);
-    }
+  public DemoStateMachineService(
+      StateMachineFactory<DemoState, DemoEvent> stateMachineFactory,
+      @Qualifier("redisDemoStateMachineRuntimePersister")
+          StateMachinePersist<DemoState, DemoEvent, String> stateMachinePersist) {
+    super(stateMachineFactory, stateMachinePersist);
+  }
 }

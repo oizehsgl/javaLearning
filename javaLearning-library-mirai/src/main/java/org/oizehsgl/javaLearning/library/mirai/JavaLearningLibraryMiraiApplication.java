@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningLibraryMiraiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningLibraryMiraiApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningLibraryMiraiApplication.class, args);
+  }
 }

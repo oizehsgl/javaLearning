@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningFrameworkSpringBootValidationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningFrameworkSpringBootValidationApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningFrameworkSpringBootValidationApplication.class, args);
+  }
 }

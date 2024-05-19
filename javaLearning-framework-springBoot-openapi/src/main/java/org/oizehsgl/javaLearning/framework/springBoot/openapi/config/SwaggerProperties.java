@@ -14,24 +14,15 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("swagger")
 public class SwaggerProperties {
 
-    /**
-     * 项目应用名
-     */
-    private String applicationName;
+  /** 项目应用名 */
+  private String applicationName;
 
-    /**
-     * 项目版本信息
-     */
-    private String applicationVersion;
+  /** 项目版本信息 */
+  private String applicationVersion;
 
-    /**
-     * 项目描述信息
-     */
-    private String applicationDescription;
+  /** 项目描述信息 */
+  private String applicationDescription;
 
-    /**
-     * 接口调试地址
-     */
-    private String tryHost;
-
+  /** 接口调试地址 */
+  private String tryHost;
 }

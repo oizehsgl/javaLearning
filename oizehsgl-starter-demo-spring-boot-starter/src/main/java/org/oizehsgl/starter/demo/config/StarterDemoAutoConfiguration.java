@@ -17,17 +17,17 @@ import org.springframework.context.annotation.Import;
 @AutoConfiguration
 public class StarterDemoAutoConfiguration {
 
-    @Configuration
-    @EnableConfigurationProperties(StarterDemoProperties.class)
-    public static class DemoPropertiesConfiguration{}
+  @Bean
+  @ConditionalOnMissingBean(StarterDemoManager.class)
+  public StarterDemoManager starterDemoManager(StarterDemoService starterDemoService) {
+    return StarterDemoManager.builder().starterDemoService(starterDemoService).build();
+  }
 
-    @Configuration
-    @Import({StarterDemoServiceImpl.class})
-    public static class demoServiceConfiguration {}
+  @Configuration
+  @EnableConfigurationProperties(StarterDemoProperties.class)
+  public static class DemoPropertiesConfiguration {}
 
-    @Bean
-    @ConditionalOnMissingBean(StarterDemoManager.class)
-    public StarterDemoManager starterDemoManager(StarterDemoService starterDemoService) {
-        return StarterDemoManager.builder().starterDemoService(starterDemoService).build();
-    }
+  @Configuration
+  @Import({StarterDemoServiceImpl.class})
+  public static class demoServiceConfiguration {}
 }

@@ -6,6 +6,6 @@ package org.oizehsgl.javaLearning.basic.constant.constant;
  * @author oizehsgl
  */
 public abstract class DemoConstant {
-    public static final int INT = 0;
-    public static final String STRING = "";
+  public static final int INT = 0;
+  public static final String STRING = "";
 }

@@ -13,5 +13,5 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @RequiredArgsConstructor
 public class DemoNoNoArgsConstructorDto {
-    private final String demo;
+  private final String demo;
 }

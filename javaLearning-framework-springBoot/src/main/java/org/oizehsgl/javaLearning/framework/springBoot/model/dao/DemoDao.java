@@ -5,5 +5,4 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.dao;
  *
  * @author oizehsgl
  */
-public class DemoDao {
-}
+public class DemoDao {}

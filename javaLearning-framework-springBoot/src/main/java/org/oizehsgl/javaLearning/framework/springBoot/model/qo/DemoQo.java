@@ -5,5 +5,4 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.qo;
  *
  * @author oizehsgl
  */
-public class DemoQo {
-}
+public class DemoQo {}

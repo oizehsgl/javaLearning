@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningLibraryRetryApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningLibraryRetryApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningLibraryRetryApplication.class, args);
+  }
 }

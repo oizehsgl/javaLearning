@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StarterDemoBo {
-    private String id;
-    private String code;
-    private String name;
+  private String id;
+  private String code;
+  private String name;
 }

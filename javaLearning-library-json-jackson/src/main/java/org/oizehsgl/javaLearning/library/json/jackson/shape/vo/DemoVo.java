@@ -19,8 +19,9 @@ import org.oizehsgl.javaLearning.library.json.jackson.shape.enums.DemoThirdPartE
 @NoArgsConstructor
 @AllArgsConstructor
 public class DemoVo {
-    private DemoEnum demoEnum;
-    //@JsonDeserialize(using = EnumDeserializer.class)
-    @JsonDeserialize(using = EnumDeserializer.class)
-    private DemoThirdPartEnum demoThirdPartEnum;
+  private DemoEnum demoEnum;
+
+  // @JsonDeserialize(using = EnumDeserializer.class)
+  @JsonDeserialize(using = EnumDeserializer.class)
+  private DemoThirdPartEnum demoThirdPartEnum;
 }

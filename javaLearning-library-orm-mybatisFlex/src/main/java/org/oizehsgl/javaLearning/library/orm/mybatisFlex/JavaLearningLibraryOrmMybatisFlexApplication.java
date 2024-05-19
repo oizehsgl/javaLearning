@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningLibraryOrmMybatisFlexApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningLibraryOrmMybatisFlexApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningLibraryOrmMybatisFlexApplication.class, args);
+  }
 }

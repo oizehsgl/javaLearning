@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class DemoDto {
-    private String id;
-    private String code;
-    private String name;
+  private String id;
+  private String code;
+  private String name;
 }

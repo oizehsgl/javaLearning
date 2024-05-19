@@ -9,11 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 class StarterDemoServiceTest {
-    @Resource
-    private StarterDemoService starterDemoService;
+  @Resource private StarterDemoService starterDemoService;
 
-    @Test
-    void demo() {
-        starterDemoService.demo();
-    }
+  @Test
+  void demo() {
+    starterDemoService.demo();
+  }
 }

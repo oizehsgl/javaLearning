@@ -13,14 +13,18 @@ import org.springframework.stereotype.Component;
  * @author oizehsgl
  */
 @Component
-public class RedisRepositoryDemoStateMachinePersist extends RepositoryStateMachinePersist<DemoState, DemoEvent> {
-    public static final String BEAN_NAME = "redisRepositoryDemoStateMachinePersist";
-    /**
-     * Instantiates a new repository state machine persist.
-     *
-     * @param repository the repository
-     */
-    public RedisRepositoryDemoStateMachinePersist(StateMachineContextRepository<DemoState, DemoEvent, StateMachineContext<DemoState, DemoEvent>> repository) {
-        super(repository);
-    }
+public class RedisRepositoryDemoStateMachinePersist
+    extends RepositoryStateMachinePersist<DemoState, DemoEvent> {
+  public static final String BEAN_NAME = "redisRepositoryDemoStateMachinePersist";
+
+  /**
+   * Instantiates a new repository state machine persist.
+   *
+   * @param repository the repository
+   */
+  public RedisRepositoryDemoStateMachinePersist(
+      StateMachineContextRepository<DemoState, DemoEvent, StateMachineContext<DemoState, DemoEvent>>
+          repository) {
+    super(repository);
+  }
 }

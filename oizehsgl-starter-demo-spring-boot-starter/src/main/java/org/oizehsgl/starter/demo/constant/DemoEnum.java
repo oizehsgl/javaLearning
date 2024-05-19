@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum DemoEnum {
-    E1(1, "e1"),
-    E2(2, "e2"),
-    E3(3, "e3"),
-    ;
-    final private Integer code;
-    final private String desc;
+  E1(1, "e1"),
+  E2(2, "e2"),
+  E3(3, "e3"),
+  ;
+  private final Integer code;
+  private final String desc;
 }

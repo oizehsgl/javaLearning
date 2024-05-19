@@ -10,8 +10,9 @@ import org.springframework.stereotype.Component;
  * @author oizehsgl
  */
 @Component
-public class RedisDemoStateMachineContextRepository extends RedisStateMachineContextRepository<DemoState, DemoEvent> {
-    public RedisDemoStateMachineContextRepository(RedisConnectionFactory redisConnectionFactory) {
-        super(redisConnectionFactory);
-    }
+public class RedisDemoStateMachineContextRepository
+    extends RedisStateMachineContextRepository<DemoState, DemoEvent> {
+  public RedisDemoStateMachineContextRepository(RedisConnectionFactory redisConnectionFactory) {
+    super(redisConnectionFactory);
+  }
 }

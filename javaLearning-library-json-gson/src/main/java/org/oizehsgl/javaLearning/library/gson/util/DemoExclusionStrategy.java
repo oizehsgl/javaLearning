@@ -14,13 +14,13 @@ import lombok.Data;
 @Builder
 public class DemoExclusionStrategy implements ExclusionStrategy {
 
-    @Override
-    public boolean shouldSkipField(FieldAttributes fieldAttributes) {
-        return false;
-    }
+  @Override
+  public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+    return false;
+  }
 
-    @Override
-    public boolean shouldSkipClass(Class<?> aClass) {
-        return false;
-    }
+  @Override
+  public boolean shouldSkipClass(Class<?> aClass) {
+    return false;
+  }
 }

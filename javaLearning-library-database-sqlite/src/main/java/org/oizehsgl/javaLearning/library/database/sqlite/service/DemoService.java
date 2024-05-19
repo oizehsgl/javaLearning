@@ -8,5 +8,4 @@ import org.oizehsgl.javaLearning.library.database.sqlite.entity.DemoEntity;
  *
  * @author oizehsgl
  */
-public interface DemoService extends IService<DemoEntity> {
-}
+public interface DemoService extends IService<DemoEntity> {}

@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningLibraryDatabaseDruidApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningLibraryDatabaseDruidApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningLibraryDatabaseDruidApplication.class, args);
+  }
 }

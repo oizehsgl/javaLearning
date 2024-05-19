@@ -19,30 +19,30 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 @EnableScheduling
 public class SchedulingConfig implements SchedulingConfigurer {
 
-    /**
-     * 重写方法指定自定义的线程池
-     *
-     * @param taskRegistrar
-     */
-    @Override
-    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-        taskRegistrar.setTaskScheduler(defaultCustomTaskScheduler());
-    }
+  /**
+   * 重写方法指定自定义的线程池
+   *
+   * @param taskRegistrar
+   */
+  @Override
+  public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+    taskRegistrar.setTaskScheduler(defaultCustomTaskScheduler());
+  }
 
-    /**
-     * 默认定时任务线程池
-     *
-     * @return {@link TaskScheduler}
-     */
-    @Bean
-    public TaskScheduler defaultCustomTaskScheduler() {
-        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-        // 设置核心线程数
-        Runtime runtime = Runtime.getRuntime();
-        int availableProcessors = runtime.availableProcessors();
-        taskScheduler.setPoolSize(availableProcessors);
-        // 设置线程名前缀
-        taskScheduler.setThreadNamePrefix("defaultCustomScheduling-");
-        return taskScheduler;
-    }
+  /**
+   * 默认定时任务线程池
+   *
+   * @return {@link TaskScheduler}
+   */
+  @Bean
+  public TaskScheduler defaultCustomTaskScheduler() {
+    ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
+    // 设置核心线程数
+    Runtime runtime = Runtime.getRuntime();
+    int availableProcessors = runtime.availableProcessors();
+    taskScheduler.setPoolSize(availableProcessors);
+    // 设置线程名前缀
+    taskScheduler.setThreadNamePrefix("defaultCustomScheduling-");
+    return taskScheduler;
+  }
 }

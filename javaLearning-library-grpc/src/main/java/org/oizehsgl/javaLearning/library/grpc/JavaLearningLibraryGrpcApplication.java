@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningLibraryGrpcApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningLibraryGrpcApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningLibraryGrpcApplication.class, args);
+  }
 }

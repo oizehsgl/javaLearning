@@ -5,5 +5,4 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.vo;
  *
  * @author oizehsgl
  */
-public class DemoReqVo {
-}
+public class DemoReqVo {}

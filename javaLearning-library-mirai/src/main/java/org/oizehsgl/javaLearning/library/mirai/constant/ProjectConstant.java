@@ -7,7 +7,6 @@ package org.oizehsgl.javaLearning.library.mirai.constant;
  */
 public class ProjectConstant {
 
-    public static final Character CMD_AND_PARAM_DELIMITER_CHAR = ' ';
-    public static final Character LINE_SEPARATOR = '\n';
-
+  public static final Character CMD_AND_PARAM_DELIMITER_CHAR = ' ';
+  public static final Character LINE_SEPARATOR = '\n';
 }

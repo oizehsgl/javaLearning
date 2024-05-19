@@ -13,13 +13,16 @@ import org.springframework.stereotype.Component;
  * @author oizehsgl
  */
 @Component
-public class MapDemoStateMachinePersister extends AbstractStateMachinePersister<DemoState, DemoEvent,String> {
-    /**
-     * Instantiates a new abstract state machine persister.
-     *
-     * @param stateMachinePersist the state machine persist
-     */
-    public MapDemoStateMachinePersister(@Qualifier(MapDemoStateMachinePersist.BEAN_NAME) StateMachinePersist<DemoState, DemoEvent,String> stateMachinePersist) {
-        super(stateMachinePersist);
-    }
+public class MapDemoStateMachinePersister
+    extends AbstractStateMachinePersister<DemoState, DemoEvent, String> {
+  /**
+   * Instantiates a new abstract state machine persister.
+   *
+   * @param stateMachinePersist the state machine persist
+   */
+  public MapDemoStateMachinePersister(
+      @Qualifier(MapDemoStateMachinePersist.BEAN_NAME)
+          StateMachinePersist<DemoState, DemoEvent, String> stateMachinePersist) {
+    super(stateMachinePersist);
+  }
 }

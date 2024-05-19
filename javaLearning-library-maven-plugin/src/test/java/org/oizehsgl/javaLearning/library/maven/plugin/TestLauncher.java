@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author oizehsgl
  */
 public class TestLauncher {
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(args));
-    }
+  public static void main(String[] args) {
+    System.out.println(Arrays.toString(args));
+  }
 }

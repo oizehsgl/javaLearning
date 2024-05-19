@@ -15,9 +15,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class DemoStateMachineErrorAction implements Action<DemoState, DemoEvent> {
-    @Override
-    public void execute(StateContext<DemoState, DemoEvent> context) {
-        Exception e = context.getException();
-        log.error("状态机动作异常触发[source<{}>,target<{}>]", context.getSource().getId(), context.getTarget().getId(),e);
-    }
+  @Override
+  public void execute(StateContext<DemoState, DemoEvent> context) {
+    Exception e = context.getException();
+    log.error(
+        "状态机动作异常触发[source<{}>,target<{}>]",
+        context.getSource().getId(),
+        context.getTarget().getId(),
+        e);
+  }
 }

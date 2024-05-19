@@ -13,19 +13,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class DemoScheduling {
 
-    @Scheduled(cron = "*/1 * * * * ?")
-    public void test1() {
-        System.out.println("test cron1");
-        log.warn("1");
-    }
-    @Scheduled(cron = "*/1 * * * * ?")
-    public void test2() {
-        System.out.println("test cron2");
-        log.warn("2");
-    }
-    @Scheduled(cron = "*/1 * * * * ?")
-    public void test3() {
-        System.out.println("test cron3");
-        log.warn("3");
-    }
+  @Scheduled(cron = "*/1 * * * * ?")
+  public void test1() {
+    System.out.println("test cron1");
+    log.warn("1");
+  }
+
+  @Scheduled(cron = "*/1 * * * * ?")
+  public void test2() {
+    System.out.println("test cron2");
+    log.warn("2");
+  }
+
+  @Scheduled(cron = "*/1 * * * * ?")
+  public void test3() {
+    System.out.println("test cron3");
+    log.warn("3");
+  }
 }

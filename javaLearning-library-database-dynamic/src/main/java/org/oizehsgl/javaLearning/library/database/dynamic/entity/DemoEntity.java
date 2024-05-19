@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @TableName("demo")
 public class DemoEntity {
-    private Long id;
-    private String code;
-    private String name;
+  private Long id;
+  private String code;
+  private String name;
 }

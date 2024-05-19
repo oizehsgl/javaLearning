@@ -11,6 +11,6 @@ import lombok.Data;
 @Data
 @Builder
 public class DemoVo {
-    private String name;
-    private Integer age;
+  private String name;
+  private Integer age;
 }

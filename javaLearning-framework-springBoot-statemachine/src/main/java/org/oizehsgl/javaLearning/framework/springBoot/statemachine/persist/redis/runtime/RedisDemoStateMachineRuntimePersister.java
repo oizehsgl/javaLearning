@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
  * @author oizehsgl
  */
 @Component
-public class RedisDemoStateMachineRuntimePersister extends RedisPersistingStateMachineInterceptor<DemoState, DemoEvent, String> {
-    public RedisDemoStateMachineRuntimePersister(RedisStateMachineRepository redisStateMachineRepository) {
-        super(redisStateMachineRepository);
-    }
+public class RedisDemoStateMachineRuntimePersister
+    extends RedisPersistingStateMachineInterceptor<DemoState, DemoEvent, String> {
+  public RedisDemoStateMachineRuntimePersister(
+      RedisStateMachineRepository redisStateMachineRepository) {
+    super(redisStateMachineRepository);
+  }
 }

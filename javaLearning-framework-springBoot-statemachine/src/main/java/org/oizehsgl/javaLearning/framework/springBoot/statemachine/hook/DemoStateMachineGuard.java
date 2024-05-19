@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class DemoStateMachineGuard implements Guard<DemoState, DemoEvent> {
-    @Override
-    public boolean evaluate(StateContext<DemoState, DemoEvent> context) {
-        log.info("状态机守护触发[source<{}>,target<{}>]",
-                context.getSource().getId(), context.getTarget().getId());
-        return true;
-    }
+  @Override
+  public boolean evaluate(StateContext<DemoState, DemoEvent> context) {
+    log.info(
+        "状态机守护触发[source<{}>,target<{}>]", context.getSource().getId(), context.getTarget().getId());
+    return true;
+  }
 }

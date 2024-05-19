@@ -11,28 +11,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class JavaLearningLibraryMiraiApplicationTests {
 
-    @Resource
-    private Bot qrCodeBot;
+  @Resource private Bot qrCodeBot;
 
-    @Test
-    void contextLoads() {
-        qrCodeBot.login();
-        System.out.println(qrCodeBot.getFriends());
-    }
+  public static void afterLogin(Bot bot) {
+    long yourQQNumber = 3423501402L;
+    bot.getNick();
+    bot.getEventChannel()
+        .subscribeAlways(
+            FriendMessageEvent.class,
+            (event) -> {
+              if (event.getSender().getId() == yourQQNumber) {
+                event
+                    .getSubject()
+                    .sendMessage(
+                        new MessageChainBuilder()
+                            .append(new QuoteReply(event.getMessage()))
+                            .append("Hi, you just said: '")
+                            .append(event.getMessage())
+                            .append("'")
+                            .build());
+              }
+            });
+  }
 
-    public static void afterLogin(Bot bot) {
-        long yourQQNumber = 3423501402L;
-        bot.getNick();
-        bot.getEventChannel().subscribeAlways(FriendMessageEvent.class, (event) -> {
-            if (event.getSender().getId() == yourQQNumber) {
-                event.getSubject().sendMessage(new MessageChainBuilder()
-                        .append(new QuoteReply(event.getMessage()))
-                        .append("Hi, you just said: '")
-                        .append(event.getMessage())
-                        .append("'")
-                        .build()
-                );
-            }
-        });
-    }
+  @Test
+  void contextLoads() {
+    qrCodeBot.login();
+    System.out.println(qrCodeBot.getFriends());
+  }
 }

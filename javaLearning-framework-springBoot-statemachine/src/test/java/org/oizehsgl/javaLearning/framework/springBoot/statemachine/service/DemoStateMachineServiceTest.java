@@ -12,17 +12,17 @@ import org.springframework.statemachine.StateMachine;
  */
 @SpringBootTest
 class DemoStateMachineServiceTest {
-    @Resource
-    private DemoStateMachineService demoStateMachineService;
+  @Resource private DemoStateMachineService demoStateMachineService;
 
-    @Test
-    public void test() throws Exception {
-        String machineId = String.format("%s:%s","test","112");
-        StateMachine<DemoState, DemoEvent> stateMachine = demoStateMachineService.acquireStateMachine(machineId,true);
-        stateMachine.sendEvent(DemoEvent.E1);
-        demoStateMachineService.releaseStateMachine(machineId,true);
-        stateMachine = demoStateMachineService.acquireStateMachine(machineId);
-        stateMachine.sendEvent(DemoEvent.E2);
-        demoStateMachineService.releaseStateMachine(machineId);
-    }
+  @Test
+  public void test() throws Exception {
+    String machineId = String.format("%s:%s", "test", "112");
+    StateMachine<DemoState, DemoEvent> stateMachine =
+        demoStateMachineService.acquireStateMachine(machineId, true);
+    stateMachine.sendEvent(DemoEvent.E1);
+    demoStateMachineService.releaseStateMachine(machineId, true);
+    stateMachine = demoStateMachineService.acquireStateMachine(machineId);
+    stateMachine.sendEvent(DemoEvent.E2);
+    demoStateMachineService.releaseStateMachine(machineId);
+  }
 }

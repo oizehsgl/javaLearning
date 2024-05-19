@@ -12,11 +12,11 @@ import org.springframework.core.env.Environment;
 @SpringBootTest
 class DatabaseEnvironmentPostProcessorTest {
 
-    @Resource
-    private Environment environment;
+  @Resource private Environment environment;
 
-    @Test
-    public void test(){
-        Assertions.assertEquals(environment.getProperty(DatabaseEnvironmentPostProcessor.TEST_PROPERTY),"1");
-    }
+  @Test
+  public void test() {
+    Assertions.assertEquals(
+        environment.getProperty(DatabaseEnvironmentPostProcessor.TEST_PROPERTY), "1");
+  }
 }

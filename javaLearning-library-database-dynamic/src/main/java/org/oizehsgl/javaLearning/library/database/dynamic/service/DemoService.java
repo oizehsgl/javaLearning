@@ -6,5 +6,4 @@ import org.oizehsgl.javaLearning.library.database.dynamic.entity.DemoEntity;
 /**
  * @author oizehsgl
  */
-public interface DemoService extends IService<DemoEntity> {
-}
+public interface DemoService extends IService<DemoEntity> {}

@@ -8,11 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JavaLearningLibraryMiraiApplicationRunner implements ApplicationRunner {
-    @Resource
-    private ProjectService projectService;
+  @Resource private ProjectService projectService;
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        projectService.start();
-    }
+  @Override
+  public void run(ApplicationArguments args) throws Exception {
+    projectService.start();
+  }
 }

@@ -17,29 +17,29 @@ import org.oizehsgl.javaLearning.framework.springBoot.common.constant.ReturnStat
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReturnResult<T> {
-    private int code;
-    private String message;
-    private T data;
+  private int code;
+  private String message;
+  private T data;
 
-    public static <S> ReturnResultBuilder<S> success() {
-        return new ReturnResultBuilder<S>()
-                .code(ReturnStatus.SUCCESS.getCode())
-                .message(ReturnStatus.SUCCESS.getMessage());
-    }
+  public static <S> ReturnResultBuilder<S> success() {
+    return new ReturnResultBuilder<S>()
+        .code(ReturnStatus.SUCCESS.getCode())
+        .message(ReturnStatus.SUCCESS.getMessage());
+  }
 
-    public static <S> ReturnResult<S> success(S data) {
-        return new ReturnResultBuilder<S>()
-                .code(ReturnStatus.SUCCESS.getCode())
-                .message(ReturnStatus.SUCCESS.getMessage())
-                .data(data)
-                .build();
-    }
+  public static <S> ReturnResult<S> success(S data) {
+    return new ReturnResultBuilder<S>()
+        .code(ReturnStatus.SUCCESS.getCode())
+        .message(ReturnStatus.SUCCESS.getMessage())
+        .data(data)
+        .build();
+  }
 
-    public static <S> ReturnResult<S> failure(ReturnStatus returnStatus) {
-        return new ReturnResultBuilder<S>()
-                .code(returnStatus.getCode())
-                .message(returnStatus.getMessage())
-                .data(null)
-                .build();
-    }
+  public static <S> ReturnResult<S> failure(ReturnStatus returnStatus) {
+    return new ReturnResultBuilder<S>()
+        .code(returnStatus.getCode())
+        .message(returnStatus.getMessage())
+        .data(null)
+        .build();
+  }
 }

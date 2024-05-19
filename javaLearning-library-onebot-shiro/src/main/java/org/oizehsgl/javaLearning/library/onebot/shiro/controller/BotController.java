@@ -18,22 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/bot")
 public class BotController {
 
-    @Resource
-    private ProjectProperties projectProperties;
-    @Resource
-    private BotContainer botContainer;
+  @Resource private ProjectProperties projectProperties;
+  @Resource private BotContainer botContainer;
 
-    @GetMapping("/send")
-    public String send(@RequestParam @Nullable String message) {
-        // 机器人账号
-        long botId = projectProperties.getRobotId();
-        long groupId = projectProperties.getGroupId();
-        // 通过机器人账号取出 Bot 对象
-        Bot bot = botContainer.robots.get(botId);
-        // 调用 Bot 对象方法
-        if (ObjectUtils.isNotEmpty(message) && !"undefined".equals(message)) {
-            bot.sendGroupMsg(groupId, message, false);
-        }
-        return message;
+  @GetMapping("/send")
+  public String send(@RequestParam @Nullable String message) {
+    // 机器人账号
+    long botId = projectProperties.getRobotId();
+    long groupId = projectProperties.getGroupId();
+    // 通过机器人账号取出 Bot 对象
+    Bot bot = botContainer.robots.get(botId);
+    // 调用 Bot 对象方法
+    if (ObjectUtils.isNotEmpty(message) && !"undefined".equals(message)) {
+      bot.sendGroupMsg(groupId, message, false);
     }
+    return message;
+  }
 }

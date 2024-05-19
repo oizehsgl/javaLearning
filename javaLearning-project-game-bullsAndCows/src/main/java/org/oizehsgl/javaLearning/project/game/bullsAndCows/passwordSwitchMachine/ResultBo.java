@@ -1,9 +1,8 @@
 package org.oizehsgl.javaLearning.project.game.bullsAndCows.passwordSwitchMachine;
 
+import java.util.Map;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.Map;
 
 /**
  * 密码切换机结果业务对象
@@ -13,7 +12,7 @@ import java.util.Map;
 @Data
 @Builder
 public class ResultBo {
-    private Integer bulls;
-    private Integer cows;
-    private Map<Integer,Boolean> result;
+  private Integer bulls;
+  private Integer cows;
+  private Map<Integer, Boolean> result;
 }

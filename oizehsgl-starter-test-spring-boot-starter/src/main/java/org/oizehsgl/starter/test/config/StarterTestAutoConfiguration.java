@@ -6,5 +6,4 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
  * @author oizehsgl
  */
 @AutoConfiguration
-public class StarterTestAutoConfiguration {
-}
+public class StarterTestAutoConfiguration {}

@@ -8,5 +8,4 @@ import org.oizehsgl.javaLearning.library.database.dynamic.entity.DemoEntity;
  * @author oizehsgl
  */
 @Mapper
-public interface DemoMapper extends BaseMapper<DemoEntity> {
-}
+public interface DemoMapper extends BaseMapper<DemoEntity> {}

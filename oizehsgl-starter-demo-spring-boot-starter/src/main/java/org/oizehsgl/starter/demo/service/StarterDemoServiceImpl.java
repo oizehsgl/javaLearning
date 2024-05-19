@@ -7,11 +7,10 @@ import org.oizehsgl.starter.demo.properties.StarterDemoProperties;
  * @author oizehsgl
  */
 public class StarterDemoServiceImpl implements StarterDemoService {
-    @Resource
-    private StarterDemoProperties starterDemoProperties;
+  @Resource private StarterDemoProperties starterDemoProperties;
 
-    @Override
-    public void demo() {
-        System.out.println(starterDemoProperties);
-    }
+  @Override
+  public void demo() {
+    System.out.println(starterDemoProperties);
+  }
 }

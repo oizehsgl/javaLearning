@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OizehsglStarterTestSpringBootStarterApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OizehsglStarterTestSpringBootStarterApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(OizehsglStarterTestSpringBootStarterApplication.class, args);
+  }
 }

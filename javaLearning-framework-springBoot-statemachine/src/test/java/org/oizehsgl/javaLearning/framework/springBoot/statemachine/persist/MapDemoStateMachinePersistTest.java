@@ -19,55 +19,49 @@ import reactor.core.publisher.Mono;
  */
 @SpringBootTest
 class MapDemoStateMachinePersistTest {
-    @Resource
-    @Qualifier(DemoStateMachineFactoryConfig.LABEL)
-    private StateMachineFactory<DemoState, DemoEvent> stateMachineFactory;
-    //@Resource
-    //private MapDemoStateMachinePersister demoStateMachinePersister;
-    @Resource
-    private RedisDemoStateMachinePersister demoStateMachinePersister;
-    @Resource
-    private MapDemoStateMachinePersist demoStateMachinePersist;
+  @Resource
+  @Qualifier(DemoStateMachineFactoryConfig.LABEL)
+  private StateMachineFactory<DemoState, DemoEvent> stateMachineFactory;
 
-    @Test
-    void writeAndRead() throws Exception {
-        StateMachine<DemoState, DemoEvent> stateMachine = stateMachineFactory.getStateMachine();
-        stateMachine.start();
+  // @Resource
+  // private MapDemoStateMachinePersister demoStateMachinePersister;
+  @Resource private RedisDemoStateMachinePersister demoStateMachinePersister;
+  @Resource private MapDemoStateMachinePersist demoStateMachinePersist;
 
-        //demoStateMachinePersister.restore(stateMachine,"1");
-        System.out.println(stateMachine.getState().getId());
-        stateMachine.sendEvent(Mono.just(MessageBuilder
-                        .withPayload(DemoEvent.E1)
-                        .build()))
-                .subscribe();
-        demoStateMachinePersister.persist(stateMachine,"1");
-        System.out.println(demoStateMachinePersist.getContexts());
+  @Test
+  void writeAndRead() throws Exception {
+    StateMachine<DemoState, DemoEvent> stateMachine = stateMachineFactory.getStateMachine();
+    stateMachine.start();
 
-        demoStateMachinePersister.restore(stateMachine,"1");
-        System.out.println(stateMachine.getState().getId());
-        stateMachine.sendEvent(DemoEvent.E2);
-        demoStateMachinePersister.persist(stateMachine,"1");
-        System.out.println(demoStateMachinePersist.getContexts());
+    // demoStateMachinePersister.restore(stateMachine,"1");
+    System.out.println(stateMachine.getState().getId());
+    stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(DemoEvent.E1).build())).subscribe();
+    demoStateMachinePersister.persist(stateMachine, "1");
+    System.out.println(demoStateMachinePersist.getContexts());
 
+    demoStateMachinePersister.restore(stateMachine, "1");
+    System.out.println(stateMachine.getState().getId());
+    stateMachine.sendEvent(DemoEvent.E2);
+    demoStateMachinePersister.persist(stateMachine, "1");
+    System.out.println(demoStateMachinePersist.getContexts());
 
-        //demoStateMachinePersister.restore(stateMachine,"1");
-        System.out.println(stateMachine.getState().getId());
-        stateMachine.sendEvent(DemoEvent.E3);
-        demoStateMachinePersister.persist(stateMachine,"1");
-        System.out.println(demoStateMachinePersist.getContexts());
+    // demoStateMachinePersister.restore(stateMachine,"1");
+    System.out.println(stateMachine.getState().getId());
+    stateMachine.sendEvent(DemoEvent.E3);
+    demoStateMachinePersister.persist(stateMachine, "1");
+    System.out.println(demoStateMachinePersist.getContexts());
 
+    demoStateMachinePersister.restore(stateMachine, "1");
+    System.out.println(stateMachine.getState().getId());
+    stateMachine.sendEvent(
+        MessageBuilder.withPayload(DemoEvent.E4)
+            .setHeader(Object.class.getSimpleName(), new Object())
+            .build());
+    demoStateMachinePersister.persist(stateMachine, "1");
 
-        demoStateMachinePersister.restore(stateMachine,"1");
-        System.out.println(stateMachine.getState().getId());
-        stateMachine.sendEvent(MessageBuilder
-                .withPayload(DemoEvent.E4)
-                .setHeader(Object.class.getSimpleName(), new Object())
-                .build());
-        demoStateMachinePersister.persist(stateMachine,"1");
-
-        demoStateMachinePersister.restore(stateMachine,"1");
-        System.out.println(stateMachine.getState().getId());
-        stateMachine.stop();
-        demoStateMachinePersister.persist(stateMachine,"1");
-    }
+    demoStateMachinePersister.restore(stateMachine, "1");
+    System.out.println(stateMachine.getState().getId());
+    stateMachine.stop();
+    demoStateMachinePersister.persist(stateMachine, "1");
+  }
 }

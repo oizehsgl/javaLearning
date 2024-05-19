@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
  * @author oizehsgl
  */
 @Service
-//@DS("master")
-//@DS("slave")
-public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoEntity> implements DemoService {
-}
+// @DS("master")
+// @DS("slave")
+public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoEntity> implements DemoService {}

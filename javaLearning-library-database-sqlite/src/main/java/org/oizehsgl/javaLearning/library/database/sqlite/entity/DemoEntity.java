@@ -19,7 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @TableName("demo_table")
 public class DemoEntity {
-    @TableId(value = "id",type = IdType.AUTO)
-    private Long id;
-    private String name;
+  @TableId(value = "id", type = IdType.AUTO)
+  private Long id;
+
+  private String name;
 }

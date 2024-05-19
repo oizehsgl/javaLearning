@@ -5,5 +5,4 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.po;
  *
  * @author oizehsgl
  */
-public class DemoPo {
-}
+public class DemoPo {}

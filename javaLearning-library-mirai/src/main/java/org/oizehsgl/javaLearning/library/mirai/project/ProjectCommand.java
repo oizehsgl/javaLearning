@@ -5,5 +5,4 @@ package org.oizehsgl.javaLearning.library.mirai.project;
  *
  * @author oizehsgl
  */
-public interface ProjectCommand {
-}
+public interface ProjectCommand {}

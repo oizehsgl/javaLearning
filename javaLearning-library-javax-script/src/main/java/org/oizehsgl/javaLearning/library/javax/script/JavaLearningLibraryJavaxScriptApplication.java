@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaLearningLibraryJavaxScriptApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavaLearningLibraryJavaxScriptApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JavaLearningLibraryJavaxScriptApplication.class, args);
+  }
 }

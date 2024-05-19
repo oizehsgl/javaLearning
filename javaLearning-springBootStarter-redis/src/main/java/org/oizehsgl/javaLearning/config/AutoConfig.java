@@ -18,13 +18,12 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(value = RedisTestProperties.class)
 @RequiredArgsConstructor
 public class AutoConfig {
-    @Resource
-    private RedisTestProperties redisTestProperties;
+  @Resource private RedisTestProperties redisTestProperties;
 
-    @Bean
-    public DemoService demoService(){
-        DemoService demoService = DemoServiceImpl.builder().redisTestProperties(redisTestProperties).build();
-        return demoService;
-    }
-
+  @Bean
+  public DemoService demoService() {
+    DemoService demoService =
+        DemoServiceImpl.builder().redisTestProperties(redisTestProperties).build();
+    return demoService;
+  }
 }

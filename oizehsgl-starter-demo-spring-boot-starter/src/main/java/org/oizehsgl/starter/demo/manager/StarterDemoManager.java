@@ -9,12 +9,11 @@ import org.oizehsgl.starter.demo.service.StarterDemoService;
  */
 @Builder
 public class StarterDemoManager {
-    @Resource
-    private StarterDemoService starterDemoService;
+  @Resource private StarterDemoService starterDemoService;
 
-    public void demo() {
-        System.out.println("begin------------------");
-        starterDemoService.demo();
-        System.out.println("end------------------");
-    }
+  public void demo() {
+    System.out.println("begin------------------");
+    starterDemoService.demo();
+    System.out.println("end------------------");
+  }
 }

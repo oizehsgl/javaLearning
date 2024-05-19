@@ -12,5 +12,4 @@ import org.springframework.stereotype.Service;
  * @author oizehsgl
  */
 @Service
-public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoEntity> implements DemoService {
-}
+public class DemoServiceImpl extends ServiceImpl<DemoMapper, DemoEntity> implements DemoService {}

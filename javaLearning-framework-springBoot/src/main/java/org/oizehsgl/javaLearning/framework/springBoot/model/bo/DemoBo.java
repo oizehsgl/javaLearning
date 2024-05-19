@@ -5,9 +5,8 @@ package org.oizehsgl.javaLearning.framework.springBoot.model.bo;
  *
  * @author oizehsgl
  */
-//@Data
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
-public class DemoBo {
-}
+// @Data
+// @Builder
+// @NoArgsConstructor
+// @AllArgsConstructor
+public class DemoBo {}

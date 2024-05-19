@@ -10,5 +10,4 @@ import org.oizehsgl.javaLearning.library.database.sqlite.entity.DemoEntity;
  * @author oizehsgl
  */
 @Mapper
-public interface DemoMapper extends BaseMapper<DemoEntity> {
-}
+public interface DemoMapper extends BaseMapper<DemoEntity> {}

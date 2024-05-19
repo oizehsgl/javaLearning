@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
  * @author oizehsgl
  */
 @Repository
-public interface BookRepository {
-}
+public interface BookRepository {}
