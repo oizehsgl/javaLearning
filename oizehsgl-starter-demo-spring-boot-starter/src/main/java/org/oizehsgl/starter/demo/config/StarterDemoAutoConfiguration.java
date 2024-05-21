@@ -8,13 +8,14 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author oizehsgl
  */
 @AutoConfiguration
+@PropertySource("classpath:oizehsgl-starter-demo.properties")
 public class StarterDemoAutoConfiguration {
 
   @Bean
@@ -23,11 +24,9 @@ public class StarterDemoAutoConfiguration {
     return StarterDemoManager.builder().starterDemoService(starterDemoService).build();
   }
 
-  @Configuration
   @EnableConfigurationProperties(StarterDemoProperties.class)
   public static class DemoPropertiesConfiguration {}
 
-  @Configuration
   @Import({StarterDemoServiceImpl.class})
   public static class demoServiceConfiguration {}
 }

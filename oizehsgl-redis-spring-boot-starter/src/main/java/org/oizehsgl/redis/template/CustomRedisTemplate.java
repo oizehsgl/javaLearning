@@ -4,12 +4,10 @@ import org.oizehsgl.redis.serializer.CustomGenericJackson2JsonRedisSerializer;
 import org.oizehsgl.redis.serializer.CustomStringRedisSerializer;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 /**
  * @author oizehsgl
  */
-@Component
 public class CustomRedisTemplate<V> extends RedisTemplate<String, V> {
   public CustomRedisTemplate(
       RedisConnectionFactory redisConnectionFactory,
@@ -25,5 +23,11 @@ public class CustomRedisTemplate<V> extends RedisTemplate<String, V> {
     // Hash类型的key/value序列化
     super.setHashKeySerializer(customStringRedisSerializer);
     super.setHashValueSerializer(customGenericJackson2JsonRedisSerializer);
+
+    // 设置支持事务
+    super.setEnableTransactionSupport(true);
+
+    // 初始化操作
+    super.afterPropertiesSet();
   }
 }

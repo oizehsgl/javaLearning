@@ -1,19 +1,19 @@
-//package org.oizehsgl.redis.template;
+// package org.oizehsgl.redis.template;
 //
-//import java.util.List;
-//import java.util.Map;
-//import java.util.Set;
-//import java.util.concurrent.TimeUnit;
-//import org.springframework.data.redis.core.*;
-//import org.springframework.stereotype.Component;
+// import java.util.List;
+// import java.util.Map;
+// import java.util.Set;
+// import java.util.concurrent.TimeUnit;
+// import org.springframework.data.redis.core.*;
+// import org.springframework.stereotype.Component;
 //
-///**
+/// **
 // * @Author: 徐一杰
 // *
 // * @date: 2022/4/3 @Description: 对RedisTemplate进行封装
 // */
-//@Component
-//public record RedisRecord<V>(CustomRedisTemplate<V> redisTemplate) {
+// @Component
+// public record RedisRecord<V>(CustomRedisTemplate<V> redisTemplate) {
 //
 //
 //  /***********      list 类型操作           **************/
@@ -455,4 +455,4 @@
 //    return zSetOperations.removeRangeByScore(key, score1, score2);
 //  }
 
-//}
+// }

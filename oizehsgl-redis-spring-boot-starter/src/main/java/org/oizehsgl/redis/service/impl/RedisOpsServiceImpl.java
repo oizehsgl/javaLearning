@@ -7,12 +7,10 @@ import java.util.concurrent.TimeUnit;
 import org.oizehsgl.redis.service.RedisOpsService;
 import org.oizehsgl.redis.template.CustomRedisTemplate;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.stereotype.Service;
 
 /**
  * @author oizehsgl
  */
-@Service
 public class RedisOpsServiceImpl<V> extends RedisOpsService<V>{
   @Resource private CustomRedisTemplate<V> customRedisTemplate;
 
