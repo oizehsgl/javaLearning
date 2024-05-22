@@ -5,101 +5,417 @@
 package org.oizehsgl.javaLearning.library.protobuf.service;
 
 public final class HelloWorldServiceProto {
-  private HelloWorldServiceProto() {}
+  private static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_HelloRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HelloRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_HelloReply_descriptor;
+  private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HelloReply_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 26,
-      /* patch= */ 1,
-      /* suffix= */ "",
-      HelloWorldServiceProto.class.getName());
-  }
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 26,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        HelloWorldServiceProto.class.getName());
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  static {
+    java.lang.String[] descriptorData = {
+      "\n\013hello.proto\")\n\014HelloRequest\022\014\n\004name\030\001 "
+          + "\001(\t\022\013\n\003sex\030\002 \001(\t\"\035\n\nHelloReply\022\017\n\007messag"
+          + "e\030\001 \001(\t23\n\007Greeter\022(\n\010SayHello\022\r.HelloRe"
+          + "quest\032\013.HelloReply\"\000BL\n2org.oizehsgl.jav"
+          + "aLearning.library.protobuf.serviceB\026Hell"
+          + "oWorldServiceProtob\006proto3"
+    };
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+    internal_static_HelloRequest_descriptor = getDescriptor().getMessageTypes().get(0);
+    internal_static_HelloRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+            internal_static_HelloRequest_descriptor,
+            new java.lang.String[] {
+              "Name", "Sex",
+            });
+    internal_static_HelloReply_descriptor = getDescriptor().getMessageTypes().get(1);
+    internal_static_HelloReply_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+            internal_static_HelloReply_descriptor,
+            new java.lang.String[] {
+              "Message",
+            });
+    descriptor.resolveAllFeaturesImmutable();
   }
-  public interface HelloRequestOrBuilder extends
+
+  private HelloWorldServiceProto() {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+    return descriptor;
+  }
+  public interface HelloRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:HelloRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string name = 1;</code>
+     *
      * @return The name.
      */
     java.lang.String getName();
+
     /**
      * <code>string name = 1;</code>
+     *
      * @return The bytes for name.
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
+    com.google.protobuf.ByteString getNameBytes();
 
     /**
      * <code>string sex = 2;</code>
+     *
      * @return The sex.
      */
     java.lang.String getSex();
+
     /**
      * <code>string sex = 2;</code>
+     *
      * @return The bytes for sex.
      */
-    com.google.protobuf.ByteString
-        getSexBytes();
+    com.google.protobuf.ByteString getSexBytes();
   }
+
+  public interface HelloReplyOrBuilder
+      extends
+      // @@protoc_insertion_point(interface_extends:HelloReply)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string message = 1;</code>
+     *
+     * @return The message.
+     */
+    java.lang.String getMessage();
+
+    /**
+     * <code>string message = 1;</code>
+     *
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString getMessageBytes();
+  }
+
   /**
+   *
+   *
    * <pre>
    * 请求参数 基于序号的协议字段映射，所以字段可以乱序，可缺段
    * </pre>
    *
    * Protobuf type {@code HelloRequest}
    */
-  public static final class HelloRequest extends
-      com.google.protobuf.GeneratedMessage implements
+  public static final class HelloRequest extends com.google.protobuf.GeneratedMessage
+      implements
       // @@protoc_insertion_point(message_implements:HelloRequest)
       HelloRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    public static final int NAME_FIELD_NUMBER = 1;
+    public static final int SEX_FIELD_NUMBER = 2;
+    private static final long serialVersionUID = 0L;
+    // @@protoc_insertion_point(class_scope:HelloRequest)
+    private static final org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        DEFAULT_INSTANCE;
+    private static final com.google.protobuf.Parser<HelloRequest> PARSER =
+        new com.google.protobuf.AbstractParser<HelloRequest>() {
+          @java.lang.Override
+          public HelloRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException()
+                  .setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
+
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-        /* major= */ 4,
-        /* minor= */ 26,
-        /* patch= */ 1,
-        /* suffix= */ "",
-        HelloRequest.class.getName());
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 26,
+          /* patch= */ 1,
+          /* suffix= */ "",
+          HelloRequest.class.getName());
     }
+
+    static {
+      DEFAULT_INSTANCE =
+          new org.oizehsgl
+              .javaLearning
+              .library
+              .protobuf
+              .service
+              .HelloWorldServiceProto
+              .HelloRequest();
+    }
+
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object name_ = "";
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sex_ = "";
+    private byte memoizedIsInitialized = -1;
+
     // Use HelloRequest.newBuilder() to construct.
     private HelloRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
+
     private HelloRequest() {
       name_ = "";
       sex_ = "";
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return org.oizehsgl
+          .javaLearning
+          .library
+          .protobuf
+          .service
+          .HelloWorldServiceProto
+          .internal_static_HelloRequest_descriptor;
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(PARSER, input);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(PARSER, input);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(
+        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+            prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequest
+        getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static com.google.protobuf.Parser<HelloRequest> parser() {
+      return PARSER;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.class, org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.Builder.class);
+      return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto
+          .internal_static_HelloRequest_fieldAccessorTable.ensureFieldAccessorsInitialized(
+          org.oizehsgl
+              .javaLearning
+              .library
+              .protobuf
+              .service
+              .HelloWorldServiceProto
+              .HelloRequest
+              .class,
+          org.oizehsgl
+              .javaLearning
+              .library
+              .protobuf
+              .service
+              .HelloWorldServiceProto
+              .HelloRequest
+              .Builder
+              .class);
     }
 
-    public static final int NAME_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object name_ = "";
     /**
      * <code>string name = 1;</code>
+     *
      * @return The name.
      */
     @java.lang.Override
@@ -108,25 +424,24 @@ public final class HelloWorldServiceProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
       }
     }
+
     /**
      * <code>string name = 1;</code>
+     *
      * @return The bytes for name.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -134,11 +449,9 @@ public final class HelloWorldServiceProto {
       }
     }
 
-    public static final int SEX_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object sex_ = "";
     /**
      * <code>string sex = 2;</code>
+     *
      * @return The sex.
      */
     @java.lang.Override
@@ -147,25 +460,24 @@ public final class HelloWorldServiceProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         sex_ = s;
         return s;
       }
     }
+
     /**
      * <code>string sex = 2;</code>
+     *
      * @return The bytes for sex.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getSexBytes() {
+    public com.google.protobuf.ByteString getSexBytes() {
       java.lang.Object ref = sex_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         sex_ = b;
         return b;
       } else {
@@ -173,7 +485,6 @@ public final class HelloWorldServiceProto {
       }
     }
 
-    private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -185,8 +496,7 @@ public final class HelloWorldServiceProto {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
@@ -216,17 +526,19 @@ public final class HelloWorldServiceProto {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest)) {
+      if (!(obj
+          instanceof
+          org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest)) {
         return super.equals(obj);
       }
-      org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest other = (org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest) obj;
+      org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest other =
+          (org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest)
+              obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
-      if (!getSex()
-          .equals(other.getSex())) return false;
+      if (!getName().equals(other.getName())) return false;
+      if (!getSex().equals(other.getSex())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -247,132 +559,98 @@ public final class HelloWorldServiceProto {
       return hash;
     }
 
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+    public Builder newBuilderForType() {
+      return newBuilder();
     }
 
     @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HelloRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+        getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
     /**
+     *
+     *
      * <pre>
      * 请求参数 基于序号的协议字段映射，所以字段可以乱序，可缺段
      * </pre>
      *
      * Protobuf type {@code HelloRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:HelloRequest)
-        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloRequest_descriptor;
+        org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloRequestOrBuilder {
+      private int bitField0_;
+      private java.lang.Object name_ = "";
+      private java.lang.Object sex_ = "";
+
+      // Construct using
+      // org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.newBuilder()
+      private Builder() {}
+
+      private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .internal_static_HelloRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.class, org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.Builder.class);
+        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto
+            .internal_static_HelloRequest_fieldAccessorTable.ensureFieldAccessorsInitialized(
+            org.oizehsgl
+                .javaLearning
+                .library
+                .protobuf
+                .service
+                .HelloWorldServiceProto
+                .HelloRequest
+                .class,
+            org.oizehsgl
+                .javaLearning
+                .library
+                .protobuf
+                .service
+                .HelloWorldServiceProto
+                .HelloRequest
+                .Builder
+                .class);
       }
 
-      // Construct using org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-
-      }
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -383,19 +661,28 @@ public final class HelloWorldServiceProto {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .internal_static_HelloRequest_descriptor;
       }
 
       @java.lang.Override
-      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest getDefaultInstanceForType() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.getDefaultInstance();
+      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+          getDefaultInstanceForType() {
+        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto
+            .HelloRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest build() {
-        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest result = buildPartial();
+      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+          build() {
+        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -403,14 +690,27 @@ public final class HelloWorldServiceProto {
       }
 
       @java.lang.Override
-      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest buildPartial() {
-        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest result = new org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+          buildPartial() {
+        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+            result =
+                new org.oizehsgl
+                    .javaLearning
+                    .library
+                    .protobuf
+                    .service
+                    .HelloWorldServiceProto
+                    .HelloRequest(this);
+        if (bitField0_ != 0) {
+          buildPartial0(result);
+        }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest result) {
+      private void buildPartial0(
+          org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+              result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.name_ = name_;
@@ -422,16 +722,36 @@ public final class HelloWorldServiceProto {
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest) {
-          return mergeFrom((org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest)other);
+        if (other
+            instanceof
+            org.oizehsgl
+                .javaLearning
+                .library
+                .protobuf
+                .service
+                .HelloWorldServiceProto
+                .HelloRequest) {
+          return mergeFrom(
+              (org.oizehsgl
+                      .javaLearning
+                      .library
+                      .protobuf
+                      .service
+                      .HelloWorldServiceProto
+                      .HelloRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest other) {
-        if (other == org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest
+              other) {
+        if (other
+            == org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto
+                .HelloRequest.getDefaultInstance()) return this;
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           bitField0_ |= 0x00000001;
@@ -468,22 +788,25 @@ public final class HelloWorldServiceProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                name_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 18: {
-                sex_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+              case 10:
+                {
+                  name_ = input.readStringRequireUtf8();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+              case 18:
+                {
+                  sex_ = input.readStringRequireUtf8();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 18
+              default:
+                {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -493,18 +816,16 @@ public final class HelloWorldServiceProto {
         } // finally
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object name_ = "";
       /**
        * <code>string name = 1;</code>
+       *
        * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           name_ = s;
           return s;
@@ -512,38 +833,60 @@ public final class HelloWorldServiceProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <code>string name = 1;</code>
+       *
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        name_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>string name = 1;</code>
+       *
        * @return The bytes for name.
        */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
+      public com.google.protobuf.ByteString getNameBytes() {
         java.lang.Object ref = name_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           name_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
+
       /**
        * <code>string name = 1;</code>
-       * @param value The name to set.
+       *
+       * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+      public Builder setNameBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
         name_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
+
       /**
        * <code>string name = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearName() {
@@ -552,31 +895,16 @@ public final class HelloWorldServiceProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        name_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
 
-      private java.lang.Object sex_ = "";
       /**
        * <code>string sex = 2;</code>
+       *
        * @return The sex.
        */
       public java.lang.String getSex() {
         java.lang.Object ref = sex_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           sex_ = s;
           return s;
@@ -584,38 +912,60 @@ public final class HelloWorldServiceProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <code>string sex = 2;</code>
+       *
+       * @param value The sex to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSex(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        sex_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>string sex = 2;</code>
+       *
        * @return The bytes for sex.
        */
-      public com.google.protobuf.ByteString
-          getSexBytes() {
+      public com.google.protobuf.ByteString getSexBytes() {
         java.lang.Object ref = sex_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           sex_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
+
       /**
        * <code>string sex = 2;</code>
-       * @param value The sex to set.
+       *
+       * @param value The bytes for sex to set.
        * @return This builder for chaining.
        */
-      public Builder setSex(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+      public Builder setSexBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
         sex_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
+
       /**
        * <code>string sex = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSex() {
@@ -624,135 +974,304 @@ public final class HelloWorldServiceProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>string sex = 2;</code>
-       * @param value The bytes for sex to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSexBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        sex_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
 
       // @@protoc_insertion_point(builder_scope:HelloRequest)
     }
-
-    // @@protoc_insertion_point(class_scope:HelloRequest)
-    private static final org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest();
-    }
-
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<HelloRequest>
-        PARSER = new com.google.protobuf.AbstractParser<HelloRequest>() {
-      @java.lang.Override
-      public HelloRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<HelloRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HelloRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
   }
 
-  public interface HelloReplyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:HelloReply)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string message = 1;</code>
-     * @return The message.
-     */
-    java.lang.String getMessage();
-    /**
-     * <code>string message = 1;</code>
-     * @return The bytes for message.
-     */
-    com.google.protobuf.ByteString
-        getMessageBytes();
-  }
   /**
+   *
+   *
    * <pre>
    * 响应参数
    * </pre>
    *
    * Protobuf type {@code HelloReply}
    */
-  public static final class HelloReply extends
-      com.google.protobuf.GeneratedMessage implements
+  public static final class HelloReply extends com.google.protobuf.GeneratedMessage
+      implements
       // @@protoc_insertion_point(message_implements:HelloReply)
       HelloReplyOrBuilder {
-  private static final long serialVersionUID = 0L;
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private static final long serialVersionUID = 0L;
+    // @@protoc_insertion_point(class_scope:HelloReply)
+    private static final org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        DEFAULT_INSTANCE;
+    private static final com.google.protobuf.Parser<HelloReply> PARSER =
+        new com.google.protobuf.AbstractParser<HelloReply>() {
+          @java.lang.Override
+          public HelloReply parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException()
+                  .setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
+
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-        /* major= */ 4,
-        /* minor= */ 26,
-        /* patch= */ 1,
-        /* suffix= */ "",
-        HelloReply.class.getName());
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 26,
+          /* patch= */ 1,
+          /* suffix= */ "",
+          HelloReply.class.getName());
     }
+
+    static {
+      DEFAULT_INSTANCE =
+          new org.oizehsgl
+              .javaLearning
+              .library
+              .protobuf
+              .service
+              .HelloWorldServiceProto
+              .HelloReply();
+    }
+
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object message_ = "";
+    private byte memoizedIsInitialized = -1;
+
     // Use HelloReply.newBuilder() to construct.
     private HelloReply(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
+
     private HelloReply() {
       message_ = "";
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloReply_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return org.oizehsgl
+          .javaLearning
+          .library
+          .protobuf
+          .service
+          .HelloWorldServiceProto
+          .internal_static_HelloReply_descriptor;
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(PARSER, input);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(PARSER, input);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(
+        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+            prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    public static org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReply
+        getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static com.google.protobuf.Parser<HelloReply> parser() {
+      return PARSER;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloReply_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.class, org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.Builder.class);
+      return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto
+          .internal_static_HelloReply_fieldAccessorTable.ensureFieldAccessorsInitialized(
+          org.oizehsgl
+              .javaLearning
+              .library
+              .protobuf
+              .service
+              .HelloWorldServiceProto
+              .HelloReply
+              .class,
+          org.oizehsgl
+              .javaLearning
+              .library
+              .protobuf
+              .service
+              .HelloWorldServiceProto
+              .HelloReply
+              .Builder
+              .class);
     }
 
-    public static final int MESSAGE_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object message_ = "";
     /**
      * <code>string message = 1;</code>
+     *
      * @return The message.
      */
     @java.lang.Override
@@ -761,25 +1280,24 @@ public final class HelloWorldServiceProto {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         message_ = s;
         return s;
       }
     }
+
     /**
      * <code>string message = 1;</code>
+     *
      * @return The bytes for message.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
+    public com.google.protobuf.ByteString getMessageBytes() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         message_ = b;
         return b;
       } else {
@@ -787,7 +1305,6 @@ public final class HelloWorldServiceProto {
       }
     }
 
-    private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -799,8 +1316,7 @@ public final class HelloWorldServiceProto {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(message_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 1, message_);
       }
@@ -824,15 +1340,18 @@ public final class HelloWorldServiceProto {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply)) {
+      if (!(obj
+          instanceof
+          org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply)) {
         return super.equals(obj);
       }
-      org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply other = (org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply) obj;
+      org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply other =
+          (org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply)
+              obj;
 
-      if (!getMessage()
-          .equals(other.getMessage())) return false;
+      if (!getMessage().equals(other.getMessage())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -851,132 +1370,97 @@ public final class HelloWorldServiceProto {
       return hash;
     }
 
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+    public Builder newBuilderForType() {
+      return newBuilder();
     }
 
     @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HelloReply> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+        getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
     /**
+     *
+     *
      * <pre>
      * 响应参数
      * </pre>
      *
      * Protobuf type {@code HelloReply}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:HelloReply)
-        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReplyOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloReply_descriptor;
+        org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .HelloReplyOrBuilder {
+      private int bitField0_;
+      private java.lang.Object message_ = "";
+
+      // Construct using
+      // org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.newBuilder()
+      private Builder() {}
+
+      private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .internal_static_HelloReply_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloReply_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.class, org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.Builder.class);
+        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto
+            .internal_static_HelloReply_fieldAccessorTable.ensureFieldAccessorsInitialized(
+            org.oizehsgl
+                .javaLearning
+                .library
+                .protobuf
+                .service
+                .HelloWorldServiceProto
+                .HelloReply
+                .class,
+            org.oizehsgl
+                .javaLearning
+                .library
+                .protobuf
+                .service
+                .HelloWorldServiceProto
+                .HelloReply
+                .Builder
+                .class);
       }
 
-      // Construct using org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-
-      }
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -986,19 +1470,28 @@ public final class HelloWorldServiceProto {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.internal_static_HelloReply_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return org.oizehsgl
+            .javaLearning
+            .library
+            .protobuf
+            .service
+            .HelloWorldServiceProto
+            .internal_static_HelloReply_descriptor;
       }
 
       @java.lang.Override
-      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply getDefaultInstanceForType() {
-        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.getDefaultInstance();
+      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+          getDefaultInstanceForType() {
+        return org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+            .getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply build() {
-        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply result = buildPartial();
+      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+          build() {
+        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1006,14 +1499,27 @@ public final class HelloWorldServiceProto {
       }
 
       @java.lang.Override
-      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply buildPartial() {
-        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply result = new org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+      public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+          buildPartial() {
+        org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+            result =
+                new org.oizehsgl
+                    .javaLearning
+                    .library
+                    .protobuf
+                    .service
+                    .HelloWorldServiceProto
+                    .HelloReply(this);
+        if (bitField0_ != 0) {
+          buildPartial0(result);
+        }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply result) {
+      private void buildPartial0(
+          org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+              result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.message_ = message_;
@@ -1022,16 +1528,24 @@ public final class HelloWorldServiceProto {
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply) {
-          return mergeFrom((org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply)other);
+        if (other
+            instanceof
+            org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply) {
+          return mergeFrom(
+              (org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply other) {
-        if (other == org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+              other) {
+        if (other
+            == org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply
+                .getDefaultInstance()) return this;
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
           bitField0_ |= 0x00000001;
@@ -1063,17 +1577,19 @@ public final class HelloWorldServiceProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                message_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+              case 10:
+                {
+                  message_ = input.readStringRequireUtf8();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+              default:
+                {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1083,18 +1599,16 @@ public final class HelloWorldServiceProto {
         } // finally
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object message_ = "";
       /**
        * <code>string message = 1;</code>
+       *
        * @return The message.
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           message_ = s;
           return s;
@@ -1102,38 +1616,60 @@ public final class HelloWorldServiceProto {
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <code>string message = 1;</code>
+       *
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        message_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>string message = 1;</code>
+       *
        * @return The bytes for message.
        */
-      public com.google.protobuf.ByteString
-          getMessageBytes() {
+      public com.google.protobuf.ByteString getMessageBytes() {
         java.lang.Object ref = message_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           message_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
+
       /**
        * <code>string message = 1;</code>
-       * @param value The message to set.
+       *
+       * @param value The bytes for message to set.
        * @return This builder for chaining.
        */
-      public Builder setMessage(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+      public Builder setMessageBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
         message_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
+
       /**
        * <code>string message = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearMessage() {
@@ -1142,115 +1678,9 @@ public final class HelloWorldServiceProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>string message = 1;</code>
-       * @param value The bytes for message to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        message_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
 
       // @@protoc_insertion_point(builder_scope:HelloReply)
     }
-
-    // @@protoc_insertion_point(class_scope:HelloReply)
-    private static final org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply();
-    }
-
-    public static org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<HelloReply>
-        PARSER = new com.google.protobuf.AbstractParser<HelloReply>() {
-      @java.lang.Override
-      public HelloReply parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<HelloReply> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HelloReply> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.oizehsgl.javaLearning.library.protobuf.service.HelloWorldServiceProto.HelloReply getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HelloRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HelloRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HelloReply_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HelloReply_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\013hello.proto\")\n\014HelloRequest\022\014\n\004name\030\001 " +
-      "\001(\t\022\013\n\003sex\030\002 \001(\t\"\035\n\nHelloReply\022\017\n\007messag" +
-      "e\030\001 \001(\t23\n\007Greeter\022(\n\010SayHello\022\r.HelloRe" +
-      "quest\032\013.HelloReply\"\000BL\n2org.oizehsgl.jav" +
-      "aLearning.library.protobuf.serviceB\026Hell" +
-      "oWorldServiceProtob\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_HelloRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_HelloRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_HelloRequest_descriptor,
-        new java.lang.String[] { "Name", "Sex", });
-    internal_static_HelloReply_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_HelloReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_HelloReply_descriptor,
-        new java.lang.String[] { "Message", });
-    descriptor.resolveAllFeaturesImmutable();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

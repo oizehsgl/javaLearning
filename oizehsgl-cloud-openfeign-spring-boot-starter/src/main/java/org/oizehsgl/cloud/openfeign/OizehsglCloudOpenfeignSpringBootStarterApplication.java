@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OizehsglCloudOpenfeignSpringBootStarterApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OizehsglCloudOpenfeignSpringBootStarterApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(OizehsglCloudOpenfeignSpringBootStarterApplication.class, args);
+  }
 }

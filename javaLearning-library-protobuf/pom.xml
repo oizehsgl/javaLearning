@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -95,7 +96,8 @@
                     <!--本地protoc编译命令位置-->
                     <!-- <protocExecutable>/usr/bin/protoc</protocExecutable> -->
                     <!--proto文件所在目录-->
-                    <protoSourceRoot>${project.basedir}/src/main/resources/protobuf</protoSourceRoot>
+                    <protoSourceRoot>${project.basedir}/src/main/resources/protobuf
+                    </protoSourceRoot>
                     <!--产出java文件的目标目录-->
                     <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
                     <!--是否清空上面配置目录outputDirectory-->

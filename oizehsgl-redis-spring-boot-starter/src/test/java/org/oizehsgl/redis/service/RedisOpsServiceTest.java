@@ -12,12 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 class RedisOpsServiceTest {
-    @Resource
-    private CustomRedisTemplate<String> customRedisTemplate;
+  @Resource private CustomRedisTemplate<String> customRedisTemplate;
 
-    @Test
-    public void test() {
-        customRedisTemplate.opsForValue().set("key1", "value1");
-        System.out.println(customRedisTemplate.opsForValue().get("key1"));
-    }
+  @Test
+  public void test() {
+    customRedisTemplate.opsForValue().set("key1", "value1");
+    System.out.println(customRedisTemplate.opsForValue().get("key1"));
+  }
 }

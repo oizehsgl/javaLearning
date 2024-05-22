@@ -11,11 +11,11 @@ import org.springframework.context.annotation.PropertySource;
 @AutoConfiguration
 @PropertySource("classpath:oizehsgl-starter-demo-wrapper.properties")
 public class StarterDemoWrapperAutoConfiguration {
-    @Bean
-    public StarterDemoProperties starterDemoProperties() {
-        StarterDemoProperties starterDemoProperties = new StarterDemoProperties();
-        starterDemoProperties.setCode("2");
-        starterDemoProperties.setName("starter-demo-wrapper");
-        return starterDemoProperties;
-    }
+  @Bean
+  public StarterDemoProperties starterDemoProperties() {
+    StarterDemoProperties starterDemoProperties = new StarterDemoProperties();
+    starterDemoProperties.setCode("2");
+    starterDemoProperties.setName("starter-demo-wrapper");
+    return starterDemoProperties;
+  }
 }

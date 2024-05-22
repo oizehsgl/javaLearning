@@ -14,9 +14,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @ConfigurationProperties("custom.redis")
 public class CustomRedisProperties {
-    /**
-     * 前缀
-     */
-    @NotNull
-    private String prefix;
+  /** 前缀 */
+  @NotNull private String prefix;
 }

@@ -11,7 +11,7 @@ import org.springframework.data.redis.core.RedisCallback;
 /**
  * @author oizehsgl
  */
-public class RedisOpsServiceImpl<V> extends RedisOpsService<V>{
+public class RedisOpsServiceImpl<V> extends RedisOpsService<V> {
   @Resource private CustomRedisTemplate<V> customRedisTemplate;
 
   @Override

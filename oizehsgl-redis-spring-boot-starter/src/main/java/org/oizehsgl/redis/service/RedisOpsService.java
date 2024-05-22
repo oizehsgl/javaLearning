@@ -1,6 +1,5 @@
 package org.oizehsgl.redis.service;
 
-
 /**
  * @author oizehsgl
  */
