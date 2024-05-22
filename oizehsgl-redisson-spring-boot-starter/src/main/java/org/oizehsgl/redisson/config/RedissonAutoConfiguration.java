@@ -7,5 +7,7 @@ import org.springframework.context.annotation.PropertySource;
  * @author oizehsgl
  */
 @AutoConfiguration
-@PropertySource("classpath:oizehsgl-redisson.properties")
-public class RedissonAutoConfiguration {}
+public class RedissonAutoConfiguration {
+    @PropertySource("classpath:oizehsgl-redisson.properties")
+    public static class PropertySourceAutoConfiguration{}
+}
