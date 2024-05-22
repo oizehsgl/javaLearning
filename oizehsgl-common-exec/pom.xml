@@ -9,11 +9,11 @@
         <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.oizehsgl.javaLearning</groupId>
-    <artifactId>javaLearning-framework-springBoot-statemachine</artifactId>
+    <groupId>org.oizehsgl.common.exec</groupId>
+    <artifactId>oizehsgl-common-exec</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>javaLearning-framework-springBoot-statemachine</name>
-    <description>javaLearning-framework-springBoot-statemachine</description>
+    <name>oizehsgl-common-exec</name>
+    <description>oizehsgl-common-exec</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -28,12 +28,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -43,27 +37,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-starter -->
-        <dependency>
-            <groupId>org.springframework.statemachine</groupId>
-            <artifactId>spring-statemachine-starter</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-data-redis -->
-        <dependency>
-            <groupId>org.springframework.statemachine</groupId>
-            <artifactId>spring-statemachine-data-redis</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.oizehsgl.nosql.redis.wrapper</groupId>
-            <artifactId>oizehsgl-nosql-redis-wrapper-spring-boot-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
     <build>

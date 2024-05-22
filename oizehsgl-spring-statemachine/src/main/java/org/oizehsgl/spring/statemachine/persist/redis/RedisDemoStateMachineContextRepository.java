@@ -1,4 +1,4 @@
-//package org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.redis;
+package org.oizehsgl.spring.statemachine.persist.redis;//package org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.redis;
 //
 //import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoEvent;
 //import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoState;

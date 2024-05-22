@@ -1,17 +1,8 @@
-package org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.redis.runtime;
+package org.oizehsgl.spring.statemachine.persist.redis.runtime;
 
-import jakarta.annotation.Resource;
-import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoEvent;
-import org.oizehsgl.javaLearning.framework.springBoot.statemachine.enums.DemoState;
-import org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.redis.CustomRedisStateMachineContextRepository;
-import org.oizehsgl.javaLearning.framework.springBoot.statemachine.persist.redis.RedisRepositoryDemoStateMachinePersist;
-import org.oizehsgl.nosql.redis.wrapper.properties.CustomRedisProperties;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.statemachine.StateMachineContext;
+import org.oizehsgl.spring.statemachine.enums.DemoEvent;
+import org.oizehsgl.spring.statemachine.enums.DemoState;
 import org.springframework.statemachine.data.redis.RedisPersistingStateMachineInterceptor;
-import org.springframework.statemachine.data.redis.RedisRepositoryStateMachine;
-import org.springframework.statemachine.data.redis.RedisRepositoryStateMachinePersist;
 import org.springframework.statemachine.data.redis.RedisStateMachineRepository;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisDemoStateMachineRuntimePersister
     extends RedisPersistingStateMachineInterceptor<DemoState, DemoEvent, String> {
+  public static final String BEAN_NAME = "redisDemoStateMachineRuntimePersister";
   //@Resource
   //private CustomRedisProperties customRedisProperties;
 
