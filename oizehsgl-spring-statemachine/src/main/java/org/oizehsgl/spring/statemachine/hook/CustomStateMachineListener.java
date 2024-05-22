@@ -24,7 +24,7 @@ public class CustomStateMachineListener extends StateMachineListenerAdapter<Cust
     CustomState toState = toOptional.map(State::getId).orElse(null);
 
     if (fromState == CustomState.S1 && toState == CustomState.S2) {
-      log.info("oaeioaei");
+      log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
     log.info(
         "状态机事件监听-状态变更[from<{}>,to<{}>]",

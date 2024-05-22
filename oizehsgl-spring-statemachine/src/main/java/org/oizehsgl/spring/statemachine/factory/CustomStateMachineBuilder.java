@@ -1,4 +1,4 @@
-package org.oizehsgl.spring.statemachine.model;
+package org.oizehsgl.spring.statemachine.factory;
 
 import jakarta.annotation.Resource;
 import java.util.EnumSet;
@@ -23,7 +23,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class CustomStateMachineBuilder extends StateMachineBuilder {
-  private static final String MACHINE_ID = "demoMachine";
 
   @Resource private CustomStateMachineListener customStateMachineListener;
   @Resource private CustomStateMachineAction customStateMachineAction;
@@ -40,7 +39,7 @@ public class CustomStateMachineBuilder extends StateMachineBuilder {
     builder
         .configureConfiguration()
         .withConfiguration()
-        .machineId(MACHINE_ID)
+        .machineId("machineId")
         .beanFactory(beanFactory)
         .autoStartup(true)
         // 监听器

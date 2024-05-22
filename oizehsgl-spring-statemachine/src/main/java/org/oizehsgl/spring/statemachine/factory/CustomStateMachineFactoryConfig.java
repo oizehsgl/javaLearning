@@ -1,4 +1,4 @@
-package org.oizehsgl.spring.statemachine.config;
+package org.oizehsgl.spring.statemachine.factory;
 
 import jakarta.annotation.Resource;
 import java.util.EnumSet;

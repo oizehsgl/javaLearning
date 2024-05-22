@@ -1,6 +1,6 @@
 package org.oizehsgl.spring.statemachine.service;
 
-import org.oizehsgl.spring.statemachine.config.CustomStateMachineFactoryConfig;
+import org.oizehsgl.spring.statemachine.factory.CustomStateMachineFactoryConfig;
 import org.oizehsgl.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.spring.statemachine.enums.CustomState;
 import org.oizehsgl.spring.statemachine.persist.redis.runtime.CustomRedisPersistingStateMachineInterceptor;
