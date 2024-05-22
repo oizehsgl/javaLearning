@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public enum DemoState {
+public enum CustomState {
   S1(1, "一"),
   S2(2, "二"),
   S3(3, "三"),

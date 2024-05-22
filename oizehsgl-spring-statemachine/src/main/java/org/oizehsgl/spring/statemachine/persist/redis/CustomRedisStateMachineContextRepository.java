@@ -1,8 +1,8 @@
 //package org.oizehsgl.spring.statemachine.persist.redis;
 //
 //import org.oizehsgl.nosql.redis.wrapper.serializer.CustomStringRedisSerializer;
-//import org.oizehsgl.spring.statemachine.enums.DemoEvent;
-//import org.oizehsgl.spring.statemachine.enums.DemoState;
+//import org.oizehsgl.spring.statemachine.enums.CustomEvent;
+//import org.oizehsgl.spring.statemachine.enums.CustomState;
 //import org.springframework.data.redis.connection.RedisConnectionFactory;
 //import org.springframework.stereotype.Component;
 //
@@ -11,7 +11,7 @@
 // */
 //@Component
 //public class CustomRedisStateMachineContextRepository
-//    extends RedisStateMachineContextRepositoryAdapter<DemoState, DemoEvent> {
+//    extends RedisStateMachineContextRepositoryAdapter<CustomState, CustomEvent> {
 //    /**
 //     * Instantiates a new redis state machine context repository.
 //     *

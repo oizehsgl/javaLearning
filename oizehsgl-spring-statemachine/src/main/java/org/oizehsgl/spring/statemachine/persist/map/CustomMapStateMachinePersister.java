@@ -1,28 +1,28 @@
 package org.oizehsgl.spring.statemachine.persist.map;
 
-import org.oizehsgl.spring.statemachine.enums.DemoEvent;
-import org.oizehsgl.spring.statemachine.enums.DemoState;
+import org.oizehsgl.spring.statemachine.enums.CustomEvent;
+import org.oizehsgl.spring.statemachine.enums.CustomState;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.persist.AbstractStateMachinePersister;
 import org.springframework.stereotype.Component;
 
 /**
- * Map-状态机持久化实现
+ * Map状态机持久化实现
  *
  * @author oizehsgl
  */
 @Component
-public class MapDemoStateMachinePersister
-    extends AbstractStateMachinePersister<DemoState, DemoEvent, String> {
+public class CustomMapStateMachinePersister
+    extends AbstractStateMachinePersister<CustomState, CustomEvent, String> {
   /**
    * Instantiates a new abstract state machine persister.
    *
    * @param stateMachinePersist the state machine persist
    */
-  public MapDemoStateMachinePersister(
-      @Qualifier(MapDemoStateMachinePersist.BEAN_NAME)
-          StateMachinePersist<DemoState, DemoEvent, String> stateMachinePersist) {
+  public CustomMapStateMachinePersister(
+      @Qualifier(CustomMapStateMachinePersist.BEAN_NAME)
+          StateMachinePersist<CustomState, CustomEvent, String> stateMachinePersist) {
     super(stateMachinePersist);
   }
 }

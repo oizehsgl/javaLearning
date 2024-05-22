@@ -1,7 +1,7 @@
 //package org.oizehsgl.spring.statemachine.persist.redis;
 //
-//import org.oizehsgl.spring.statemachine.enums.DemoEvent;
-//import org.oizehsgl.spring.statemachine.enums.DemoState;
+//import org.oizehsgl.spring.statemachine.enums.CustomEvent;
+//import org.oizehsgl.spring.statemachine.enums.CustomState;
 //import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.statemachine.StateMachinePersist;
 //import org.springframework.statemachine.data.redis.RedisStateMachinePersister;
@@ -14,10 +14,10 @@
 // */
 //@Component
 //public class RedisDemoStateMachinePersister
-//    extends RedisStateMachinePersister<DemoState, DemoEvent> {
+//    extends RedisStateMachinePersister<CustomState, CustomEvent> {
 //  public RedisDemoStateMachinePersister(
 //      @Qualifier(RedisRepositoryDemoStateMachinePersist.BEAN_NAME)
-//          StateMachinePersist<DemoState, DemoEvent, String> stateMachinePersist) {
+//          StateMachinePersist<CustomState, CustomEvent, String> stateMachinePersist) {
 //    super(stateMachinePersist);
 //  }
 //}

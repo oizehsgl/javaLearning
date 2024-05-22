@@ -4,36 +4,36 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.oizehsgl.spring.statemachine.enums.DemoEvent;
-import org.oizehsgl.spring.statemachine.enums.DemoState;
+import org.oizehsgl.spring.statemachine.enums.CustomEvent;
+import org.oizehsgl.spring.statemachine.enums.CustomState;
 import org.springframework.statemachine.StateMachineContext;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.stereotype.Component;
 
 /**
- * Map-状态机持久化接口类
+ * Map状态机持久化抽象
  *
  * @author oizehsgl
  */
 @Slf4j
 @Data
-@Component(MapDemoStateMachinePersist.BEAN_NAME)
-public class MapDemoStateMachinePersist
-    implements StateMachinePersist<DemoState, DemoEvent, String> {
+@Component(CustomMapStateMachinePersist.BEAN_NAME)
+public class CustomMapStateMachinePersist
+    implements StateMachinePersist<CustomState, CustomEvent, String> {
   public static final String BEAN_NAME = "mapDemoStateMachinePersist";
 
-  private final Map<String, StateMachineContext<DemoState, DemoEvent>> contexts =
+  private final Map<String, StateMachineContext<CustomState, CustomEvent>> contexts =
       new ConcurrentHashMap<>();
 
   @Override
-  public void write(StateMachineContext<DemoState, DemoEvent> context, String contextObj)
+  public void write(StateMachineContext<CustomState, CustomEvent> context, String contextObj)
       throws Exception {
     log.info("状态机持久化(写入)[key<{}>]", contextObj);
     contexts.put(contextObj, context);
   }
 
   @Override
-  public StateMachineContext<DemoState, DemoEvent> read(String contextObj) throws Exception {
+  public StateMachineContext<CustomState, CustomEvent> read(String contextObj) throws Exception {
     log.info("状态机持久化(读取)[key<{}>]", contextObj);
     return contexts.get(contextObj);
   }

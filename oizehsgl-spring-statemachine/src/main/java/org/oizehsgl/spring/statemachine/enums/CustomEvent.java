@@ -4,13 +4,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * 订单事件
+ * 事件
  *
  * @author oizehsgl
  */
 @Getter
 @RequiredArgsConstructor
-public enum DemoEvent {
+public enum CustomEvent {
   E1(1, "壹"),
   E2(2, "贰"),
   E3(3, "叁"),

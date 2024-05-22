@@ -1,7 +1,7 @@
 //package org.oizehsgl.spring.statemachine.persist.redis;
 //
-//import org.oizehsgl.spring.statemachine.enums.DemoEvent;
-//import org.oizehsgl.spring.statemachine.enums.DemoState;
+//import org.oizehsgl.spring.statemachine.enums.CustomEvent;
+//import org.oizehsgl.spring.statemachine.enums.CustomState;
 //import org.springframework.statemachine.StateMachineContext;
 //import org.springframework.statemachine.StateMachineContextRepository;
 //import org.springframework.statemachine.persist.RepositoryStateMachinePersist;
@@ -14,7 +14,7 @@
 // */
 //@Component
 //public class RedisRepositoryDemoStateMachinePersist
-//    extends RepositoryStateMachinePersist<DemoState, DemoEvent> {
+//    extends RepositoryStateMachinePersist<CustomState, CustomEvent> {
 //  public static final String BEAN_NAME = "redisRepositoryDemoStateMachinePersist";
 //
 //  /**
@@ -23,7 +23,7 @@
 //   * @param repository the repository
 //   */
 //  public RedisRepositoryDemoStateMachinePersist(
-//      StateMachineContextRepository<DemoState, DemoEvent, StateMachineContext<DemoState, DemoEvent>>
+//      StateMachineContextRepository<CustomState, CustomEvent, StateMachineContext<CustomState, CustomEvent>>
 //          repository) {
 //    super(repository);
 //  }
