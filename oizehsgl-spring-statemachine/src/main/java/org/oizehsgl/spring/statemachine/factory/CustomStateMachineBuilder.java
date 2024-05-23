@@ -6,9 +6,9 @@ import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.spring.statemachine.enums.CustomState;
-import org.oizehsgl.spring.statemachine.hook.CustomStateMachineAction;
-import org.oizehsgl.spring.statemachine.hook.CustomStateMachineGuard;
-import org.oizehsgl.spring.statemachine.hook.CustomStateMachineListener;
+import org.oizehsgl.spring.statemachine.hook.action.CustomStateMachineDoAction;
+import org.oizehsgl.spring.statemachine.hook.guard.CustomStateMachineGuard;
+import org.oizehsgl.spring.statemachine.hook.listener.CustomStateMachineListener;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.action.StateDoActionPolicy;
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 public class CustomStateMachineBuilder extends StateMachineBuilder {
 
   @Resource private CustomStateMachineListener customStateMachineListener;
-  @Resource private CustomStateMachineAction customStateMachineAction;
+  @Resource private CustomStateMachineDoAction customStateMachineDoAction;
   @Resource private CustomStateMachineGuard customStateMachineGuard;
 
   /**
@@ -52,8 +52,8 @@ public class CustomStateMachineBuilder extends StateMachineBuilder {
         .withStates()
         .initial(CustomState.S1)
         .end(CustomState.S4)
-        .state(CustomState.S4, customStateMachineAction)
-        .state(CustomState.S4, customStateMachineAction, customStateMachineAction)
+        .state(CustomState.S4, customStateMachineDoAction)
+        .state(CustomState.S4, customStateMachineDoAction, customStateMachineDoAction)
         .states(EnumSet.allOf(CustomState.class));
     // 转换
     builder
@@ -62,7 +62,7 @@ public class CustomStateMachineBuilder extends StateMachineBuilder {
         .withExternal()
         .source(CustomState.S1)
         .event(CustomEvent.E1)
-        .action(customStateMachineAction)
+        .action(customStateMachineDoAction)
         .target(CustomState.S2)
         .guard(customStateMachineGuard)
         // 发货事件: 待发货->待收货
@@ -70,14 +70,14 @@ public class CustomStateMachineBuilder extends StateMachineBuilder {
         .withExternal()
         .source(CustomState.S2)
         .event(CustomEvent.E2)
-        .action(customStateMachineAction)
+        .action(customStateMachineDoAction)
         .target(CustomState.S3)
         // 收货事件: 待收货->已完成
         .and()
         .withExternal()
         .source(CustomState.S3)
         .event(CustomEvent.E3)
-        .action(customStateMachineAction)
+        .action(customStateMachineDoAction)
         .target(CustomState.S4);
     return builder.build();
   }

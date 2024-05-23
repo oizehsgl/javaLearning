@@ -1,4 +1,4 @@
-package org.oizehsgl.spring.statemachine.hook;
+package org.oizehsgl.spring.statemachine.hook.guard;
 
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.spring.statemachine.enums.CustomEvent;
@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class CustomStateMachineGuard implements Guard<CustomState, CustomEvent> {
+public class CustomStateMachineChoiceGuard implements Guard<CustomState, CustomEvent> {
   @Override
   public boolean evaluate(StateContext<CustomState, CustomEvent> context) {
     log.info(
-        "状态机守护触发[source<{}>,target<{}>]", context.getSource().getId(), context.getTarget().getId());
+        "状态机守卫(选择)[现态<{}>,次态<{}>]", context.getSource().getId(), context.getTarget().getId());
     return true;
   }
 }

@@ -1,4 +1,4 @@
-package org.oizehsgl.spring.statemachine.hook;
+package org.oizehsgl.spring.statemachine.hook.listener;
 
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class CustomStateMachineListener extends StateMachineListenerAdapter<Cust
       log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
     log.info(
-        "状态机事件监听-状态变更[from<{}>,to<{}>]",
+        "状态机监听(变更)[现态<{}>,次态<{}>]",
         Optional.ofNullable(from).map(State::getId).orElse(null),
         Optional.ofNullable(to).map(State::getId).orElse(null));
   }
