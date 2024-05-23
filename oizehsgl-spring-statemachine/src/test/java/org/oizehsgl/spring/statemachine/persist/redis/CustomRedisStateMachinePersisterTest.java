@@ -1,6 +1,5 @@
 package org.oizehsgl.spring.statemachine.persist.redis;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
@@ -26,35 +25,42 @@ class CustomRedisStateMachinePersisterTest {
 
   @Test
   void test() throws Exception {
-    StateMachine<CustomState, CustomEvent> stateMachine = stateMachineFactory.getStateMachine("MMMM");
-    stateMachine.start();
+    StateMachine<CustomState, CustomEvent> stateMachine =
+        stateMachineFactory.getStateMachine("MMMM");
+    stateMachine.startReactively().subscribe();
 
-    String key="WWW";
-    //customRedisStateMachinePersister.restore(stateMachine,key);
+    String key = "WWW";
+    // customRedisStateMachinePersister.restore(stateMachine,key);
     System.out.println(stateMachine.getState().getId());
     stateMachine
         .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E1).build()))
         .subscribe();
-    customRedisStateMachinePersister.persist(stateMachine,key);
+    customRedisStateMachinePersister.persist(stateMachine, key);
 
-    customRedisStateMachinePersister.restore(stateMachine,key);
+    customRedisStateMachinePersister.restore(stateMachine, key);
     System.out.println(stateMachine.getState().getId());
-    stateMachine.sendEvent(CustomEvent.E2);
-    customRedisStateMachinePersister.persist(stateMachine,key);
+    stateMachine
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E2).build()))
+        .subscribe();
+    customRedisStateMachinePersister.persist(stateMachine, key);
 
-    customRedisStateMachinePersister.restore(stateMachine,key);
+    customRedisStateMachinePersister.restore(stateMachine, key);
     System.out.println(stateMachine.getState().getId());
-    stateMachine.sendEvent(CustomEvent.E3);
-    stateMachine.sendEvent(CustomEvent.E1);
-    customRedisStateMachinePersister.persist(stateMachine,key);
+    stateMachine
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E3).build()))
+        .subscribe();
+    customRedisStateMachinePersister.persist(stateMachine, key);
 
-    customRedisStateMachinePersister.restore(stateMachine,key);
+    customRedisStateMachinePersister.restore(stateMachine, key);
     System.out.println(stateMachine.getState().getId());
-    stateMachine.sendEvent(
-        MessageBuilder.withPayload(CustomEvent.E4)
-            .setHeader(Object.class.getSimpleName(), new Object())
-            .build());
-    customRedisStateMachinePersister.persist(stateMachine,key);
+    stateMachine
+        .sendEvent(
+            Mono.just(
+                MessageBuilder.withPayload(CustomEvent.E4)
+                    .setHeader(Object.class.getSimpleName(), new Object())
+                    .build()))
+        .subscribe();
+    customRedisStateMachinePersister.persist(stateMachine, key);
 
     System.out.println(stateMachine.getState().getId());
   }

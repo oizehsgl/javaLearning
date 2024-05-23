@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum CustomState {
+  INITIAL(0, "初始状态"),
   S1(1, "一"),
   S2(2, "二"),
   S3(3, "三"),

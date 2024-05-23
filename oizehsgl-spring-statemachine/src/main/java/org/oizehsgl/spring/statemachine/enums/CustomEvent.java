@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum CustomEvent {
+  RESTART(0, "restart"),
   E1(1, "壹"),
   E2(2, "贰"),
   E3(3, "叁"),

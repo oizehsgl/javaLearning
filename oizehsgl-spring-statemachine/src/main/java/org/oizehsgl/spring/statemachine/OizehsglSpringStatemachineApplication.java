@@ -7,9 +7,6 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.statemachine.data.redis.RedisRepositoryStateMachine;
 
 @SpringBootApplication
-
-@ComponentScan(excludeFilters = {@ComponentScan.Filter(type =
-        FilterType.ASSIGNABLE_TYPE, classes = {RedisRepositoryStateMachine.class})})
 public class OizehsglSpringStatemachineApplication {
 
   public static void main(String[] args) {

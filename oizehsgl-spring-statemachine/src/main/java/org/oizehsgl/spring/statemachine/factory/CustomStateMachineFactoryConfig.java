@@ -33,7 +33,9 @@ public class CustomStateMachineFactoryConfig
   @Resource private CustomStateMachineAction customStateMachineAction;
   @Resource private CustomStateMachineGuard customStateMachineGuard;
   @Resource private CustomStateMachineErrorAction customStateMachineErrorAction;
-  @Resource private CustomRedisPersistingStateMachineInterceptor customRedisPersistingStateMachineInterceptor;
+
+  @Resource
+  private CustomRedisPersistingStateMachineInterceptor customRedisPersistingStateMachineInterceptor;
 
   /**
    * 配置
@@ -47,7 +49,7 @@ public class CustomStateMachineFactoryConfig
     config
         .withConfiguration()
         // 机器标识
-        //.machineId("machineId")
+        // .machineId("machineId")
         // 自动启动
         // .autoStartup(true)
         // 监听器
@@ -66,11 +68,12 @@ public class CustomStateMachineFactoryConfig
    * @throws Exception 异常
    */
   @Override
-  public void configure(StateMachineStateConfigurer<CustomState, CustomEvent> states) throws Exception {
+  public void configure(StateMachineStateConfigurer<CustomState, CustomEvent> states)
+      throws Exception {
     states
         .withStates()
         // 初态(有且只有一个)
-        .initial(CustomState.S1, customStateMachineAction)
+        .initial(CustomState.INITIAL, customStateMachineAction)
         // 选择态
         .choice(CustomState.S5)
         // .end(CustomState.WAIT_DELIVER)
@@ -80,13 +83,15 @@ public class CustomStateMachineFactoryConfig
         // .stateEntry(CustomState.S3,demoStateMachineAction,demoStateMachineErrorAction)
         // .state(CustomState.FINISH, demoStateMachineAction)
         // .state(CustomState.FINISH, demoStateMachineAction, demoStateMachineAction)
-        // .stateEntry(CustomState.WAIT_DELIVER, demoStateMachineAction, demoStateMachineErrorAction)
+        // .stateEntry(CustomState.WAIT_DELIVER, demoStateMachineAction,
+        // demoStateMachineErrorAction)
         // .stateDo(CustomState.WAIT_DELIVER, demoStateMachineAction, demoStateMachineErrorAction)
         // .stateExit(CustomState.WAIT_DELIVER, demoStateMachineAction, demoStateMachineErrorAction)
         // 多个状态
         // .states(EnumSet.allOf(CustomState.class));
         .states(
             EnumSet.of(
+                CustomState.INITIAL,
                 CustomState.S1,
                 CustomState.S2,
                 CustomState.S3,
@@ -94,7 +99,8 @@ public class CustomStateMachineFactoryConfig
                 CustomState.S5,
                 CustomState.S6,
                 CustomState.S7,
-                CustomState.S8));
+                CustomState.S8,
+                CustomState.S9));
   }
 
   /**
@@ -106,50 +112,64 @@ public class CustomStateMachineFactoryConfig
   @Override
   public void configure(StateMachineTransitionConfigurer<CustomState, CustomEvent> transitions)
       throws Exception {
+    // 配置启动转换
+    // INITIAL E1 S2
     transitions
-        // S1 E1 S2
         .withExternal()
-        // 现态
-        .source(CustomState.S1)
-        // 次态
-        .target(CustomState.S2)
-        // 事件
+        .source(CustomState.INITIAL)
         .event(CustomEvent.E1)
-        // 动作
         .action(customStateMachineAction, customStateMachineErrorAction)
-        // 守卫
         .guard(customStateMachineGuard)
-        // S2 E2 S3
-        .and()
+        .target(CustomState.S2);
+    // S1 E1 S2
+    transitions
+        .withExternal()
+        .source(CustomState.S1)
+        .event(CustomEvent.E1)
+        .action(customStateMachineAction, customStateMachineErrorAction)
+        .guard(customStateMachineGuard)
+        .target(CustomState.S2);
+    // S2 E2 S3
+    transitions
         .withExternal()
         .source(CustomState.S2)
-        .target(CustomState.S3)
         .event(CustomEvent.E2)
         .action(customStateMachineAction, customStateMachineErrorAction)
         .guard(customStateMachineGuard)
-        // S3 E3 S4
-        .and()
+        .target(CustomState.S3);
+    // S3 E3 S4
+    transitions
         .withExternal()
         .source(CustomState.S3)
         .event(CustomEvent.E3)
         .action(customStateMachineAction, customStateMachineErrorAction)
         .guard(customStateMachineGuard)
-        .target(CustomState.S4)
-        .and()
+        .target(CustomState.S4);
+    transitions
         .withExternal()
         .source(CustomState.S4)
         .event(CustomEvent.E4)
         .action(customStateMachineAction, customStateMachineErrorAction)
         .guard(customStateMachineGuard)
-        .target(CustomState.S5)
-        .and()
+        .target(CustomState.S5);
+    transitions
         .withChoice()
         .source(CustomState.S5)
         .first(
             CustomState.S6,
-                customStateMachineGuard,
-                customStateMachineAction,
-                customStateMachineErrorAction)
+            customStateMachineGuard,
+            customStateMachineAction,
+            customStateMachineErrorAction)
         .last(CustomState.S7);
+    // 配置重启事件
+    for (CustomState customState : EnumSet.allOf(CustomState.class)) {
+      transitions
+          .withExternal()
+          .source(customState)
+          .event(CustomEvent.RESTART)
+          .action(customStateMachineAction, customStateMachineErrorAction)
+          .guard(customStateMachineGuard)
+          .target(CustomState.INITIAL);
+    }
   }
 }

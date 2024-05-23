@@ -24,7 +24,7 @@ class CustomRedisPersistingStateMachineInterceptorTest {
   void test() {
     StateMachine<CustomState, CustomEvent> stateMachine =
         customStateMachineService.acquireStateMachine("1024");
-    stateMachine.start();
+    stateMachine.startReactively().subscribe();
 
     System.out.println(stateMachine.getState().getId());
     stateMachine
@@ -32,17 +32,23 @@ class CustomRedisPersistingStateMachineInterceptorTest {
         .subscribe();
 
     System.out.println(stateMachine.getState().getId());
-    stateMachine.sendEvent(CustomEvent.E2);
+    stateMachine
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E2).build()))
+        .subscribe();
 
     System.out.println(stateMachine.getState().getId());
-    stateMachine.sendEvent(CustomEvent.E3);
-    stateMachine.sendEvent(CustomEvent.E1);
+    stateMachine
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E3).build()))
+        .subscribe();
 
     System.out.println(stateMachine.getState().getId());
-    stateMachine.sendEvent(
-        MessageBuilder.withPayload(CustomEvent.E4)
-            .setHeader(Object.class.getSimpleName(), new Object())
-            .build());
+    stateMachine
+        .sendEvent(
+            Mono.just(
+                MessageBuilder.withPayload(CustomEvent.E4)
+                    .setHeader(Object.class.getSimpleName(), new Object())
+                    .build()))
+        .subscribe();
 
     System.out.println(stateMachine.getState().getId());
   }
