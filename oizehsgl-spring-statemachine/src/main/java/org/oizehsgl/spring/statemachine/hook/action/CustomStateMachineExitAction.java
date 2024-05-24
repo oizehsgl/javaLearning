@@ -25,11 +25,8 @@ public class CustomStateMachineExitAction implements Action<CustomState, CustomE
         Optional.ofNullable(context).map(StateContext::getTarget);
     log.info(
         "状态机行动(退出)[现态<{}>,次态<{}>]",
-        sourceStateOptional.map(State::getId).orElse(null),
-        targetStateOptional.map(State::getId).orElse(null));
-    if (context.getEvent() == CustomEvent.E3) {
-      // throw new RuntimeException("状态机执行异常");
-    }
+        sourceStateOptional.map(State::getIds).orElse(null),
+        targetStateOptional.map(State::getIds).orElse(null));
     context.getExtendedState().getVariables().put("key","value");
   }
 }

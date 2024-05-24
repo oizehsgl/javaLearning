@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class CustomStateMachineGuard implements Guard<CustomState, CustomEvent> {
+public class CustomStateMachineJudgementGuard implements Guard<CustomState, CustomEvent> {
   @Override
   public boolean evaluate(StateContext<CustomState, CustomEvent> context) {
     log.info(
-        "状态机守卫(判断)[现态<{}>,次态<{}>]", context.getSource().getId(), context.getTarget().getId());
+        "状态机守卫(判断)[现态<{}>,次态<{}>]", context.getSource().getIds(), context.getTarget().getIds());
     return true;
   }
 }

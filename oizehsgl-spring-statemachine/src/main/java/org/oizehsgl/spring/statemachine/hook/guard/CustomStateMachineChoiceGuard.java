@@ -18,7 +18,7 @@ public class CustomStateMachineChoiceGuard implements Guard<CustomState, CustomE
   @Override
   public boolean evaluate(StateContext<CustomState, CustomEvent> context) {
     log.info(
-        "状态机守卫(选择)[现态<{}>,次态<{}>]", context.getSource().getId(), context.getTarget().getId());
+        "状态机守卫(选择)[现态<{}>,次态<{}>]", context.getSource().getIds(), context.getTarget().getIds());
     return true;
   }
 }

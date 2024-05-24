@@ -23,12 +23,9 @@ public class CustomStateMachineListener extends StateMachineListenerAdapter<Cust
     CustomState fromState = fromOptional.map(State::getId).orElse(null);
     CustomState toState = toOptional.map(State::getId).orElse(null);
 
-    if (fromState == CustomState.S1 && toState == CustomState.S2) {
-      log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    }
     log.info(
         "状态机监听(变更)[现态<{}>,次态<{}>]",
-        Optional.ofNullable(from).map(State::getId).orElse(null),
-        Optional.ofNullable(to).map(State::getId).orElse(null));
+        Optional.ofNullable(from).map(State::getIds).orElse(null),
+        Optional.ofNullable(to).map(State::getIds).orElse(null));
   }
 }

@@ -1,14 +1,14 @@
 package org.oizehsgl.spring.statemachine.factory;
 
 import jakarta.annotation.Resource;
-import java.util.EnumSet;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.spring.statemachine.enums.CustomState;
 import org.oizehsgl.spring.statemachine.hook.action.*;
 import org.oizehsgl.spring.statemachine.hook.guard.CustomStateMachineChoiceGuard;
-import org.oizehsgl.spring.statemachine.hook.guard.CustomStateMachineGuard;
+import org.oizehsgl.spring.statemachine.hook.guard.CustomStateMachineJudgementGuard;
 import org.oizehsgl.spring.statemachine.hook.guard.CustomStateMachineJunctionGuard;
 import org.oizehsgl.spring.statemachine.hook.listener.CustomStateMachineListener;
 import org.oizehsgl.spring.statemachine.persist.redis.runtime.CustomRedisPersistingStateMachineInterceptor;
@@ -35,12 +35,13 @@ public class CustomStateMachineFactoryConfig
 
   @Resource private CustomStateMachineListener customStateMachineListener;
   @Resource private CustomStateMachineInitialAction customStateMachineInitialAction;
-  @Resource private CustomStateMachineAction customStateMachineAction;
+  @Resource private CustomStateMachinePseudoAction customStateMachinePseudoAction;
   @Resource private CustomStateMachineTimerAction customStateMachineTimerAction;
   @Resource private CustomStateMachineDoAction customStateMachineDoAction;
+  @Resource private CustomStateMachineRestartAction customStateMachineRestartAction;
   @Resource private CustomStateMachineEntryAction customStateMachineEntryAction;
   @Resource private CustomStateMachineExitAction customStateMachineExitAction;
-  @Resource private CustomStateMachineGuard customStateMachineGuard;
+  @Resource private CustomStateMachineJudgementGuard customStateMachineJudgementGuard;
   @Resource private CustomStateMachineChoiceGuard customStateMachineChoiceGuard;
   @Resource private CustomStateMachineJunctionGuard customStateMachineJunctionGuard;
   @Resource private CustomStateMachineErrorAction customStateMachineErrorAction;
@@ -83,48 +84,64 @@ public class CustomStateMachineFactoryConfig
       throws Exception {
     states
         .withStates()
-        .region("R")
+        .region("初始区域")
         .initial(CustomState.INITIAL, customStateMachineInitialAction)
-        .state(CustomState.S1, customStateMachineAction, customStateMachineAction)
-        .stateEntry(CustomState.S1, customStateMachineEntryAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S1, customStateMachineDoAction, customStateMachineErrorAction)
-        .stateExit(CustomState.S1, customStateMachineExitAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S2, customStateMachineDoAction, null)
-        .stateDo(CustomState.S3, customStateMachineDoAction, customStateMachineErrorAction)
-        .stateEntry(CustomState.S4, customStateMachineEntryAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S4, customStateMachineDoAction, customStateMachineErrorAction)
-        .stateExit(CustomState.S4, customStateMachineExitAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S5, customStateMachineDoAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S6, customStateMachineDoAction, customStateMachineErrorAction)
-        .state(CustomState.S7, customStateMachineEntryAction, customStateMachineExitAction)
-        .stateEntry(CustomState.S8, customStateMachineEntryAction, customStateMachineErrorAction)
-        .stateExit(CustomState.S9, customStateMachineExitAction, customStateMachineErrorAction)
+        .state(CustomState.R1, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R2, customStateMachineEntryAction, customStateMachineExitAction)
         // .history(CustomState.HISTORY, StateConfigurer.History.SHALLOW)
         .choice(CustomState.CHOICE)
         .junction(CustomState.JUNCTION)
         .fork(CustomState.FORK)
         .join(CustomState.JOIN)
-        .end(CustomState.END);
-    states
+        .end(CustomState.END)
+        .and()
         .withStates()
         .region("R1")
-        .parent(CustomState.S1)
-        .initial(CustomState.S1A)
-        .stateDo(CustomState.S1B, customStateMachineDoAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S1C, customStateMachineDoAction, customStateMachineErrorAction)
-        .entry(CustomState.S1ENTRY)
-        .exit(CustomState.S1EXIT)
-        .end(CustomState.S1D);
-    states
+        .parent(CustomState.R1)
+        .initial(CustomState.R1A, customStateMachineInitialAction)
+        .state(CustomState.R1A, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R1B, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R1C, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R1D, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R1E, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R1F, customStateMachineEntryAction, customStateMachineExitAction)
+        .and()
         .withStates()
-        .region("R2")
-        .parent(CustomState.S2)
-        .initial(CustomState.S2A)
-        .stateDo(CustomState.S2B, customStateMachineDoAction, customStateMachineErrorAction)
-        .stateDo(CustomState.S2C, customStateMachineDoAction, customStateMachineErrorAction)
-        .entry(CustomState.S2ENTRY)
-        .exit(CustomState.S2EXIT)
-        .end(CustomState.S2D);
+        .region("R2ABC")
+        .parent(CustomState.R2)
+        .initial(CustomState.R2A, customStateMachineInitialAction)
+        .state(CustomState.R2A, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R2B, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R2C, customStateMachineEntryAction, customStateMachineExitAction)
+        .and()
+        .withStates()
+        .region("R2XYZ")
+        .parent(CustomState.R2)
+        .initial(CustomState.R2X, customStateMachineInitialAction)
+        .state(CustomState.R2X, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R2Y, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.R2Z, customStateMachineEntryAction, customStateMachineExitAction);
+  }
+
+  public void trans(
+      StateMachineTransitionConfigurer<CustomState, CustomEvent> transitions,
+      CustomEvent customEvent,
+      CustomState... customStates)
+      throws Exception {
+    // 配置区域转换
+    CustomState lastCustomState = null;
+    for (CustomState customState : customStates) {
+      if (Objects.nonNull(lastCustomState)) {
+        transitions
+            .withExternal()
+            .source(lastCustomState)
+            .target(customState)
+            .guard(customStateMachineJudgementGuard)
+            .action(customStateMachineTransitionAction, customStateMachineErrorAction)
+            .event(customEvent);
+      }
+      lastCustomState = customState;
+    }
   }
 
   /**
@@ -137,102 +154,130 @@ public class CustomStateMachineFactoryConfig
   public void configure(StateMachineTransitionConfigurer<CustomState, CustomEvent> transitions)
       throws Exception {
     // 配置启动转换
-    transitions
-        .withExternal()
-        .source(CustomState.INITIAL)
-        .event(CustomEvent.E1)
-        .action(customStateMachineTransitionAction, customStateMachineErrorAction)
-        .guard(customStateMachineGuard)
-        .target(CustomState.S1);
-    transitions
-        .withExternal()
-        .source(CustomState.S1)
-        .event(CustomEvent.E2)
-        .action(customStateMachineTransitionAction, customStateMachineErrorAction)
-        .guard(customStateMachineGuard)
-        .target(CustomState.S2);
-    transitions
-        .withExternal()
-        .source(CustomState.S2)
-        .event(CustomEvent.E3)
-        .action(customStateMachineTransitionAction, customStateMachineErrorAction)
-        .guard(customStateMachineGuard)
-        .target(CustomState.S3);
-    transitions
-        .withExternal()
-        .source(CustomState.S3)
-        .event(CustomEvent.E4)
-        .action(customStateMachineTransitionAction, customStateMachineErrorAction)
-        .guard(customStateMachineGuard)
-        .target(CustomState.S4);
-    transitions
-        .withExternal()
-        .source(CustomState.S4)
-        .event(CustomEvent.E5)
-        .action(customStateMachineTransitionAction, customStateMachineErrorAction)
-        .guard(customStateMachineGuard)
-        .target(CustomState.S5);
-    // 定时器
-    transitions
-        .withInternal()
-        .source(CustomState.S1)
-        .action(customStateMachineTimerAction)
-        .timerOnce(5000);
+    trans(
+        transitions,
+        CustomEvent.NEXT,
+        CustomState.INITIAL,
+        CustomState.R1,
+        CustomState.R2,
+        CustomState.HISTORY,
+        CustomState.CHOICE,
+        CustomState.JUNCTION,
+        CustomState.FORK,
+        CustomState.JOIN,
+        CustomState.END);
+    // 配置区域转换
+    trans(
+        transitions,
+        CustomEvent.SUB_NEXT,
+        CustomState.R1,
+        CustomState.R1A,
+        CustomState.R1B,
+        CustomState.R1C,
+        CustomState.R1D,
+        CustomState.R1E,
+        CustomState.R1F,
+        CustomState.R2);
+    trans(
+        transitions,
+        CustomEvent.SUB_NEXT1,
+        CustomState.R2,
+        CustomState.R2A,
+        CustomState.R2B,
+        CustomState.R2C,
+        CustomState.CHOICE);
+    trans(
+        transitions,
+        CustomEvent.SUB_NEXT2,
+        CustomState.R2,
+        CustomState.R2X,
+        CustomState.R2Y,
+        CustomState.R2Z,
+        CustomState.CHOICE);
+    // 历史
+    // transitions.withHistory().source(CustomState.HISTORY).target(CustomState.S1B);
     // 选择
     transitions
         .withChoice()
         .source(CustomState.CHOICE)
         .first(
-            CustomState.S1,
+            CustomState.JUNCTION,
             customStateMachineChoiceGuard,
-            customStateMachineDoAction,
+            customStateMachineTransitionAction,
             customStateMachineErrorAction)
         .then(
-            CustomState.S2,
+            CustomState.FORK,
             customStateMachineChoiceGuard,
-            customStateMachineDoAction,
+            customStateMachineTransitionAction,
             customStateMachineErrorAction)
-        .last(CustomState.S3, customStateMachineDoAction, customStateMachineErrorAction);
+        .last(CustomState.R1, customStateMachineTransitionAction, customStateMachineErrorAction);
     // 联结
     transitions
         .withJunction()
         .source(CustomState.JUNCTION)
         .first(
-            CustomState.S1,
+            CustomState.FORK,
             customStateMachineJunctionGuard,
-            customStateMachineDoAction,
+            customStateMachineTransitionAction,
             customStateMachineErrorAction)
         .then(
-            CustomState.S2,
+            CustomState.R1,
             customStateMachineJunctionGuard,
-            customStateMachineDoAction,
+            customStateMachineTransitionAction,
             customStateMachineErrorAction)
-        .last(CustomState.S3, customStateMachineDoAction, customStateMachineErrorAction);
-    // 历史
-    // transitions.withHistory().source(CustomState.HISTORY).target(CustomState.S1B);
+        .last(CustomState.END, customStateMachineDoAction, customStateMachineErrorAction);
     // 分流
-    transitions.withFork().source(CustomState.FORK).target(CustomState.S1B).target(CustomState.S2B);
+    transitions
+        .withFork()
+        .source(CustomState.FORK)
+        .target(CustomState.R2B)
+        .target(CustomState.R2Y);
     // 合流
     transitions
         .withJoin()
+        .source(CustomState.R2C)
+        .source(CustomState.R2Z)
         .target(CustomState.JOIN)
-        .source(CustomState.S1C)
-        .source(CustomState.S2C)
         .and()
         .withExternal()
         .source(CustomState.JOIN)
-        .target(CustomState.S3);
-    transitions.withEntry().source(CustomState.S1ENTRY).target(CustomState.S4);
-    transitions.withExit().source(CustomState.S2EXIT).target(CustomState.S5);
-    // 配置重启事件
-    for (CustomState customState : EnumSet.allOf(CustomState.class)) {
-      transitions
-          .withExternal()
-          .source(customState)
-          .event(CustomEvent.RESTART)
-          .action(customStateMachineDoAction, customStateMachineErrorAction)
-          .guard(customStateMachineGuard)
-          .target(CustomState.INITIAL);
-    }
+        .target(CustomState.END);
+    // transitions
+    //   // .withEntry().source(CustomState.S1ENTRY).target(CustomState.S4);
+    //   .withExternal()
+    //   .source(CustomState.S1)
+    //   .target(CustomState.S1ENTRY)
+    //   .event(CustomEvent.ENTRY)
+    //   .and()
+    //   .withExternal()
+    //   .source(CustomState.S1C)
+    //   .target(CustomState.S1EXIT)
+    //   .event(CustomEvent.EXIT)
+    //   .and()
+    //   .withEntry()
+    //   .source(CustomState.S1ENTRY)
+    //   .target(CustomState.S1D)
+    //   .and()
+    //   .withExit()
+    //   .source(CustomState.S1EXIT)
+    //   .target(CustomState.S3);
+    // transitions.withExit().source(CustomState.S2EXIT).target(CustomState.S5);
+    // 定时器
+    // transitions
+    //    .withExternal()
+    //    .source(CustomState.R1C)
+    //    .target(CustomState.R1D)
+    //    .action(customStateMachineTimerAction)
+    //    .timerOnce(5000);
+    //// 配置重启事件
+    // for (CustomState customState : EnumSet.allOf(CustomState.class)) {
+    //  transitions
+    //      .withExternal()
+    //      .source(customState)
+    //      .event(CustomEvent.RESTART)
+    //      .action(customStateMachineRestartAction, customStateMachineErrorAction)
+    //      .guard(customStateMachineJudgementGuard)
+    //      .target(CustomState.INITIAL);
+    // }
   }
 }

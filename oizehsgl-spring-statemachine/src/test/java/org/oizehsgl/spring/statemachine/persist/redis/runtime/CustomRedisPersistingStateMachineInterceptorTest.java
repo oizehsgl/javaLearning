@@ -25,22 +25,25 @@ class CustomRedisPersistingStateMachineInterceptorTest {
 
   @Test
   void test() {
+    customStateMachineService.clear("1024");
     StateMachine<CustomState, CustomEvent> stateMachine =
         customStateMachineService.acquireStateMachine("1024");
-    //stateMachine.startReactively().subscribe();
 
-    send(stateMachine, CustomEvent.RESTART);
-    send(stateMachine, CustomEvent.E1);
-    send(stateMachine, CustomEvent.E2);
-    send(stateMachine, CustomEvent.E3);
-    send(stateMachine, CustomEvent.E4);
-    send(stateMachine, CustomEvent.E5);
+    stateMachine.startReactively().subscribe();
+    send(stateMachine, CustomEvent.NEXT);
+    send(stateMachine, CustomEvent.NEXT);
+    send(stateMachine, CustomEvent.SUB_NEXT1);
+    send(stateMachine, CustomEvent.SUB_NEXT2);
+    send(stateMachine, CustomEvent.SUB_NEXT2);
+    send(stateMachine, CustomEvent.SUB_NEXT2);
+    send(stateMachine, CustomEvent.SUB_NEXT1);
+    //send(stateMachine, CustomEvent.SUB_NEXT2);
     // stateMachine.stopReactively().subscribe();
   }
 
   private void send(StateMachine<CustomState, CustomEvent> stateMachine, CustomEvent customEvent) {
     log.info("-----------------------------------------------------------------------------------");
-    log.info("当前状态{},开始发送{}", stateMachine.getState().getId(), customEvent);
+    log.info("当前状态{},开始发送{}", stateMachine.getState().getIds(), customEvent);
     stateMachine
         .sendEvent(
             Mono.just(
@@ -48,7 +51,7 @@ class CustomRedisPersistingStateMachineInterceptorTest {
                     .setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
                     .build()))
         .subscribe();
-    log.info("当前状态{},结束发送{}", stateMachine.getState().getId(), customEvent);
+    log.info("当前状态{},结束发送{}", stateMachine.getState().getIds(), customEvent);
     log.info("-----------------------------------------------------------------------------------");
   }
 }

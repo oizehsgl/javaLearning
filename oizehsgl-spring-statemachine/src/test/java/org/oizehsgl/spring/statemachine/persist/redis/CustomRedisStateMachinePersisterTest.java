@@ -33,21 +33,21 @@ class CustomRedisStateMachinePersisterTest {
     // customRedisStateMachinePersister.restore(stateMachine,key);
     System.out.println(stateMachine.getState().getId());
     stateMachine
-        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E1).build()))
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.NEXT).build()))
         .subscribe();
     customRedisStateMachinePersister.persist(stateMachine, key);
 
     customRedisStateMachinePersister.restore(stateMachine, key);
     System.out.println(stateMachine.getState().getId());
     stateMachine
-        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E2).build()))
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.NEXT).build()))
         .subscribe();
     customRedisStateMachinePersister.persist(stateMachine, key);
 
     customRedisStateMachinePersister.restore(stateMachine, key);
     System.out.println(stateMachine.getState().getId());
     stateMachine
-        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.E3).build()))
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.NEXT).build()))
         .subscribe();
     customRedisStateMachinePersister.persist(stateMachine, key);
 
@@ -56,7 +56,7 @@ class CustomRedisStateMachinePersisterTest {
     stateMachine
         .sendEvent(
             Mono.just(
-                MessageBuilder.withPayload(CustomEvent.E4)
+                MessageBuilder.withPayload(CustomEvent.NEXT)
                     .setHeader(Object.class.getSimpleName(), new Object())
                     .build()))
         .subscribe();

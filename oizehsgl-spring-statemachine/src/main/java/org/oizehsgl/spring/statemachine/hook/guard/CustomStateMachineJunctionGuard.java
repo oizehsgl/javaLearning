@@ -18,7 +18,7 @@ public class CustomStateMachineJunctionGuard implements Guard<CustomState, Custo
   @Override
   public boolean evaluate(StateContext<CustomState, CustomEvent> context) {
     log.info(
-        "状态机守卫(联结)[现态<{}>,次态<{}>]", context.getSource().getId(), context.getTarget().getId());
+        "状态机守卫(联结)[现态<{}>,次态<{}>]", context.getSource().getIds(), context.getTarget().getIds());
     return true;
   }
 }

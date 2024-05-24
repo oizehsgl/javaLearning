@@ -1,9 +1,7 @@
 package org.oizehsgl.spring.statemachine.controller;
 
 import jakarta.annotation.Resource;
-
 import java.util.List;
-import java.util.Objects;
 import org.oizehsgl.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.spring.statemachine.enums.CustomState;
 import org.oizehsgl.spring.statemachine.service.CustomStateMachineService;
@@ -42,7 +40,7 @@ public class CustomStateMachineController {
 
     Flux<StateMachineEventResult<CustomState,CustomEvent>> stateMachineEventResultFlux = customStateMachineService
         .acquireStateMachine("1024")
-        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.RESTART).build()));
+        .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.INITIAL).build()));
     return stateMachineEventResultFlux;
     // return stringFlux
     //    .map(CustomEvent::valueOf)
