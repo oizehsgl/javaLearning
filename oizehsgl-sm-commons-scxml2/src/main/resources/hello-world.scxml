@@ -1,0 +1,12 @@
+<scxml xmlns="http://www.w3.org/2005/07/scxml"
+       version="1.0" inital="end">
+    <final id="end">
+        <onentry>
+            <log expr=" 'entry  final state end ' "/>
+            <log expr="'hello world'"/>
+        </onentry>
+        <onexit>
+            <log expr=" 'exit  final state end ' "/>
+        </onexit>
+    </final>
+</scxml>

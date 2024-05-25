@@ -1,0 +1,12 @@
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0"
+       initial="未登录">
+    <state id="未登录">
+        <transition event="尝试登录" target="登录中"/>
+    </state>
+    <state id="登录中">
+        <transition event="登录成功" target="登录成功"/>
+        <transition event="登录失败" target="登录失败"/>
+    </state>
+    <state id="登录成功"/>
+    <state id="登录失败"/>
+</scxml>
