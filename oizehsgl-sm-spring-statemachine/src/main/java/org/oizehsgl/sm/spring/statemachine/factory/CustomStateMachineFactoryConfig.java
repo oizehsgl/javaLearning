@@ -1,6 +1,8 @@
 package org.oizehsgl.sm.spring.statemachine.factory;
 
 import jakarta.annotation.Resource;
+
+import java.util.EnumSet;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
@@ -232,13 +234,21 @@ public class CustomStateMachineFactoryConfig
     // 合流
     transitions
         .withJoin()
-        .source(CustomState.R2C)
-        .source(CustomState.R2Z)
+        //.source(CustomState.R2C)
+        //.source(CustomState.R2Y)
+            .sources(EnumSet.of(CustomState.R2C,CustomState.R2Y))
         .target(CustomState.JOIN)
         .and()
         .withExternal()
         .source(CustomState.JOIN)
-        .target(CustomState.END);
+        .target(CustomState.END)
+            .and()
+            .withExternal()
+            .source(CustomState.R2Y)
+            .target(CustomState.R2Z)
+            .event(CustomEvent.SUB_NEXT3)
+    ;
+
     // transitions
     //   // .withEntry().source(CustomState.S1ENTRY).target(CustomState.S4);
     //   .withExternal()

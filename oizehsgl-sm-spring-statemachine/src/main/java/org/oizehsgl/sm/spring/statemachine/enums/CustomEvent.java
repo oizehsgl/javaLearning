@@ -13,9 +13,11 @@ import lombok.RequiredArgsConstructor;
 public enum CustomEvent {
   INITIAL(0, "初始化"),
   NEXT(0, "下一个"),
+  LAST(0, "上一个"),
   SUB_NEXT(0, "子区域下一个"),
   SUB_NEXT1(0, "子区域1下一个"),
   SUB_NEXT2(0, "子区域2下一个"),
+  SUB_NEXT3(0, "子区域2下一个"),
   R1(0, "区域1"),
   R2(0, "区域2"),
   CHOICE(0, "选择"),

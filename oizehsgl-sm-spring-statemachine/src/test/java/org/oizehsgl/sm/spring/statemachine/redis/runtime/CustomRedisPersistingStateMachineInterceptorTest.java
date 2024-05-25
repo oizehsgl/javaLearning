@@ -34,6 +34,7 @@ class CustomRedisPersistingStateMachineInterceptorTest {
     send(stateMachine, CustomEvent.SUB_NEXT2);
     send(stateMachine, CustomEvent.SUB_NEXT2);
     send(stateMachine, CustomEvent.SUB_NEXT2);
+    send(stateMachine, CustomEvent.SUB_NEXT3);
     send(stateMachine, CustomEvent.SUB_NEXT1);
     // send(stateMachine, CustomEvent.SUB_NEXT2);
     // stateMachine.stopReactively().subscribe();
