@@ -1,7 +1,6 @@
 package org.oizehsgl.sm.spring.statemachine.factory;
 
 import jakarta.annotation.Resource;
-
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -90,7 +89,10 @@ public class CustomStateMachineFactoryConfig
         .initial(CustomState.INITIAL, customStateMachineInitialAction)
         .state(CustomState.R1, customStateMachineEntryAction, customStateMachineExitAction)
         .state(CustomState.R2, customStateMachineEntryAction, customStateMachineExitAction)
-        // .history(CustomState.HISTORY, StateConfigurer.History.SHALLOW)
+        .state(CustomState.ENTRY, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.EXIT, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.TIME1, customStateMachineEntryAction, customStateMachineExitAction)
+        .state(CustomState.TIME2, customStateMachineEntryAction, customStateMachineExitAction)
         .choice(CustomState.CHOICE)
         .junction(CustomState.JUNCTION)
         .fork(CustomState.FORK)
@@ -102,11 +104,17 @@ public class CustomStateMachineFactoryConfig
         .parent(CustomState.R1)
         .initial(CustomState.R1A, customStateMachineInitialAction)
         .state(CustomState.R1A, customStateMachineEntryAction, customStateMachineExitAction)
-        .state(CustomState.R1B, customStateMachineEntryAction, customStateMachineExitAction)
+        .entry(CustomState.R1B)
         .state(CustomState.R1C, customStateMachineEntryAction, customStateMachineExitAction)
         .state(CustomState.R1D, customStateMachineEntryAction, customStateMachineExitAction)
-        .state(CustomState.R1E, customStateMachineEntryAction, customStateMachineExitAction)
+        .exit(CustomState.R1E)
         .state(CustomState.R1F, customStateMachineEntryAction, customStateMachineExitAction)
+        // TODO: #830 history没有测试成功,在拦截器下会有NPE
+        // .state(
+        //    CustomState.HISTORY_DEFAULT,
+        //    customStateMachineEntryAction,
+        //    customStateMachineExitAction)
+        // .history(CustomState.HISTORY, StateConfigurer.History.SHALLOW)
         .and()
         .withStates()
         .region("R2ABC")
@@ -155,6 +163,8 @@ public class CustomStateMachineFactoryConfig
   @Override
   public void configure(StateMachineTransitionConfigurer<CustomState, CustomEvent> transitions)
       throws Exception {
+    // 历史
+    //transitions.withHistory().source(CustomState.HISTORY).target(CustomState.HISTORY_DEFAULT);
     // 配置启动转换
     trans(
         transitions,
@@ -162,22 +172,23 @@ public class CustomStateMachineFactoryConfig
         CustomState.INITIAL,
         CustomState.R1,
         CustomState.R2,
-        CustomState.HISTORY,
+        CustomState.ENTRY,
+        CustomState.EXIT,
+        // CustomState.HISTORY,
         CustomState.CHOICE,
         CustomState.JUNCTION,
         CustomState.FORK,
         CustomState.JOIN,
-        CustomState.END);
+        CustomState.TIME1,
+        CustomState.TIME2);
     // 配置区域转换
     trans(
         transitions,
         CustomEvent.SUB_NEXT,
         CustomState.R1,
         CustomState.R1A,
-        CustomState.R1B,
         CustomState.R1C,
         CustomState.R1D,
-        CustomState.R1E,
         CustomState.R1F,
         CustomState.R2);
     trans(
@@ -196,8 +207,6 @@ public class CustomStateMachineFactoryConfig
         CustomState.R2Y,
         CustomState.R2Z,
         CustomState.CHOICE);
-    // 历史
-    // transitions.withHistory().source(CustomState.HISTORY).target(CustomState.S1B);
     // 选择
     transitions
         .withChoice()
@@ -227,55 +236,61 @@ public class CustomStateMachineFactoryConfig
             customStateMachineJunctionGuard,
             customStateMachineTransitionAction,
             customStateMachineErrorAction)
-        .last(CustomState.END, customStateMachineDoAction, customStateMachineErrorAction);
+        .last(CustomState.TIME1, customStateMachineDoAction, customStateMachineErrorAction);
     // 分流
-    // TODO: R2Z->R2Y之后,R2Z还会生效
     transitions.withFork().source(CustomState.FORK).target(CustomState.R2B).target(CustomState.R2Y);
     // 合流
+    // TODO: join只要触发过状态就可以触发,不代表当前状态必须处于这个状态
     transitions
         .withJoin()
-        //.source(CustomState.R2C)
-        //.source(CustomState.R2Y)
-            .sources(EnumSet.of(CustomState.R2C,CustomState.R2Y))
+        .sources(EnumSet.of(CustomState.R2C, CustomState.R2Y, CustomState.R1C))
         .target(CustomState.JOIN)
         .and()
         .withExternal()
         .source(CustomState.JOIN)
-        .target(CustomState.END)
-            .and()
-            .withExternal()
-            .source(CustomState.R2Y)
-            .target(CustomState.R2Z)
-            .event(CustomEvent.SUB_NEXT3)
-    ;
-
-    // transitions
-    //   // .withEntry().source(CustomState.S1ENTRY).target(CustomState.S4);
-    //   .withExternal()
-    //   .source(CustomState.S1)
-    //   .target(CustomState.S1ENTRY)
-    //   .event(CustomEvent.ENTRY)
-    //   .and()
-    //   .withExternal()
-    //   .source(CustomState.S1C)
-    //   .target(CustomState.S1EXIT)
-    //   .event(CustomEvent.EXIT)
-    //   .and()
-    //   .withEntry()
-    //   .source(CustomState.S1ENTRY)
-    //   .target(CustomState.S1D)
-    //   .and()
-    //   .withExit()
-    //   .source(CustomState.S1EXIT)
-    //   .target(CustomState.S3);
-    // transitions.withExit().source(CustomState.S2EXIT).target(CustomState.S5);
+        .target(CustomState.TIME1)
+        .and()
+        .withExternal()
+        .source(CustomState.R2Y)
+        .target(CustomState.R2Z)
+        .event(CustomEvent.SUB_NEXT3);
+    // 进入
+    transitions
+        .withExternal()
+        .source(CustomState.ENTRY)
+        .target(CustomState.R1B)
+        .event(CustomEvent.ENTRY)
+        .and()
+        .withEntry()
+        .source(CustomState.R1B)
+        .target(CustomState.R1C);
+    // 退出
+    transitions
+        .withExternal()
+        .source(CustomState.R1C)
+        .target(CustomState.R1E)
+        .event(CustomEvent.EXIT)
+        .and()
+        .withExit()
+        .source(CustomState.R1E)
+        .target(CustomState.EXIT);
     // 定时器
-    // transitions
-    //    .withExternal()
-    //    .source(CustomState.R1C)
-    //    .target(CustomState.R1D)
-    //    .action(customStateMachineTimerAction)
-    //    .timerOnce(5000);
+    transitions
+        .withExternal()
+        .source(CustomState.TIME1)
+        .target(CustomState.TIME2)
+        .action(customStateMachineTimerAction)
+        .timerOnce(5000);
+    transitions
+        .withInternal()
+        .source(CustomState.TIME1)
+        .action(customStateMachineTimerAction)
+        .timer(1000);
+    transitions
+        .withInternal()
+        .source(CustomState.TIME2)
+        .action(customStateMachineTimerAction)
+        .timer(1000);
     //// 配置重启事件
     // for (CustomState customState : EnumSet.allOf(CustomState.class)) {
     //  transitions

@@ -1,6 +1,7 @@
 package org.oizehsgl.sm.spring.statemachine.redis.runtime;
 
 import jakarta.annotation.Resource;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
@@ -12,6 +13,8 @@ import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.StateMachineMessageHeaders;
 import reactor.core.publisher.Mono;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author oizehsgl
  */
@@ -21,6 +24,7 @@ class CustomRedisPersistingStateMachineInterceptorTest {
 
   @Resource private CustomStateMachineService customStateMachineService;
 
+  @SneakyThrows
   @Test
   void test() {
     customStateMachineService.clear("1024");
@@ -30,14 +34,20 @@ class CustomRedisPersistingStateMachineInterceptorTest {
     stateMachine.startReactively().subscribe();
     send(stateMachine, CustomEvent.NEXT);
     send(stateMachine, CustomEvent.NEXT);
+    send(stateMachine, CustomEvent.NEXT);
+    send(stateMachine, CustomEvent.ENTRY);
+    send(stateMachine, CustomEvent.EXIT);
+    send(stateMachine, CustomEvent.NEXT);
     send(stateMachine, CustomEvent.SUB_NEXT1);
-    send(stateMachine, CustomEvent.SUB_NEXT2);
-    send(stateMachine, CustomEvent.SUB_NEXT2);
-    send(stateMachine, CustomEvent.SUB_NEXT2);
-    send(stateMachine, CustomEvent.SUB_NEXT3);
-    send(stateMachine, CustomEvent.SUB_NEXT1);
+    //send(stateMachine, CustomEvent.SUB_NEXT2);
+    //send(stateMachine, CustomEvent.SUB_NEXT3);
+    //send(stateMachine, CustomEvent.SUB_NEXT1);
+    //send(stateMachine, CustomEvent.NEXT);
     // send(stateMachine, CustomEvent.SUB_NEXT2);
     // stateMachine.stopReactively().subscribe();
+
+    TimeUnit.SECONDS.sleep(30);
+    System.out.println(stateMachine.getState().getIds());
   }
 
   private void send(StateMachine<CustomState, CustomEvent> stateMachine, CustomEvent customEvent) {

@@ -31,8 +31,13 @@ public enum CustomState {
   R2X(0, "区域2X"),
   R2Y(0, "区域2Y"),
   R2Z(0, "区域2Z"),
+  ENTRY(0, "历史状态"),
+  EXIT(0, "历史状态"),
+  TIME1(0, "历史状态"),
+  TIME2(0, "历史状态"),
   // 为状态
   HISTORY(0, "历史状态"),
+  HISTORY_DEFAULT(0, "历史状态"),
   CHOICE(0, "选择状态"),
   JUNCTION(0, "联结状态"),
   FORK(0, "分流状态"),
