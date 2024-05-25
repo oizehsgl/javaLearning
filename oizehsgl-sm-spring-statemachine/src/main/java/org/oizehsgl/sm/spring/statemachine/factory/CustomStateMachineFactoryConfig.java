@@ -62,14 +62,14 @@ public class CustomStateMachineFactoryConfig
   public void configure(StateMachineConfigurationConfigurer<CustomState, CustomEvent> config)
       throws Exception {
     // config.withConfiguration().machineId("machineId");
-    // config.withConfiguration().autoStartup(true);
+     config.withConfiguration().autoStartup(false);
     // config.withConfiguration().beanFactory(new StaticListableBeanFactory());
     // config.withConfiguration().transitionConflictPolicy(TransitionConflictPolicy.CHILD);
     // config.withConfiguration().regionExecutionPolicy(RegionExecutionPolicy.PARALLEL);
-    // config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.IMMEDIATE_CANCEL);
+     config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.IMMEDIATE_CANCEL);
     // 超时策略
-    config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL);
-    config.withConfiguration().stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
+    //config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL);
+    //config.withConfiguration().stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
     config.withConfiguration().listener(customStateMachineListener);
     config.withPersistence().runtimePersister(customRedisPersistingStateMachineInterceptor);
   }
@@ -115,6 +115,7 @@ public class CustomStateMachineFactoryConfig
         //    customStateMachineEntryAction,
         //    customStateMachineExitAction)
         // .history(CustomState.HISTORY, StateConfigurer.History.SHALLOW)
+            // TODO: #998 #1142 TMD这bug也太多了
         .and()
         .withStates()
         .region("R2ABC")
@@ -164,7 +165,7 @@ public class CustomStateMachineFactoryConfig
   public void configure(StateMachineTransitionConfigurer<CustomState, CustomEvent> transitions)
       throws Exception {
     // 历史
-    //transitions.withHistory().source(CustomState.HISTORY).target(CustomState.HISTORY_DEFAULT);
+    // transitions.withHistory().source(CustomState.HISTORY).target(CustomState.HISTORY_DEFAULT);
     // 配置启动转换
     trans(
         transitions,
@@ -181,6 +182,13 @@ public class CustomStateMachineFactoryConfig
         CustomState.JOIN,
         CustomState.TIME1,
         CustomState.TIME2);
+    transitions
+        .withExternal()
+        .source(CustomState.R2)
+        .target(CustomState.R1)
+        .guard(customStateMachineJudgementGuard)
+        .action(customStateMachineTransitionAction, customStateMachineErrorAction)
+        .event(CustomEvent.LAST);
     // 配置区域转换
     trans(
         transitions,

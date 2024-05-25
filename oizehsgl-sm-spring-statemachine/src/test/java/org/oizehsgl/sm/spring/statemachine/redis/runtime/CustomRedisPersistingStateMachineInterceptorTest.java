@@ -29,16 +29,20 @@ class CustomRedisPersistingStateMachineInterceptorTest {
   void test() {
     customStateMachineService.clear("1024");
     StateMachine<CustomState, CustomEvent> stateMachine =
-        customStateMachineService.acquireStateMachine("1024");
-
+        customStateMachineService.acquireStateMachine("1024",false);
     stateMachine.startReactively().subscribe();
+    //log.info("当前状态{}-----", stateMachine.getState().getIds());
     send(stateMachine, CustomEvent.NEXT);
     send(stateMachine, CustomEvent.NEXT);
     send(stateMachine, CustomEvent.NEXT);
     send(stateMachine, CustomEvent.ENTRY);
     send(stateMachine, CustomEvent.EXIT);
     send(stateMachine, CustomEvent.NEXT);
-    send(stateMachine, CustomEvent.SUB_NEXT1);
+    //send(stateMachine, CustomEvent.LAST);
+    //send(stateMachine, CustomEvent.NEXT);
+    //send(stateMachine, CustomEvent.SUB_NEXT1);
+    //send(stateMachine, CustomEvent.SUB_NEXT1);
+
     //send(stateMachine, CustomEvent.SUB_NEXT2);
     //send(stateMachine, CustomEvent.SUB_NEXT3);
     //send(stateMachine, CustomEvent.SUB_NEXT1);
@@ -46,7 +50,7 @@ class CustomRedisPersistingStateMachineInterceptorTest {
     // send(stateMachine, CustomEvent.SUB_NEXT2);
     // stateMachine.stopReactively().subscribe();
 
-    TimeUnit.SECONDS.sleep(30);
+    TimeUnit.SECONDS.sleep(3);
     System.out.println(stateMachine.getState().getIds());
   }
 
