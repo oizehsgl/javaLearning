@@ -4,6 +4,8 @@ import jakarta.annotation.Resource;
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
@@ -62,7 +64,7 @@ public class CustomStateMachineFactoryConfig
   public void configure(StateMachineConfigurationConfigurer<CustomState, CustomEvent> config)
       throws Exception {
     // config.withConfiguration().machineId("machineId");
-     config.withConfiguration().autoStartup(false);
+    // config.withConfiguration().autoStartup(false);
     // config.withConfiguration().beanFactory(new StaticListableBeanFactory());
     // config.withConfiguration().transitionConflictPolicy(TransitionConflictPolicy.CHILD);
     // config.withConfiguration().regionExecutionPolicy(RegionExecutionPolicy.PARALLEL);
@@ -71,7 +73,8 @@ public class CustomStateMachineFactoryConfig
     //config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL);
     //config.withConfiguration().stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
     config.withConfiguration().listener(customStateMachineListener);
-    config.withPersistence().runtimePersister(customRedisPersistingStateMachineInterceptor);
+    // TODO: 拦截器持久化有bug
+    //config.withPersistence().runtimePersister(customRedisPersistingStateMachineInterceptor);
   }
 
   /**
@@ -251,7 +254,7 @@ public class CustomStateMachineFactoryConfig
     // TODO: join只要触发过状态就可以触发,不代表当前状态必须处于这个状态
     transitions
         .withJoin()
-        .sources(EnumSet.of(CustomState.R2C, CustomState.R2Y, CustomState.R1C))
+        .sources(EnumSet.of(CustomState.R2C, CustomState.R2Z))
         .target(CustomState.JOIN)
         .and()
         .withExternal()

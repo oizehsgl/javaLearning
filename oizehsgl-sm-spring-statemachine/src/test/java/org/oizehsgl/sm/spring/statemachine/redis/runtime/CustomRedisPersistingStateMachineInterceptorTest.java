@@ -61,7 +61,7 @@ class CustomRedisPersistingStateMachineInterceptorTest {
         .sendEvent(
             Mono.just(
                 MessageBuilder.withPayload(customEvent)
-                    .setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
+                    //.setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
                     .build()))
         .subscribe();
     log.info("当前状态{},结束发送{}", stateMachine.getState().getIds(), customEvent);
