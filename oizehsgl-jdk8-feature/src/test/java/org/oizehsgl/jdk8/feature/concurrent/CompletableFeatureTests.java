@@ -1,6 +1,7 @@
 package org.oizehsgl.jdk8.feature.concurrent;
 
 import java.time.LocalTime;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -21,7 +22,7 @@ class CompletableFeatureTests {
       () -> {
         System.out.println(Thread.currentThread() + " start,time->" + LocalTime.now());
         try {
-          TimeUnit.SECONDS.sleep(5);
+          TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
         }
         System.out.println(Thread.currentThread() + " exit,time->" + LocalTime.now());
@@ -30,7 +31,7 @@ class CompletableFeatureTests {
   Function<Double, String> function =
       (d) -> {
         try {
-          TimeUnit.SECONDS.sleep(5);
+          TimeUnit.SECONDS.sleep(3);
           return "String" + d;
         } catch (InterruptedException e) {
           throw new RuntimeException(e);
@@ -40,7 +41,7 @@ class CompletableFeatureTests {
       (e) -> {
         try {
           System.out.println(Thread.currentThread() + e.getMessage());
-          TimeUnit.SECONDS.sleep(5);
+          TimeUnit.SECONDS.sleep(3);
           return 100.0D;
         } catch (InterruptedException e1) {
           throw new RuntimeException(e1);
@@ -50,7 +51,7 @@ class CompletableFeatureTests {
   Consumer<Double> doubleConsumer =
       (d) -> {
         try {
-          TimeUnit.SECONDS.sleep(5);
+          TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
           throw new RuntimeException(e);
         }
@@ -58,7 +59,7 @@ class CompletableFeatureTests {
   Consumer<String> consumer =
       (d) -> {
         try {
-          TimeUnit.SECONDS.sleep(5);
+          TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
           throw new RuntimeException(e);
         }
@@ -66,11 +67,22 @@ class CompletableFeatureTests {
   Runnable runnable =
       () -> {
         try {
-          TimeUnit.SECONDS.sleep(5);
+          TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
           throw new RuntimeException(e);
         }
       };
+
+  @Test
+  void supplyAsyncAndRunAsyncTest() throws ExecutionException, InterruptedException {
+    CompletableFuture<Double> completableFuture1 = CompletableFuture.supplyAsync(supplier);
+    CompletableFuture<Void> completableFuture2 = CompletableFuture.runAsync(supplier::get);
+    System.out.println("main thread start,time->" + LocalTime.now());
+    // System.out.println("run result->" + completableFuture1.get());
+    // System.out.println("run result->" + completableFuture2.get());
+    System.out.println("main thread exit,time->" + LocalTime.now());
+    TimeUnit.SECONDS.sleep(5);
+  }
 
   @Test
   void supplyAsyncAndRunAsync() throws ExecutionException, InterruptedException {
