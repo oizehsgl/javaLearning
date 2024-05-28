@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>org.oizehsgl.custom</groupId>
+    <artifactId>custom-spring-boot3-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>custom-spring-boot3-parent</name>
+    <description>custom-spring-boot3-parent</description>
+    <packaging>pom</packaging>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <custom-spring-boot3-parent-sample.version>
+                    0.0.1-SNAPSHOT
+                </custom-spring-boot3-parent-sample.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <custom-spring-boot3-parent-sample.version>
+                    1.0.0-SNAPSHOT
+                </custom-spring-boot3-parent-sample.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <custom-spring-boot3-parent-sample.version>
+                    1.0.0-RELEASE
+                </custom-spring-boot3-parent-sample.version>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.oizehsgl.custom</groupId>
+            <artifactId>custom-spring-boot3-parent-dependencies</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
