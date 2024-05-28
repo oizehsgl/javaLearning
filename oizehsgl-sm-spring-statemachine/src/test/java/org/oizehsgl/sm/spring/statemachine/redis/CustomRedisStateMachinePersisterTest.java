@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.StateMachineContext;
+import org.springframework.statemachine.StateMachineMessageHeaders;
 import org.springframework.statemachine.config.StateMachineFactory;
 import reactor.core.publisher.Mono;
 
@@ -83,9 +84,10 @@ class CustomRedisStateMachinePersisterTest {
         .sendEvent(
             Mono.just(
                 MessageBuilder.withPayload(customEvent)
-                    // .setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
+                     .setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
                     .build()))
         .subscribe();
+    //stateMachine.getExtendedState().getVariables().get(CustomEvent.NEXT);
     log.info("当前状态{},结束发送{}", stateMachine.getState().getIds(), customEvent);
     TimeUnit.SECONDS.sleep(1);
     log.info("-----------------------------------------------------------------------------------");
