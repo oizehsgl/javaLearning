@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.oizehsgl.custom</groupId>
         <artifactId>custom-spring-boot3-parent</artifactId>
-        <version>1.0.0.SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 

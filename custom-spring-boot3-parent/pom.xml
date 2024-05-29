@@ -19,6 +19,7 @@
         <java.version>17</java.version>
     </properties>
 
+    <!--@formatter:off-->
     <profiles>
         <profile>
             <id>dev</id>
@@ -26,28 +27,41 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <custom-spring-boot3-parent-sample.version>
-                    0.0.1-SNAPSHOT
-                </custom-spring-boot3-parent-sample.version>
+                <custom-spring-boot3-parent-sample.version>0.0.1-SNAPSHOT</custom-spring-boot3-parent-sample.version>
+                <custom-spring-boot3-parent-sample-another.version>0.0.1-SNAPSHOT</custom-spring-boot3-parent-sample-another.version>
             </properties>
         </profile>
         <profile>
             <id>test</id>
             <properties>
-                <custom-spring-boot3-parent-sample.version>
-                    1.0.0-SNAPSHOT
-                </custom-spring-boot3-parent-sample.version>
+                <custom-spring-boot3-parent-sample.version>1.0.0-SNAPSHOT</custom-spring-boot3-parent-sample.version>
+                <custom-spring-boot3-parent-sample-another.version>1.0.0-SNAPSHOT</custom-spring-boot3-parent-sample-another.version>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
-                <custom-spring-boot3-parent-sample.version>
-                    1.0.0-RELEASE
-                </custom-spring-boot3-parent-sample.version>
+                <custom-spring-boot3-parent-sample.version>1.0.0-RELEASE</custom-spring-boot3-parent-sample.version>
+                <custom-spring-boot3-parent-sample-another.version>1.0.0-RELEASE</custom-spring-boot3-parent-sample-another.version>
             </properties>
         </profile>
     </profiles>
+    <!--@formatter:on-->
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.oizehsgl.custom</groupId>
+                <artifactId>custom-spring-boot3-parent-sample</artifactId>
+                <version>${custom-spring-boot3-parent-sample.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.oizehsgl.custom</groupId>
+                <artifactId>custom-spring-boot3-parent-sample-another</artifactId>
+                <version>${custom-spring-boot3-parent-sample-another.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>

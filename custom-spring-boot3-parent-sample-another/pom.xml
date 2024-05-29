@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.oizehsgl.custom</groupId>
-    <artifactId>custom-spring-boot3-parent-sample</artifactId>
-    <version>${custom-spring-boot3-parent-sample.version}</version>
-    <name>custom-spring-boot3-parent-sample</name>
-    <description>custom-spring-boot3-parent-sample</description>
+    <artifactId>custom-spring-boot3-parent-sample-another</artifactId>
+    <version>${custom-spring-boot3-parent-sample-another.version}</version>
+    <name>custom-spring-boot3-parent-sample-another</name>
+    <description>custom-spring-boot3-parent-sample-another</description>
 
     <dependencies>
         <dependency>
@@ -21,6 +21,10 @@
             <artifactId>custom-spring-boot3-parent-dependencies</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.oizehsgl.custom</groupId>
+            <artifactId>custom-spring-boot3-parent-sample</artifactId>
         </dependency>
     </dependencies>
 
