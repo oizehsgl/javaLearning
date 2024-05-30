@@ -11,7 +11,7 @@
     </parent>
     <groupId>org.oizehsgl.custom</groupId>
     <artifactId>custom-spring-boot2-parent-dependencies</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <name>custom-spring-boot2-parent-dependencies</name>
     <description>custom-spring-boot2-parent-dependencies</description>
     <packaging>pom</packaging>

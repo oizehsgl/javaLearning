@@ -11,16 +11,23 @@
     </parent>
     <groupId>org.oizehsgl.custom</groupId>
     <artifactId>custom-spring-boot3-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <name>custom-spring-boot3-parent</name>
     <description>custom-spring-boot3-parent</description>
     <packaging>pom</packaging>
     <properties>
-        <java.version>17</java.version>
+        <custom-spring-boot3-parent-dependencies.version>1.0.0-RELEASE</custom-spring-boot3-parent-dependencies.version>
     </properties>
 
     <!--@formatter:off-->
     <profiles>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <custom-spring-boot3-parent-sample1.version>1.0.0-RELEASE</custom-spring-boot3-parent-sample1.version>
+                <custom-spring-boot3-parent-sample2.version>1.0.0-RELEASE</custom-spring-boot3-parent-sample2.version>
+            </properties>
+        </profile>
         <profile>
             <id>dev</id>
             <activation>
@@ -36,13 +43,6 @@
             <properties>
                 <custom-spring-boot3-parent-sample1.version>1.0.0-SNAPSHOT</custom-spring-boot3-parent-sample1.version>
                 <custom-spring-boot3-parent-sample2.version>1.0.0-SNAPSHOT</custom-spring-boot3-parent-sample2.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <custom-spring-boot3-parent-sample1.version>1.0.0-RELEASE</custom-spring-boot3-parent-sample1.version>
-                <custom-spring-boot3-parent-sample2.version>1.0.0-RELEASE</custom-spring-boot3-parent-sample2.version>
             </properties>
         </profile>
     </profiles>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>org.oizehsgl.custom</groupId>
             <artifactId>custom-spring-boot3-parent-dependencies</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${custom-spring-boot3-parent-dependencies.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
