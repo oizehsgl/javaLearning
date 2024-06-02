@@ -15,11 +15,11 @@
     <name>custom-spring-boot3-parent</name>
     <description>custom-spring-boot3-parent</description>
     <packaging>pom</packaging>
+
+    <!--@formatter:off-->
     <properties>
         <custom-spring-boot3-parent-dependencies.version>1.0.0-RELEASE</custom-spring-boot3-parent-dependencies.version>
     </properties>
-
-    <!--@formatter:off-->
     <profiles>
         <profile>
             <id>prod</id>
