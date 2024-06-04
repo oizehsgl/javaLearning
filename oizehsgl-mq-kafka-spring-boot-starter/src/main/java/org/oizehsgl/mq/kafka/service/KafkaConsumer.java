@@ -13,7 +13,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class KafkaConsumer {
-  @KafkaListener(topics = {"topic_1"})
+
+  public static final String TOPIC_1 = "topic_1";
+  @KafkaListener(
+      topics = {"topic_1"},
+      id = TOPIC_1)
   public void listen(List<ConsumerRecord<String, Object>> records, Acknowledgment ack) {
     log.info("拉取消息[size<{}>]", records.size());
     try {
