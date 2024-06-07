@@ -20,7 +20,7 @@ public class CustomStateMachineListener
     extends StateMachineListenerAdapter<CustomState, CustomEvent> {
   @Override
   public void stateChanged(
-          State<CustomState, CustomEvent> from, State<CustomState, CustomEvent> to) {
+      State<CustomState, CustomEvent> from, State<CustomState, CustomEvent> to) {
     Optional<State<CustomState, CustomEvent>> fromOptional = Optional.ofNullable(from);
     Optional<State<CustomState, CustomEvent>> toOptional = Optional.ofNullable(to);
     CustomState fromState = fromOptional.map(State::getId).orElse(null);
@@ -30,5 +30,10 @@ public class CustomStateMachineListener
         "状态机监听(变更)[现态<{}>,次态<{}>]",
         Optional.ofNullable(from).map(State::getIds).orElse(null),
         Optional.ofNullable(to).map(State::getIds).orElse(null));
+  }
+
+  @Override
+  public void extendedStateChanged(Object key, Object value) {
+    log.info("状态机监听(扩展)[key<{}>,value<{}>]", key, value);
   }
 }

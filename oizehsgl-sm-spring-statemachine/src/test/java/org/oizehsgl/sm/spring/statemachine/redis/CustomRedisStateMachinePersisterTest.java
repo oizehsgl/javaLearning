@@ -2,6 +2,8 @@ package org.oizehsgl.sm.spring.statemachine.redis;
 
 import jakarta.annotation.Resource;
 
+import java.time.LocalTime;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +13,6 @@ import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
 import org.oizehsgl.sm.spring.statemachine.factory.CustomStateMachineFactoryConfig;
 import org.oizehsgl.sm.spring.statemachine.persist.redis.CustomRedisStateMachinePersister;
-import org.oizehsgl.sm.spring.statemachine.service.CustomStateMachineService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
@@ -73,8 +74,11 @@ class CustomRedisStateMachinePersisterTest {
   }
 
   private void send(CustomEvent customEvent) throws Exception {
+    int s = LocalTime.now().getNano();
     StateMachine<CustomState, CustomEvent> stateMachine =
         stateMachineFactory.getStateMachine("2048");
+    int e = LocalTime.now().getNano();
+      System.out.println(e-s);
     // stateMachine.startReactively().subscribe();
     // TODO: 手动持久化不太好处理timer等触发的状态转换
     customRedisStateMachinePersister.restore(stateMachine, "2048");
@@ -84,10 +88,13 @@ class CustomRedisStateMachinePersisterTest {
         .sendEvent(
             Mono.just(
                 MessageBuilder.withPayload(customEvent)
-                     .setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
+                    .setHeader(StateMachineMessageHeaders.HEADER_DO_ACTION_TIMEOUT, 5000)
                     .build()))
         .subscribe();
-    //stateMachine.getExtendedState().getVariables().get(CustomEvent.NEXT);
+    stateMachine.getExtendedState().getVariables().put(CustomEvent.NEXT.name(), customEvent);
+    CustomEvent event =
+        (CustomEvent) stateMachine.getExtendedState().getVariables().get(CustomEvent.NEXT.name());
+    log.info("扩展状态[state<{}>]", event);
     log.info("当前状态{},结束发送{}", stateMachine.getState().getIds(), customEvent);
     TimeUnit.SECONDS.sleep(1);
     log.info("-----------------------------------------------------------------------------------");

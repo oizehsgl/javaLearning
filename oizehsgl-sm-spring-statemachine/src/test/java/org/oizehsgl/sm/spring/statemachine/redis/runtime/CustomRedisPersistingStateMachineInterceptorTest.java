@@ -6,11 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
-import org.oizehsgl.sm.spring.statemachine.service.CustomStateMachineService;
+import org.oizehsgl.sm.spring.statemachine.service.BugCustomStateMachineService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
-import org.springframework.statemachine.StateMachineMessageHeaders;
 import reactor.core.publisher.Mono;
 
 import java.util.concurrent.TimeUnit;
@@ -22,14 +21,14 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest
 class CustomRedisPersistingStateMachineInterceptorTest {
 
-  @Resource private CustomStateMachineService customStateMachineService;
+  @Resource private BugCustomStateMachineService bugCustomStateMachineService;
 
   @SneakyThrows
   @Test
   void test() {
-    customStateMachineService.clear("1024");
+    bugCustomStateMachineService.clear("1024");
     StateMachine<CustomState, CustomEvent> stateMachine =
-        customStateMachineService.acquireStateMachine("1024",false);
+        bugCustomStateMachineService.acquireStateMachine("1024",false);
     stateMachine.startReactively().subscribe();
     //log.info("当前状态{}-----", stateMachine.getState().getIds());
     send(stateMachine, CustomEvent.NEXT);

@@ -3,7 +3,7 @@ package org.oizehsgl.sm.spring.statemachine.controller;
 import jakarta.annotation.Resource;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
-import org.oizehsgl.sm.spring.statemachine.service.CustomStateMachineService;
+import org.oizehsgl.sm.spring.statemachine.service.BugCustomStateMachineService;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachineEventResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 public class CustomStateMachineController {
   @Resource
-  private CustomStateMachineService customStateMachineService;
+  private BugCustomStateMachineService bugCustomStateMachineService;
 
   @GetMapping("/s")
   public Flux<List<String>> s() {
@@ -32,7 +32,7 @@ public class CustomStateMachineController {
     return Mono.defer(
         () ->
             Mono.justOrEmpty(
-                customStateMachineService.acquireStateMachine("1024").getState().getId()));
+                bugCustomStateMachineService.acquireStateMachine("1024").getState().getId()));
   }
 
   @PostMapping("/event")
@@ -43,7 +43,7 @@ public class CustomStateMachineController {
     Flux<String> stringFlux = Flux.just("RESTART", "E2", "E3");
 
     Flux<StateMachineEventResult<CustomState, CustomEvent>> stateMachineEventResultFlux =
-        customStateMachineService
+        bugCustomStateMachineService
             .acquireStateMachine("1024")
             .sendEvent(Mono.just(MessageBuilder.withPayload(CustomEvent.INITIAL).build()));
     return stateMachineEventResultFlux;
