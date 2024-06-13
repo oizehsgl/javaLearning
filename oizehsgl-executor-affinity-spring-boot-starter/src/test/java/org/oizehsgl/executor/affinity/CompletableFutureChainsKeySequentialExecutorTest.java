@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 // @SpringBootTest
 @Slf4j
-class CompletableFutureChainsKeyAffinityExecutorTest {
+class CompletableFutureChainsKeySequentialExecutorTest {
 
   @Test
   void execute() throws InterruptedException {
@@ -21,7 +21,7 @@ class CompletableFutureChainsKeyAffinityExecutorTest {
         i < 1_000_000;
         i += ((Double) Math.pow(10, String.valueOf(i).length() - 1)).intValue()) {
       int finalI = i;
-      CompletableFutureChainsKeyAffinityExecutor.execute(
+      CompletableFutureChainsKeySequentialExecutor.execute(
           String.valueOf(String.valueOf(finalI).length()),
           () -> {
             try {

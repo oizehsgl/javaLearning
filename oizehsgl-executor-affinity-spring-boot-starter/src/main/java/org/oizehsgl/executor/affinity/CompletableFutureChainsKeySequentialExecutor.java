@@ -11,7 +11,7 @@ import org.springframework.lang.NonNull;
  * @author oizehsgl
  */
 @Slf4j
-public class CompletableFutureChainsKeyAffinityExecutor {
+public class CompletableFutureChainsKeySequentialExecutor {
   public static Cache<String, CompletableFuture<Void>> completableFutureChains =
       Caffeine.newBuilder().softValues().recordStats().build();
 
