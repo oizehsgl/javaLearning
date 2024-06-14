@@ -4,6 +4,7 @@ import org.oizehsgl.nosql.redis.wrapper.serializer.CustomStringRedisSerializer;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +14,10 @@ import org.springframework.stereotype.Component;
 public class CustomRedisStateMachineContextRepository
     extends RedisStateMachineContextRepositoryAdapter<CustomState, CustomEvent> {
   public static final String BEAN_NAME = "customRedisStateMachineContextRepository";
+
+  //public CustomRedisStateMachineContextRepository(RedisTemplate<String, byte[]> redisTemplate) {
+  //  super(redisTemplate);
+  //}
 
   /**
    * Instantiates a new redis state machine context repository.
@@ -25,4 +30,6 @@ public class CustomRedisStateMachineContextRepository
       CustomStringRedisSerializer customStringRedisSerializer) {
     super(redisConnectionFactory, customStringRedisSerializer);
   }
+
+
 }

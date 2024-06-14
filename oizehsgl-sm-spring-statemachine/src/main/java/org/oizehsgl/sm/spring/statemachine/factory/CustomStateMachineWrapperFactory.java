@@ -1,26 +1,32 @@
 package org.oizehsgl.sm.spring.statemachine.factory;
 
-import ch.qos.logback.core.net.ssl.KeyManagerFactoryFactoryBean;
-import ch.qos.logback.core.net.ssl.KeyStoreFactoryBean;
+import jakarta.annotation.Resource;
+import org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.cglib.core.KeyFactory;
-import org.springframework.statemachine.StateMachine;
+import org.oizehsgl.sm.spring.statemachine.persist.redis.CustomRedisRepositoryStateMachinePersist;
+import org.oizehsgl.sm.spring.statemachine.persist.redis.CustomRedisStateMachinePersister;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
+import org.springframework.statemachine.config.StateMachineFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * @author oizehsgl
  */
+@Component
 public class CustomStateMachineWrapperFactory
-    implements FactoryBean<StateMachine<CustomState, CustomEvent>> {
+    implements KeyedFactoryBean<String, CustomStateMachineWrapper> {
+
+  @Resource(name = CustomStateMachineFactoryConfig.BEAN_NAME)
+  private StateMachineFactory<CustomState, CustomEvent> stateMachineFactory;
+  @Resource private CustomRedisStateMachinePersister customRedisStateMachinePersister;
 
   @Override
-  public StateMachine<CustomState, CustomEvent> getObject() throws Exception {
-    return null;
-  }
-
-  @Override
-  public Class<?> getObjectType() {
-    return StateMachine.class;
+  public CustomStateMachineWrapper getObject(String s) {
+    return CustomStateMachineWrapper.builder()
+        .stateMachine(stateMachineFactory.getStateMachine(s))
+        .customRedisStateMachinePersister(customRedisStateMachinePersister)
+        .build();
   }
 }

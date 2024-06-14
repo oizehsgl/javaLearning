@@ -28,7 +28,7 @@ public class BugCustomStateMachineService
   private CustomRedisTemplate<StateMachineContext<CustomState, CustomEvent>> customRedisTemplate;
 
   public BugCustomStateMachineService(
-      @Qualifier(CustomStateMachineFactoryConfig.FACTORY_NAME)
+      @Qualifier(CustomStateMachineFactoryConfig.BEAN_NAME)
           StateMachineFactory<CustomState, CustomEvent> stateMachineFactory,
       @Qualifier(CustomRedisPersistingStateMachineInterceptor.BEAN_NAME)
           StateMachinePersist<CustomState, CustomEvent, String> stateMachinePersist) {

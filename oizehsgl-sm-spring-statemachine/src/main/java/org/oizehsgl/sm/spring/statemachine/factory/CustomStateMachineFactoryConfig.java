@@ -3,9 +3,7 @@ package org.oizehsgl.sm.spring.statemachine.factory;
 import jakarta.annotation.Resource;
 import java.util.EnumSet;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
-import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
@@ -31,10 +29,10 @@ import org.springframework.statemachine.config.builders.StateMachineTransitionCo
  */
 @Slf4j
 @Configuration
-@EnableStateMachineFactory(name = CustomStateMachineFactoryConfig.FACTORY_NAME)
+@EnableStateMachineFactory(name = CustomStateMachineFactoryConfig.BEAN_NAME)
 public class CustomStateMachineFactoryConfig
     extends EnumStateMachineConfigurerAdapter<CustomState, CustomEvent> {
-  public static final String FACTORY_NAME = "customStateMachineFactory";
+  public static final String BEAN_NAME = "customStateMachineFactory";
 
   @Resource private CustomStateMachineListener customStateMachineListener;
   @Resource private CustomStateMachineInitialAction customStateMachineInitialAction;

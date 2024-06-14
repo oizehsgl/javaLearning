@@ -3,7 +3,6 @@ package org.oizehsgl.sm.spring.statemachine.redis;
 import jakarta.annotation.Resource;
 
 import java.time.LocalTime;
-import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +41,7 @@ class CustomRedisStateMachinePersisterTest {
     customRedisTemplate.delete(keySet);
   }
 
-  @Resource(name = CustomStateMachineFactoryConfig.FACTORY_NAME)
+  @Resource(name = CustomStateMachineFactoryConfig.BEAN_NAME)
   private StateMachineFactory<CustomState, CustomEvent> stateMachineFactory;
 
   @Test
