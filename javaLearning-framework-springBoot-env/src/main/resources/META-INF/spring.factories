@@ -1,2 +1,0 @@
-# Environment Post Processor
-org.springframework.boot.env.EnvironmentPostProcessor=org.oizehsgl.javaLearning.framework.springBoot.env.config.DatabaseEnvironmentPostProcessor

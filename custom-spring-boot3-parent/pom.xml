@@ -34,8 +34,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <custom-spring-boot3-parent-sample1.version>0.0.1-SNAPSHOT</custom-spring-boot3-parent-sample1.version>
-                <custom-spring-boot3-parent-sample2.version>0.0.1-SNAPSHOT</custom-spring-boot3-parent-sample2.version>
+                <custom-spring-boot3-parent-sample1.version>1.0.0-SNAPSHOT</custom-spring-boot3-parent-sample1.version>
+                <custom-spring-boot3-parent-sample2.version>1.0.0-SNAPSHOT</custom-spring-boot3-parent-sample2.version>
             </properties>
         </profile>
         <profile>
@@ -55,11 +55,11 @@
                 <artifactId>custom-spring-boot3-parent-sample1</artifactId>
                 <version>${custom-spring-boot3-parent-sample1.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.oizehsgl.custom</groupId>
-                <artifactId>custom-spring-boot3-parent-sample2</artifactId>
-                <version>${custom-spring-boot3-parent-sample2.version}</version>
-            </dependency>
+            <!--<dependency>-->
+            <!--    <groupId>org.oizehsgl.custom</groupId>-->
+            <!--    <artifactId>custom-spring-boot3-parent-sample2</artifactId>-->
+            <!--    <version>${custom-spring-boot3-parent-sample2.version}</version>-->
+            <!--</dependency>-->
         </dependencies>
     </dependencyManagement>
 
