@@ -1,13 +1,9 @@
 package org.oizehsgl.sm.spring.statemachine.factory;
 
 import jakarta.annotation.Resource;
-import org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
-import org.oizehsgl.sm.spring.statemachine.persist.redis.CustomRedisRepositoryStateMachinePersist;
 import org.oizehsgl.sm.spring.statemachine.persist.redis.CustomRedisStateMachinePersister;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.statemachine.config.StateMachineFactory;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +16,7 @@ public class CustomStateMachineWrapperFactory
 
   @Resource(name = CustomStateMachineFactoryConfig.BEAN_NAME)
   private StateMachineFactory<CustomState, CustomEvent> stateMachineFactory;
+
   @Resource private CustomRedisStateMachinePersister customRedisStateMachinePersister;
 
   @Override

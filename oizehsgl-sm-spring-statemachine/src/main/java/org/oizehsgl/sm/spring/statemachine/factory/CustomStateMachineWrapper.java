@@ -1,6 +1,8 @@
 package org.oizehsgl.sm.spring.statemachine.factory;
 
+import java.util.Optional;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
@@ -12,15 +14,13 @@ import org.springframework.statemachine.StateMachineMessageHeaders;
 import org.springframework.statemachine.state.State;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
-
 /**
  * @author oizehsgl
  */
 @Slf4j
 @Builder
 public class CustomStateMachineWrapper extends StateMachineAdapter<CustomState, CustomEvent> {
-
+  @Getter
   @NonNull private final StateMachine<CustomState, CustomEvent> stateMachine;
 
   @NonNull private CustomRedisStateMachinePersister customRedisStateMachinePersister;
@@ -46,7 +46,8 @@ public class CustomStateMachineWrapper extends StateMachineAdapter<CustomState, 
           Optional.of(stateMachine).map(StateMachine::getState).map(State::getIds).orElse(null),
           customEvent);
       log.info("---------------------------------------------------------------------------------");
-      persist();
+      /// 使用监听器执行持久化
+      //persist();
     } catch (Exception e) {
       log.error("发送事件异常[状态机标识<{}>]", stateMachine.getId(), e);
       return false;
