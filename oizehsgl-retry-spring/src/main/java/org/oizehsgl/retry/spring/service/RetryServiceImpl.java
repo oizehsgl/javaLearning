@@ -31,18 +31,15 @@ public class RetryServiceImpl implements RetryService {
 
     /**
      * 返回值必须相同,第一个参数为异常
-     *
-     * @param nullPointerException
-     * @param e
      */
     @Recover
     public void recoverNullPointerException(NullPointerException nullPointerException, Exception e) {
-        log.error("特定异常[e<{}>]", e.toString());
+        log.error("空指针异常[e<{}>]", e.toString());
     }
 
     @Recover
     public void recoverArithmeticException(ArithmeticException arithmeticException, Exception e) {
-        log.error("特定异常[e<{}>]", e.toString());
+        log.error("算术异常[e<{}>]", e.toString());
     }
 
     @Recover
