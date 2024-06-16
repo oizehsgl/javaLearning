@@ -15,9 +15,8 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumer {
 
   public static final String TOPIC_1 = "topic_1";
-  @KafkaListener(
-      topics = {"topic_1"},
-      id = TOPIC_1)
+
+  @KafkaListener(topics = "topic_1", id = TOPIC_1)
   public void listen(List<ConsumerRecord<String, Object>> records, Acknowledgment ack) {
     log.info("拉取消息[size<{}>]", records.size());
     try {
