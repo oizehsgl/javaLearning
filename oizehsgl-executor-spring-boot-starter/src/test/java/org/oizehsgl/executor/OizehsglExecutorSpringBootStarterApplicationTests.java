@@ -1,10 +1,10 @@
-package org.oizehsgl.executor.affinity;
+package org.oizehsgl.executor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OizehsglExecutorAffinitySpringBootStarterApplicationTests {
+class OizehsglExecutorSpringBootStarterApplicationTests {
 
   @Test
   void contextLoads() {}

@@ -9,11 +9,11 @@
         <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.oizehsgl.executor.affinity</groupId>
-    <artifactId>oizehsgl-executor-affinity-spring-boot-starter</artifactId>
+    <groupId>org.oizehsgl.executor</groupId>
+    <artifactId>oizehsgl-executor-spring-boot-starter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>oizehsgl-executor-affinity-spring-boot-starter</name>
-    <description>oizehsgl-executor-affinity-spring-boot-starter</description>
+    <name>oizehsgl-executor-spring-boot-starter</name>
+    <description>oizehsgl-executor-spring-boot-starter</description>
     <properties>
         <java.version>17</java.version>
     </properties>

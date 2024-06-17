@@ -1,4 +1,4 @@
-package org.oizehsgl.executor.affinity.config;
+package org.oizehsgl.executor.config;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.PropertySource;
@@ -7,5 +7,5 @@ import org.springframework.context.annotation.PropertySource;
  * @author oizehsgl
  */
 @AutoConfiguration
-@PropertySource("classpath:oizehsgl-executor-affinity.properties")
-public class ExecutorAffinityAutoConfiguration {}
+@PropertySource("classpath:oizehsgl-executor.properties")
+public class ExecutorAutoConfiguration {}

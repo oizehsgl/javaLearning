@@ -1,4 +1,4 @@
-package org.oizehsgl.executor.affinity;
+package org.oizehsgl.executor.executor;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
