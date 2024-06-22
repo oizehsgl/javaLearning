@@ -23,7 +23,7 @@ public class RetryServiceImpl implements RetryService {
     //exclude: 指定不处理的异常
     //maxAttempts: 最大重试次数,默认3次
     //backoff: 重试等待策略,默认使用@Backoff,@Backoff的value默认为1000L,我们设置为2000L,multiplier默认为0,表示固定暂停1秒后进行重试
-    @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 2000L, multiplier = 2))
+    @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 1000L, multiplier = 2))
     public void exec(Exception e) {
         log.info("执行[time<{}>]", LocalTime.now());
         throw e;
