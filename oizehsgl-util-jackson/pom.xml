@@ -9,11 +9,11 @@
         <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.oizehsgl.util.hutool</groupId>
-    <artifactId>oizehsgl-util-hutool</artifactId>
+    <groupId>org.oizehsgl.util.jackson</groupId>
+    <artifactId>oizehsgl-util-jackson</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>oizehsgl-util-hutool</name>
-    <description>oizehsgl-util-hutool</description>
+    <name>oizehsgl-util-jackson</name>
+    <description>oizehsgl-util-jackson</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -38,17 +38,10 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.28</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
