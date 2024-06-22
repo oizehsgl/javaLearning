@@ -9,11 +9,11 @@
         <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.oizehsgl.util.hutool</groupId>
-    <artifactId>oizehsgl-util-hutool</artifactId>
+    <groupId>org.oizehsgl.designPattern.responsibilityChain</groupId>
+    <artifactId>oizehsgl-designPattern-responsibilityChain</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>oizehsgl-util-hutool</name>
-    <description>oizehsgl-util-hutool</description>
+    <name>oizehsgl-designPattern-responsibilityChain</name>
+    <description>oizehsgl-designPattern-responsibilityChain</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -37,14 +37,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.28</version>
-        </dependency>
-
     </dependencies>
 
     <build>
