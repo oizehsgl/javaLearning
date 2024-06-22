@@ -3,7 +3,8 @@ package org.oizehsgl.sm.spring.statemachine.factory;
 import jakarta.annotation.Resource;
 import java.util.EnumSet;
 import java.util.Objects;
-
+import java.util.concurrent.TimeUnit;
+import javax.swing.*;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomState;
@@ -66,13 +67,13 @@ public class CustomStateMachineFactoryConfig
     // config.withConfiguration().beanFactory(new StaticListableBeanFactory());
     // config.withConfiguration().transitionConflictPolicy(TransitionConflictPolicy.CHILD);
     // config.withConfiguration().regionExecutionPolicy(RegionExecutionPolicy.PARALLEL);
-     config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.IMMEDIATE_CANCEL);
+    //config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.IMMEDIATE_CANCEL);
     // 超时策略
-    //config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL);
-    //config.withConfiguration().stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
+    // config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL);
+    // config.withConfiguration().stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
     config.withConfiguration().listener(customStateMachineListener);
     // TODO: 拦截器持久化有bug
-    //config.withPersistence().runtimePersister(customRedisPersistingStateMachineInterceptor);
+    // config.withPersistence().runtimePersister(customRedisPersistingStateMachineInterceptor);
   }
 
   /**
@@ -116,7 +117,7 @@ public class CustomStateMachineFactoryConfig
         //    customStateMachineEntryAction,
         //    customStateMachineExitAction)
         // .history(CustomState.HISTORY, StateConfigurer.History.SHALLOW)
-            // TODO: #998 #1142 TMD这bug也太多了
+        // TODO: #998 #1142 TMD这bug也太多了
         .and()
         .withStates()
         .region("R2ABC")
@@ -132,7 +133,10 @@ public class CustomStateMachineFactoryConfig
         .initial(CustomState.R2X, customStateMachineInitialAction)
         .state(CustomState.R2X, customStateMachineEntryAction, customStateMachineExitAction)
         .state(CustomState.R2Y, customStateMachineEntryAction, customStateMachineExitAction)
-        .state(CustomState.R2Z, customStateMachineEntryAction, customStateMachineExitAction);
+        .state(CustomState.R2Z, customStateMachineEntryAction, customStateMachineExitAction)
+        .stateEntry(CustomState.LOCAL, customStateMachineEntryAction, customStateMachineErrorAction)
+        .stateDo(CustomState.LOCAL, customStateMachineDoAction)
+        .stateExit(CustomState.LOCAL, customStateMachineExitAction, customStateMachineDoAction);
   }
 
   public void trans(
@@ -310,5 +314,19 @@ public class CustomStateMachineFactoryConfig
     //      .guard(customStateMachineJudgementGuard)
     //      .target(CustomState.INITIAL);
     // }
+    transitions
+        .withExternal()
+        .source(CustomState.INITIAL)
+        .target(CustomState.LOCAL)
+        .event(CustomEvent.LOCAL)
+        .and()
+        .withInternal()
+        .source(CustomState.LOCAL)
+        // .target(CustomState.LOCAL)
+        .action(
+            ctx -> {
+              System.out.println("触发LOCAL");
+            })
+        .event(CustomEvent.LOCAL);
   }
 }

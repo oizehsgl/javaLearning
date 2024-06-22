@@ -44,6 +44,7 @@ public enum CustomState {
   JOIN(0, "合流状态"),
   // 结束状态
   END(0, "结束状态"),
+  LOCAL(0, "local转换"),
   ;
   private final Integer code;
   private final String desc;

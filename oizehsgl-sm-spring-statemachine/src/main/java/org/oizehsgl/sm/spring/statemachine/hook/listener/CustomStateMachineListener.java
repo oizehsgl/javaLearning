@@ -8,6 +8,7 @@ import org.springframework.statemachine.state.State;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 状态机监听者
@@ -26,7 +27,12 @@ public class CustomStateMachineListener
     CustomState fromState = fromOptional.map(State::getId).orElse(null);
     CustomState toState = toOptional.map(State::getId).orElse(null);
 
-    log.info(
+      try {
+          TimeUnit.MILLISECONDS.sleep(100);
+      } catch (InterruptedException e) {
+          throw new RuntimeException(e);
+      }
+      log.info(
         "状态机监听(变更)[现态<{}>,次态<{}>]",
         Optional.ofNullable(from).map(State::getIds).orElse(null),
         Optional.ofNullable(to).map(State::getIds).orElse(null));

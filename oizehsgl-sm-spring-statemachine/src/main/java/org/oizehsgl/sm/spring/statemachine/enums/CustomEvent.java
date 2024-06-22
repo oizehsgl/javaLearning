@@ -27,6 +27,7 @@ public enum CustomEvent {
   JOIN(0, "合流"),
   ENTRY(0, "进入"),
   EXIT(0, "退出"),
+  LOCAL(0, "local"),
   ;
   private final Integer code;
   private final String desc;
