@@ -1,8 +1,7 @@
-package org.oizehsgl.jdk8.feature;
-
-import org.junit.jupiter.api.Test;
+package org.oizehsgl.java.basic;
 
 import java.util.Comparator;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author oizehsgl

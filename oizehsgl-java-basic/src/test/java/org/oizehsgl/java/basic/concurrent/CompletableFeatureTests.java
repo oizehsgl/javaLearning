@@ -1,7 +1,6 @@
-package org.oizehsgl.jdk8.feature.concurrent;
+package org.oizehsgl.java.basic.concurrent;
 
 import java.time.LocalTime;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

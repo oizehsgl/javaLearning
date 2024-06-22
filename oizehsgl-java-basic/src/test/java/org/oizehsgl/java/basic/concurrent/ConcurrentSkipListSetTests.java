@@ -1,16 +1,10 @@
-package org.oizehsgl.jdk8.feature.concurrent;
+package org.oizehsgl.java.basic.concurrent;
 
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.function.Consumer;
-import java.util.function.Function;
-
 import org.junit.jupiter.api.Test;
-import org.springframework.util.comparator.Comparators;
 
 /**
  * @author oizehsgl

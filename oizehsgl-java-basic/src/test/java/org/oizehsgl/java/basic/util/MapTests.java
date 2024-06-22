@@ -1,4 +1,4 @@
-package org.oizehsgl.jdk8.feature.util;
+package org.oizehsgl.java.basic.util;
 
 import java.util.HashMap;
 import java.util.Map;
