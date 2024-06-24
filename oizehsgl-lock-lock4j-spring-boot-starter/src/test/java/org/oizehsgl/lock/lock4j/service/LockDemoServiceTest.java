@@ -18,7 +18,7 @@ class LockDemoServiceTest {
   void lock() throws InterruptedException {
     Thread thread1 = new Thread(()->{
         try {
-            lockDemoService.lock("1");
+            lockDemoService.lock("k","1");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -26,7 +26,7 @@ class LockDemoServiceTest {
 
     Thread thread2 = new Thread(()->{
       try {
-        lockDemoService.lock("1");
+        lockDemoService.lock("k","2");
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }

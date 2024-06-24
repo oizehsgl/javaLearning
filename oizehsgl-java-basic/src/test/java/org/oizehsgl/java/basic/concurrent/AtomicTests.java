@@ -14,6 +14,6 @@ public class AtomicTests {
 
     @Test
     public void test() {
-        atomicReference.updateAndGet()
+        //atomicReference.updateAndGet();
     }
 }
