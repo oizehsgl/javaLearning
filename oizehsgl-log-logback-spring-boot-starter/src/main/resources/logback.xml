@@ -16,7 +16,7 @@
     <!-- <property name="ENCODER_CLASS" value="com.yomahub.tlog.core.enhance.logback.AspectLogbackEncoder"/> -->
     <!--## 日志输出格式 -->
     <property name="LOG_PATTERN"
-              value="[%d{yyyy-MM-dd}T%d{HH:mm:ss.SSS}]  %msg  [%level][%logger{10}][%thread:%method#%line]%n"/>
+              value="[%d{yyyy-MM-dd}T%d{HH:mm:ss.SSS}][%level]  %msg  [%logger{10}][%thread:%method#%line]%n"/>
     <!--<property name="LOG_PATTERN"-->
     <!--          value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{50} %L: %msg%n"/>-->
     <!--## 日志存放路径 -->
