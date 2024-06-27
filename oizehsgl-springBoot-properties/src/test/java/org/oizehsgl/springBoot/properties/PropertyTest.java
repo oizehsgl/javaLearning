@@ -25,5 +25,6 @@ class PropertyTest {
     System.out.println(customProperty.getSubProperty().getP1());
     System.out.println(customProperty.getSubProperty().getP2());
     System.out.println(customProperty.getSubProperty().getP5());
+    System.out.println(customProperty.getSubProperty().getP6());
   }
 }

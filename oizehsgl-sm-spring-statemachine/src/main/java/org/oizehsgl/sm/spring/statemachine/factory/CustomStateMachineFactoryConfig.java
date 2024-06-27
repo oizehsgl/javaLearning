@@ -3,7 +3,6 @@ package org.oizehsgl.sm.spring.statemachine.factory;
 import jakarta.annotation.Resource;
 import java.util.EnumSet;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 import lombok.extern.slf4j.Slf4j;
 import org.oizehsgl.sm.spring.statemachine.enums.CustomEvent;
@@ -16,7 +15,6 @@ import org.oizehsgl.sm.spring.statemachine.hook.listener.CustomStateMachineListe
 import org.oizehsgl.sm.spring.statemachine.persist.redis.runtime.CustomRedisPersistingStateMachineInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.statemachine.action.StateDoActionPolicy;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
@@ -62,18 +60,20 @@ public class CustomStateMachineFactoryConfig
   @Override
   public void configure(StateMachineConfigurationConfigurer<CustomState, CustomEvent> config)
       throws Exception {
-    // config.withConfiguration().machineId("machineId");
-    // config.withConfiguration().autoStartup(false);
-    // config.withConfiguration().beanFactory(new StaticListableBeanFactory());
-    // config.withConfiguration().transitionConflictPolicy(TransitionConflictPolicy.CHILD);
-    // config.withConfiguration().regionExecutionPolicy(RegionExecutionPolicy.PARALLEL);
-    //config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.IMMEDIATE_CANCEL);
-    // 超时策略
-    // config.withConfiguration().stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL);
-    // config.withConfiguration().stateDoActionPolicyTimeout(10, TimeUnit.SECONDS);
-    config.withConfiguration().listener(customStateMachineListener);
-    // TODO: 拦截器持久化有bug
-    // config.withPersistence().runtimePersister(customRedisPersistingStateMachineInterceptor);
+    config.withConfiguration().listener(customStateMachineListener)
+    //// 额外配置
+    // .machineId("machineId")
+    // .autoStartup(false)
+    // .beanFactory(new StaticListableBeanFactory())
+    // .transitionConflictPolicy(TransitionConflictPolicy.CHILD)
+    // .regionExecutionPolicy(RegionExecutionPolicy.PARALLEL)
+    // .stateDoActionPolicy(StateDoActionPolicy.IMMEDIATE_CANCEL)
+    //// 超时策略
+    // .stateDoActionPolicy(StateDoActionPolicy.TIMEOUT_CANCEL)
+    // .stateDoActionPolicyTimeout(10, TimeUnit.SECONDS)
+    //// TODO: 拦截器持久化有bug,子区无法恢复状态
+    // .runtimePersister(customRedisPersistingStateMachineInterceptor)
+    ;
   }
 
   /**

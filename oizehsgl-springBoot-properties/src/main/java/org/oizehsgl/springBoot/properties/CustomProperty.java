@@ -33,8 +33,9 @@ public class CustomProperty {
   private String p4;
 
   @NotNull
-  //@NotEmpty
+  // @NotEmpty
   private String p5;
+
   private SubProperty subProperty = new SubProperty();
 
   @Data
@@ -42,6 +43,7 @@ public class CustomProperty {
     private String p1;
     private String p2;
     private String p5;
+    @NotNull private String p6;
 
     public String getP2() {
       return CustomProperty.this.p2 + p2;
