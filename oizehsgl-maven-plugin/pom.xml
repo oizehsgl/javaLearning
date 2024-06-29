@@ -47,6 +47,8 @@
                 <configuration>
                     <!--launch: 指定为PropertiesLauncher-->
                     <!-- java -cp target/javaLearning-library-mavenPlugin-1.0.0-SNAPSHOT.jar -Dloader.main=org.oizehsgl.javaLearning.library.mavenPlugin.TestLauncher -Dloader.args="a1 b2 c3" org.springframework.boot.loader.launch.PropertiesLauncher -->
+                    <!--可以直接执行-->
+                    <!--<executable>true</executable>-->
                     <layout>ZIP</layout>
                     <excludes>
                         <exclude>
