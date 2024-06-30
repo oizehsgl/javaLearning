@@ -10,20 +10,10 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public enum DemoEnum implements JsonEnum<DemoEnum> {
+public enum DemoEnum implements JsonEnum {
   ONE(1, "一"),
   TWO(2, "二"),
   THREE(3, "三");
   private final Integer code;
   private final String desc;
-
-  //@Override
-  //public String getClassName() {
-  //  return getClass().getName();
-  //}
-
-  // @JsonCreator
-  // public static DemoEnum byName(String name) {
-  //  return valueOf(name);
-  // }
 }

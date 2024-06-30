@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
-public enum CustomEnum implements JsonEnum<CustomEnum> {
+public enum CustomEnum implements JsonEnum {
   ONE(1, "一"),
   TWO(2, "二"),
   THREE(3, "三");
