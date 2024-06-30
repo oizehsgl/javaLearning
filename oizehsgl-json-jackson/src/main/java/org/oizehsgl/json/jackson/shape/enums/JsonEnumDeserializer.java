@@ -2,17 +2,14 @@ package org.oizehsgl.json.jackson.shape.enums;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import lombok.SneakyThrows;
 
 /**
  * @author oizehsgl
  */
-public class JsonEnumDeserializer<T extends Enum<T>> extends StdDeserializer<T> {
-  public JsonEnumDeserializer() {
-    super(Enum.class);
-  }
+public class JsonEnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
 
   @SneakyThrows
   @Override
