@@ -1,6 +1,7 @@
 package org.oizehsgl.springBoot.properties;
 
 import jakarta.validation.constraints.NotNull;
+import java.util.Collections;
 import java.util.Map;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +49,5 @@ public class CustomProperty {
     }
   }
 
-  //@Value("#{${custom.property.p7}}")
-  private Map<Integer, String> p7;
+  private Map<Integer, String> p7= Collections.emptyMap();
 }
