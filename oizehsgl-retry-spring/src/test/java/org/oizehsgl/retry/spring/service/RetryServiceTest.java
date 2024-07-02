@@ -22,9 +22,11 @@ class RetryServiceTest {
     @Test
     void recoverArithmeticException() {
         retryService.exec(new ArithmeticException());
+        retryService.exec2(new ArithmeticException());
     }
     @Test
     void recoverException() {
+        retryService.exec2(new ArrayIndexOutOfBoundsException());
         retryService.exec(new ArrayIndexOutOfBoundsException());
     }
 }

@@ -12,4 +12,5 @@ import org.springframework.stereotype.Service;
 public interface RetryService {
 
     public void exec(Exception e);
+    public void exec2(Exception e);
 }
